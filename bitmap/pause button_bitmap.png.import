@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://csuxo8dx1xmfm"
+path="res://.godot/imported/pause button_bitmap.png-236dbdcf12f5cbd5e4e6cc4ec706f444.res"
+
+[deps]
+
+source_file="res://bitmap/pause button_bitmap.png"
+dest_files=["res://.godot/imported/pause button_bitmap.png-236dbdcf12f5cbd5e4e6cc4ec706f444.res"]
+
+[params]
+
+create_from=0
+threshold=0.0

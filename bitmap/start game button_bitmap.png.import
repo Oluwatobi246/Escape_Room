@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://ecolekgmb7uf"
+path="res://.godot/imported/start game button_bitmap.png-b9cedbc541bc48ac65c0a24b40fd293a.res"
+
+[deps]
+
+source_file="res://bitmap/start game button_bitmap.png"
+dest_files=["res://.godot/imported/start game button_bitmap.png-b9cedbc541bc48ac65c0a24b40fd293a.res"]
+
+[params]
+
+create_from=0
+threshold=0.0

@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://cha60nv52782y"
+path="res://.godot/imported/main menu button_bitmap.png-22015fd73b3166ce0e88d6671381589a.res"
+
+[deps]
+
+source_file="res://bitmap/main menu button_bitmap.png"
+dest_files=["res://.godot/imported/main menu button_bitmap.png-22015fd73b3166ce0e88d6671381589a.res"]
+
+[params]
+
+create_from=0
+threshold=0.0

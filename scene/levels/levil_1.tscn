@@ -1,0 +1,258 @@
+[gd_scene format=3 uid="uid://bagypp2t1t32l"]
+
+[ext_resource type="Script" uid="uid://bhk3rs7yvd5ta" path="res://scripts/levil 1/levil_1.gd" id="1_vqiql"]
+[ext_resource type="PackedScene" uid="uid://7vsx7vur82p0" path="res://scene/player.tscn" id="1_wcwpq"]
+[ext_resource type="PackedScene" uid="uid://d23ux3gt3doyu" path="res://scene/door.tscn" id="3_ijtjt"]
+[ext_resource type="Texture2D" uid="uid://b8pui2mijdxtv" path="res://background/background.jpg" id="4_vqiql"]
+[ext_resource type="Script" uid="uid://bibomjritk3l4" path="res://scripts/levil 1/trap_1.gd" id="5_3cgb3"]
+[ext_resource type="Texture2D" uid="uid://b3m5ejxfmxx18" path="res://assets/spikes.png" id="5_ojl1v"]
+[ext_resource type="Script" uid="uid://ulddafkumhpt" path="res://scripts/levil 1/trap_2.gd" id="7_3cgb3"]
+[ext_resource type="PackedScene" uid="uid://c1bjokt75p354" path="res://scene/canvas_layer.tscn" id="8_vlv2q"]
+[ext_resource type="AudioStream" uid="uid://cmhovcxlk84ya" path="res://Audio/shoot out.wav" id="9_wwqlj"]
+[ext_resource type="AudioStream" uid="uid://bx4pgvt8ilxx6" path="res://Audio/return_sound.wav" id="10_qbkwq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2p7hs"]
+size = Vector2(40, 650)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a47pw"]
+size = Vector2(405.5, 353)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ojl1v"]
+size = Vector2(10, 177.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3cgb3"]
+size = Vector2(34, 17.875)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dh8ng"]
+size = Vector2(212, 353)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vqiql"]
+size = Vector2(40, 90)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vlv2q"]
+size = Vector2(12, 184)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_htpt3"]
+size = Vector2(240, 350)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c5gmw"]
+size = Vector2(11, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0v1lh"]
+size = Vector2(240, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f10bp"]
+size = Vector2(254, 350)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_51frr"]
+size = Vector2(40, 83)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nfirf"]
+size = Vector2(6, 171)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o1plc"]
+size = Vector2(35, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mclf0"]
+size = Vector2(9, 173)
+
+[node name="Levil 1" type="Node2D" unique_id=137085664]
+script = ExtResource("1_vqiql")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=889058260]
+position = Vector2(575.5, 325)
+scale = Vector2(0.92227566, 0.78125)
+texture = ExtResource("4_vqiql")
+
+[node name="door" parent="." unique_id=1223076365 instance=ExtResource("3_ijtjt")]
+position = Vector2(1125, 269)
+
+[node name="player" parent="." unique_id=1144730333 instance=ExtResource("1_wcwpq")]
+position = Vector2(62, 263)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1797515887]
+visible = false
+color = Color(0, 0, 0, 1)
+
+[node name="left wall" type="StaticBody2D" parent="." unique_id=685593907]
+
+[node name="ColorRect" type="ColorRect" parent="left wall" unique_id=98578357]
+offset_top = -4.0
+offset_right = 40.0
+offset_bottom = 652.0
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="left wall" unique_id=1556542371]
+position = Vector2(20, 325)
+shape = SubResource("RectangleShape2D_2p7hs")
+
+[node name="floor 1" type="StaticBody2D" parent="." unique_id=852896188]
+
+[node name="ColorRect" type="ColorRect" parent="floor 1" unique_id=394898473]
+offset_left = 40.0
+offset_top = 298.0
+offset_right = 446.0
+offset_bottom = 652.0
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor 1" unique_id=1276610151]
+position = Vector2(243.25, 474.5)
+shape = SubResource("RectangleShape2D_a47pw")
+
+[node name="t_t 1" type="Area2D" parent="." unique_id=920944830]
+position = Vector2(271, 286)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="t_t 1" unique_id=792694535]
+position = Vector2(4, -77.25)
+shape = SubResource("RectangleShape2D_ojl1v")
+
+[node name="trap 1" type="Area2D" parent="." unique_id=129685456]
+script = ExtResource("5_3cgb3")
+
+[node name="Sprite2D" type="Sprite2D" parent="trap 1" unique_id=258353815]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(301, 289)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("5_ojl1v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trap 1" unique_id=1663700618]
+position = Vector2(301, 289.0625)
+shape = SubResource("RectangleShape2D_3cgb3")
+
+[node name="floor 2" type="StaticBody2D" parent="." unique_id=2096272901]
+
+[node name="ColorRect" type="ColorRect" parent="floor 2" unique_id=488421270]
+offset_left = 446.0
+offset_top = 298.0
+offset_right = 658.0
+offset_bottom = 651.0
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor 2" unique_id=1732885246]
+position = Vector2(552, 474.5)
+shape = SubResource("RectangleShape2D_dh8ng")
+
+[node name="trap wall 1" type="AnimatableBody2D" parent="." unique_id=940525708]
+
+[node name="ColorRect" type="ColorRect" parent="trap wall 1" unique_id=96578232]
+offset_left = 478.0
+offset_top = 207.0
+offset_right = 518.0
+offset_bottom = 297.0
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trap wall 1" unique_id=1956271924]
+position = Vector2(498, 252)
+shape = SubResource("RectangleShape2D_vqiql")
+
+[node name="trap wall trigger" type="Area2D" parent="." unique_id=1266267743]
+position = Vector2(400, 296)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trap wall trigger" unique_id=1160275192]
+position = Vector2(39, -90)
+shape = SubResource("RectangleShape2D_vlv2q")
+
+[node name="trap floor" type="AnimatableBody2D" parent="." unique_id=474112611]
+
+[node name="ColorRect" type="ColorRect" parent="trap floor" unique_id=853369500]
+offset_left = 658.0
+offset_top = 298.0
+offset_right = 898.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trap floor" unique_id=1269114348]
+position = Vector2(778, 473)
+shape = SubResource("RectangleShape2D_htpt3")
+
+[node name="trap floor trigger" type="Area2D" parent="." unique_id=907195121]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trap floor trigger" unique_id=1532309960]
+position = Vector2(718, 293)
+shape = SubResource("RectangleShape2D_c5gmw")
+
+[node name="death trigger" type="Area2D" parent="." unique_id=1404226157]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="death trigger" unique_id=632297960]
+position = Vector2(778, 637)
+shape = SubResource("RectangleShape2D_0v1lh")
+
+[node name="floor 3" type="StaticBody2D" parent="." unique_id=480662595]
+
+[node name="ColorRect" type="ColorRect" parent="floor 3" unique_id=1356221071]
+offset_left = 898.0
+offset_top = 298.0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor 3" unique_id=1946974427]
+position = Vector2(1025, 473)
+shape = SubResource("RectangleShape2D_f10bp")
+
+[node name="trap wall 2" type="AnimatableBody2D" parent="." unique_id=1027876202]
+
+[node name="ColorRect" type="ColorRect" parent="trap wall 2" unique_id=1250789319]
+offset_left = 900.0
+offset_top = 215.0
+offset_right = 940.0
+offset_bottom = 298.0
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trap wall 2" unique_id=136687601]
+position = Vector2(920, 256.5)
+shape = SubResource("RectangleShape2D_51frr")
+
+[node name="trap wall 2 trigger" type="Area2D" parent="." unique_id=1082260359]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trap wall 2 trigger" unique_id=647131909]
+position = Vector2(817, 212.5)
+shape = SubResource("RectangleShape2D_nfirf")
+
+[node name="trap 2" type="Area2D" parent="." unique_id=560497094]
+position = Vector2(-18, 0)
+script = ExtResource("7_3cgb3")
+
+[node name="Sprite2D" type="Sprite2D" parent="trap 2" unique_id=1637424479]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(1062.0001, 288.00003)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("5_ojl1v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trap 2" unique_id=404383825]
+position = Vector2(1062.5, 288.5)
+shape = SubResource("RectangleShape2D_o1plc")
+
+[node name="trap 2 trigger" type="Area2D" parent="." unique_id=780003728]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trap 2 trigger" unique_id=177567771]
+position = Vector2(1018, 211.5)
+shape = SubResource("RectangleShape2D_mclf0")
+
+[node name="CanvasLayer" parent="." unique_id=1030218085 instance=ExtResource("8_vlv2q")]
+
+[node name="spike sound" type="AudioStreamPlayer2D" parent="." unique_id=907021881]
+stream = ExtResource("9_wwqlj")
+pitch_scale = 5.0
+
+[node name="move wall sound" type="AudioStreamPlayer2D" parent="." unique_id=1681811547]
+stream = ExtResource("10_qbkwq")
+pitch_scale = 5.0
+
+[node name="move floor sound" type="AudioStreamPlayer2D" parent="." unique_id=1012477768]
+stream = ExtResource("9_wwqlj")
+pitch_scale = 5.0
+
+[node name="move floor return sound" type="AudioStreamPlayer2D" parent="." unique_id=829194374]
+stream = ExtResource("10_qbkwq")
+pitch_scale = 5.0
+
+[connection signal="body_entered" from="door" to="." method="_on_door_body_entered"]
+[connection signal="body_entered" from="t_t 1" to="." method="_on_t_t_1_body_entered"]
+[connection signal="body_entered" from="trap 1" to="trap 1" method="_on_body_entered"]
+[connection signal="body_entered" from="trap wall trigger" to="." method="_on_trap_wall_trigger_body_entered"]
+[connection signal="body_entered" from="trap floor trigger" to="." method="_on_trap_floor_trigger_body_entered"]
+[connection signal="body_entered" from="death trigger" to="." method="_on_death_trigger_body_entered"]
+[connection signal="body_entered" from="trap wall 2 trigger" to="." method="_on_trap_wall_2_trigger_body_entered"]
+[connection signal="body_entered" from="trap 2" to="trap 2" method="_on_body_entered"]
+[connection signal="body_entered" from="trap 2 trigger" to="." method="_on_trap_2_trigger_body_entered"]

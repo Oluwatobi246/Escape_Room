@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://lm416vwudepn"]
+
+[ext_resource type="Script" uid="uid://c2u2xl0suqbna" path="res://scripts/trap.gd" id="1_qx3ty"]
+[ext_resource type="Texture2D" uid="uid://bt605pxncewp5" path="res://assets/spikes_modulatable.png" id="2_qx3ty"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qx3ty"]
+size = Vector2(267, 79)
+
+[node name="trap" type="Area2D" unique_id=598011232]
+script = ExtResource("1_qx3ty")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=886061613]
+texture = ExtResource("2_qx3ty")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=271622885]
+position = Vector2(1.5, 38.5)
+shape = SubResource("RectangleShape2D_qx3ty")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

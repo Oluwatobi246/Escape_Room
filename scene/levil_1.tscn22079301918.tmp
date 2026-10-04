@@ -1,0 +1,184 @@
+[gd_scene format=3 uid="uid://bagypp2t1t32l"]
+
+[ext_resource type="Texture2D" uid="uid://msgelai8f58e" path="res://assets/door_flatten_spritesheet.png" id="1_dh8ng"]
+[ext_resource type="Script" uid="uid://bhk3rs7yvd5ta" path="res://scripts/levil 1/levil_1.gd" id="1_vqiql"]
+[ext_resource type="PackedScene" uid="uid://7vsx7vur82p0" path="res://scene/player.tscn" id="1_wcwpq"]
+[ext_resource type="Texture2D" uid="uid://b8pui2mijdxtv" path="res://background/background.jpg" id="4_vqiql"]
+[ext_resource type="Script" uid="uid://bibomjritk3l4" path="res://scripts/levil 1/trap_1.gd" id="5_3cgb3"]
+[ext_resource type="Texture2D" uid="uid://b3m5ejxfmxx18" path="res://assets/spikes.png" id="5_ojl1v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojl1v"]
+atlas = ExtResource("1_dh8ng")
+region = Rect2(0, 0, 612, 408)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cgb3"]
+atlas = ExtResource("1_dh8ng")
+region = Rect2(612, 0, 612, 408)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlv2q"]
+atlas = ExtResource("1_dh8ng")
+region = Rect2(1224, 0, 612, 408)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htpt3"]
+atlas = ExtResource("1_dh8ng")
+region = Rect2(1836, 0, 612, 408)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5gmw"]
+atlas = ExtResource("1_dh8ng")
+region = Rect2(2448, 0, 612, 408)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0v1lh"]
+atlas = ExtResource("1_dh8ng")
+region = Rect2(3060, 0, 612, 408)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f10bp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojl1v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cgb3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlv2q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htpt3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5gmw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0v1lh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w2puq"]
+size = Vector2(20, 37)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2p7hs"]
+size = Vector2(40, 650)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a47pw"]
+size = Vector2(405.5, 353)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ojl1v"]
+size = Vector2(10, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3cgb3"]
+size = Vector2(35.375, 20.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dh8ng"]
+size = Vector2(212, 352)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vqiql"]
+size = Vector2(40, 90)
+
+[node name="Levil 1" type="Node2D" unique_id=137085664]
+script = ExtResource("1_vqiql")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=889058260]
+visible = false
+position = Vector2(575.5, 325)
+scale = Vector2(0.92227566, 0.78125)
+texture = ExtResource("4_vqiql")
+
+[node name="door" type="Area2D" parent="." unique_id=575123392]
+visible = false
+position = Vector2(1088, 239)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="door" unique_id=1091120167]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_f10bp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="door" unique_id=391520825]
+position = Vector2(1, 7.5)
+shape = SubResource("RectangleShape2D_w2puq")
+
+[node name="player" parent="." unique_id=1144730333 instance=ExtResource("1_wcwpq")]
+position = Vector2(62, 263)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1797515887]
+visible = false
+color = Color(0, 0, 0, 1)
+
+[node name="left wall" type="StaticBody2D" parent="." unique_id=685593907]
+
+[node name="ColorRect" type="ColorRect" parent="left wall" unique_id=98578357]
+offset_top = -4.0
+offset_right = 40.0
+offset_bottom = 652.0
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="left wall" unique_id=1556542371]
+position = Vector2(20, 325)
+shape = SubResource("RectangleShape2D_2p7hs")
+
+[node name="floor 1" type="StaticBody2D" parent="." unique_id=852896188]
+
+[node name="ColorRect" type="ColorRect" parent="floor 1" unique_id=394898473]
+offset_left = 40.0
+offset_top = 298.0
+offset_right = 446.0
+offset_bottom = 652.0
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor 1" unique_id=1276610151]
+position = Vector2(243.25, 474.5)
+shape = SubResource("RectangleShape2D_a47pw")
+
+[node name="t_t 1" type="Area2D" parent="." unique_id=920944830]
+position = Vector2(271, 286)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="t_t 1" unique_id=792694535]
+position = Vector2(-5, -4.5)
+shape = SubResource("RectangleShape2D_ojl1v")
+
+[node name="trap 1" type="Area2D" parent="." unique_id=129685456]
+script = ExtResource("5_3cgb3")
+
+[node name="Sprite2D" type="Sprite2D" parent="trap 1" unique_id=258353815]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(300, 288)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("5_ojl1v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trap 1" unique_id=1663700618]
+visible = false
+position = Vector2(300.3125, 287.375)
+shape = SubResource("RectangleShape2D_3cgb3")
+
+[node name="floor 2" type="StaticBody2D" parent="." unique_id=2096272901]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="floor 2" unique_id=488421270]
+offset_left = 446.0
+offset_top = 298.0
+offset_right = 658.0
+offset_bottom = 651.0
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor 2" unique_id=1732885246]
+position = Vector2(552, 475)
+shape = SubResource("RectangleShape2D_dh8ng")
+
+[node name="trap wall 1" type="StaticBody2D" parent="." unique_id=754482312]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="trap wall 1" unique_id=96578232]
+offset_left = 618.0
+offset_top = 208.0
+offset_right = 658.0
+offset_bottom = 298.0
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trap wall 1" unique_id=1956271924]
+position = Vector2(638, 253)
+shape = SubResource("RectangleShape2D_vqiql")
+
+[connection signal="body_entered" from="t_t 1" to="." method="_on_t_t_1_body_entered"]
+[connection signal="body_entered" from="trap 1" to="trap 1" method="_on_body_entered"]

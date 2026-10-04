@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://cibvl65ug1fwx"
+path="res://.godot/imported/instruction button_bitmap.png-d8a21552e1c2ac867e66fc46a8709e0c.res"
+
+[deps]
+
+source_file="res://bitmap/instruction button_bitmap.png"
+dest_files=["res://.godot/imported/instruction button_bitmap.png-d8a21552e1c2ac867e66fc46a8709e0c.res"]
+
+[params]
+
+create_from=0
+threshold=0.0

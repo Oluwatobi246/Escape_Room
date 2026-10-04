@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://glrah25e5h8b"]
+
+[ext_resource type="Script" uid="uid://di1imxp2jvgrs" path="res://scripts/saw.gd" id="1_wthbu"]
+[ext_resource type="Texture2D" uid="uid://b3x65emmbqhw5" path="res://assets/chainsaw.png" id="2_wthbu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2bwx"]
+atlas = ExtResource("2_wthbu")
+region = Rect2(0, 0, 102, 408)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4pjta"]
+atlas = ExtResource("2_wthbu")
+region = Rect2(102, 0, 102, 408)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0lh8"]
+atlas = ExtResource("2_wthbu")
+region = Rect2(204, 0, 102, 408)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2m23q"]
+atlas = ExtResource("2_wthbu")
+region = Rect2(306, 0, 102, 408)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_piasn"]
+atlas = ExtResource("2_wthbu")
+region = Rect2(408, 0, 102, 408)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ueuyr"]
+atlas = ExtResource("2_wthbu")
+region = Rect2(510, 0, 102, 408)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hu8mg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2bwx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4pjta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0lh8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2m23q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_piasn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ueuyr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x58qy"]
+radius = 7.0
+
+[node name="saw" type="Area2D" unique_id=390407809]
+script = ExtResource("1_wthbu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=360831439]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_hu8mg")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2123050193]
+shape = SubResource("CircleShape2D_x58qy")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

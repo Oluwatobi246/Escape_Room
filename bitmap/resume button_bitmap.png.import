@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://bdr638nebrdx4"
+path="res://.godot/imported/resume button_bitmap.png-96bdcb2383a88c0597e4c3ef4cbf4b89.res"
+
+[deps]
+
+source_file="res://bitmap/resume button_bitmap.png"
+dest_files=["res://.godot/imported/resume button_bitmap.png-96bdcb2383a88c0597e4c3ef4cbf4b89.res"]
+
+[params]
+
+create_from=0
+threshold=0.0

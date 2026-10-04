@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://bbxwhcovock58"
+path="res://.godot/imported/level 3 bitmap.png-04c1ef5800ef51dd1bb1a124cc5d5717.res"
+
+[deps]
+
+source_file="res://bitmap/level bitmap/level 3 bitmap.png"
+dest_files=["res://.godot/imported/level 3 bitmap.png-04c1ef5800ef51dd1bb1a124cc5d5717.res"]
+
+[params]
+
+create_from=0
+threshold=0.0

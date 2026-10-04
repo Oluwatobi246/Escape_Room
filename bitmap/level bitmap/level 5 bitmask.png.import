@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://de0lnvw5t6epw"
+path="res://.godot/imported/level 5 bitmask.png-ed02d4960ad0b9e49e13868e9c82aeef.res"
+
+[deps]
+
+source_file="res://bitmap/level bitmap/level 5 bitmask.png"
+dest_files=["res://.godot/imported/level 5 bitmask.png-ed02d4960ad0b9e49e13868e9c82aeef.res"]
+
+[params]
+
+create_from=0
+threshold=0.0

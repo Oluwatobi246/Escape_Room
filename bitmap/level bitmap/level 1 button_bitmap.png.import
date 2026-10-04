@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://bvvfiwxwqvv15"
+path="res://.godot/imported/level 1 button_bitmap.png-4c1c66abd5451ec3f308bc5c6ed9d5bb.res"
+
+[deps]
+
+source_file="res://bitmap/level bitmap/level 1 button_bitmap.png"
+dest_files=["res://.godot/imported/level 1 button_bitmap.png-4c1c66abd5451ec3f308bc5c6ed9d5bb.res"]
+
+[params]
+
+create_from=0
+threshold=0.0

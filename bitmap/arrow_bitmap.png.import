@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://dgrfqn23j76a4"
+path="res://.godot/imported/arrow_bitmap.png-3b767d6f3ac10e2e578aac284cfe26ee.res"
+
+[deps]
+
+source_file="res://bitmap/arrow_bitmap.png"
+dest_files=["res://.godot/imported/arrow_bitmap.png-3b767d6f3ac10e2e578aac284cfe26ee.res"]
+
+[params]
+
+create_from=0
+threshold=1.0
