@@ -21,6 +21,8 @@ var gravity: float = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
 @onready var jump_sfx: AudioStreamPlayer2D = $JumpSFX
 @onready var death_sfx: AudioStreamPlayer2D = $DeathSFX
 
+var is_dying: bool = false
+
 func _ready() -> void:
 	add_to_group(\"player\") # Helps traps detect the player easily!
 
@@ -69,6 +71,12 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func die() -> void:
+	#Prevent the player from dying again when dying action is running
+	if is_dying:
+		return
+	
+	is_dying = true
+	
 	# Hide player briefly and reset to starting position
 	set_physics_process(false) # Lock movement during death
 	sprite.play(\"die\")

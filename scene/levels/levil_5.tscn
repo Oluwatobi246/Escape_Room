@@ -7,6 +7,8 @@
 [ext_resource type="AudioStream" uid="uid://bx4pgvt8ilxx6" path="res://Audio/return_sound.wav" id="4_5eaje"]
 [ext_resource type="PackedScene" uid="uid://c1bjokt75p354" path="res://scene/canvas_layer.tscn" id="5_ndrl8"]
 [ext_resource type="AudioStream" uid="uid://cgtdxjxgexfwb" path="res://Audio/door_soft_opening.wav" id="6_jy7on"]
+[ext_resource type="AudioStream" uid="uid://cmhovcxlk84ya" path="res://Audio/shoot out.wav" id="6_mqllr"]
+[ext_resource type="AudioStream" uid="uid://ckrrx8e2i0xpd" path="res://Audio/key_soft_unlock.wav" id="8_bux2y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gj186"]
 size = Vector2(0, 648)
@@ -36,6 +38,7 @@ size = Vector2(0, 90)
 size = Vector2(40, 407)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bux2y"]
+size = Vector2(814, 429)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f8pkm"]
 size = Vector2(810, 10)
@@ -199,7 +202,7 @@ position = Vector2(20, -163.5)
 shape = SubResource("RectangleShape2D_mqllr")
 
 [node name="trap floor 2" type="AnimatableBody2D" parent="." unique_id=842906152]
-position = Vector2(162, -429)
+position = Vector2(162, -427)
 
 [node name="ColorRect" type="ColorRect" parent="trap floor 2" unique_id=521893568]
 offset_right = 814.0
@@ -207,6 +210,7 @@ offset_bottom = 429.0
 color = Color(0.38039216, 0.09019608, 0.48235294, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="trap floor 2" unique_id=638792877]
+position = Vector2(407, 214.5)
 shape = SubResource("RectangleShape2D_bux2y")
 
 [node name="Spikes" type="Sprite2D" parent="trap floor 2" unique_id=1973210708]
@@ -327,8 +331,12 @@ scale = Vector2(-0.13, -0.13)
 position = Vector2(406, 445)
 shape = SubResource("RectangleShape2D_f8pkm")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="trap floor 2" unique_id=1270004213]
+stream = ExtResource("6_mqllr")
+pitch_scale = 5.0
+
 [node name="trap floor 2 S_P" type="Marker2D" parent="." unique_id=1471883629]
-position = Vector2(162, 429)
+position = Vector2(162, 0)
 
 [node name="wall move 1" type="AnimatableBody2D" parent="." unique_id=392405341]
 position = Vector2(122, 320)
@@ -395,7 +403,6 @@ position = Vector2(40, 46.5)
 shape = SubResource("RectangleShape2D_snhnw")
 
 [node name="button" type="Area2D" parent="." unique_id=1498071560]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="button" unique_id=1802508422]
 offset_left = 162.0
@@ -463,6 +470,11 @@ color = Color(0.38039216, 0.09019608, 0.48235294, 1)
 position = Vector2(744.5, 447.5)
 shape = SubResource("RectangleShape2D_hwf73")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Key" unique_id=633471763]
+stream = ExtResource("8_bux2y")
+volume_db = 24.0
+pitch_scale = 2.6
+
 [node name="death 2" type="Area2D" parent="." unique_id=1804600313]
 position = Vector2(86, 638)
 
@@ -477,4 +489,8 @@ position = Vector2(131, 454)
 
 [connection signal="body_entered" from="trap floor 1 trig" to="." method="_on_trap_floor_1_trig_body_entered"]
 [connection signal="body_entered" from="wall move 1 trig" to="." method="_on_wall_move_1_trig_body_entered"]
+[connection signal="body_entered" from="Key/key 1" to="." method="_on_key_1_body_entered"]
+[connection signal="body_entered" from="Key/key 2" to="." method="_on_key_2_body_entered"]
+[connection signal="body_entered" from="Key/key 3" to="." method="_on_key_3_body_entered"]
+[connection signal="body_entered" from="Key/key 4" to="." method="_on_key_4_body_entered"]
 [connection signal="body_entered" from="death 2" to="." method="_on_death_2_body_entered"]
