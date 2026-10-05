@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameManager="*uid://doqcghq2u4m4y"
+RotateWarning="*uid://div0433e7do36"
 
 [editor_plugins]
 

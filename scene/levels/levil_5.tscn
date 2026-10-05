@@ -76,6 +76,9 @@ size = Vector2(21, 13)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_won5t"]
 size = Vector2(55, 3)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4mls"]
+size = Vector2(20, 189)
+
 [node name="levil_5" type="Node2D" unique_id=29151880]
 script = ExtResource("1_351rq")
 
@@ -380,6 +383,11 @@ shape = SubResource("RectangleShape2D_wupgx")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="wall move 2" unique_id=1087665772]
 stream = ExtResource("6_jy7on")
 
+[node name="Audio 2" type="AudioStreamPlayer2D" parent="wall move 2" unique_id=1111467898]
+stream = ExtResource("4_5eaje")
+volume_db = 24.0
+pitch_scale = 5.0
+
 [node name="wall move 2 S_P" type="Marker2D" parent="." unique_id=243527056]
 position = Vector2(976, 367)
 
@@ -402,6 +410,14 @@ color = Color(0.38039216, 0.09019608, 0.48235294, 1)
 position = Vector2(40, 46.5)
 shape = SubResource("RectangleShape2D_snhnw")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="wall move 3" unique_id=1712839743]
+stream = ExtResource("6_mqllr")
+volume_db = 24.0
+pitch_scale = 5.0
+
+[node name="wall move 3 S_P" type="Marker2D" parent="." unique_id=1916457152]
+position = Vector2(1072, 546)
+
 [node name="button" type="Area2D" parent="." unique_id=1498071560]
 
 [node name="ColorRect" type="ColorRect" parent="button" unique_id=1802508422]
@@ -414,6 +430,11 @@ color = Color(0.38039216, 0.09019608, 0.48235294, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="button" unique_id=1676436240]
 position = Vector2(165.5, 432.5)
 shape = SubResource("RectangleShape2D_ca8mu")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="button" unique_id=1654210429]
+stream = ExtResource("8_bux2y")
+volume_db = 24.0
+pitch_scale = 2.6
 
 [node name="Key" type="Node2D" parent="." unique_id=2046880270]
 
@@ -487,10 +508,21 @@ position = Vector2(131, 454)
 
 [node name="CanvasLayer" parent="." unique_id=1030218085 instance=ExtResource("5_ndrl8")]
 
+[node name="death 3" type="Area2D" parent="." unique_id=906005814]
+position = Vector2(12, 467)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="death 3" unique_id=844580654]
+position = Vector2(54, 86.5)
+shape = SubResource("RectangleShape2D_s4mls")
+
 [connection signal="body_entered" from="trap floor 1 trig" to="." method="_on_trap_floor_1_trig_body_entered"]
+[connection signal="body_entered" from="floor 3 trig" to="." method="_on_floor_3_trig_body_entered"]
 [connection signal="body_entered" from="wall move 1 trig" to="." method="_on_wall_move_1_trig_body_entered"]
+[connection signal="body_entered" from="wall move 2 trig" to="." method="_on_wall_move_2_trig_body_entered"]
+[connection signal="body_entered" from="button" to="." method="_on_button_body_entered"]
 [connection signal="body_entered" from="Key/key 1" to="." method="_on_key_1_body_entered"]
 [connection signal="body_entered" from="Key/key 2" to="." method="_on_key_2_body_entered"]
 [connection signal="body_entered" from="Key/key 3" to="." method="_on_key_3_body_entered"]
 [connection signal="body_entered" from="Key/key 4" to="." method="_on_key_4_body_entered"]
 [connection signal="body_entered" from="death 2" to="." method="_on_death_2_body_entered"]
+[connection signal="body_entered" from="death 3" to="." method="_on_death_3_body_entered"]

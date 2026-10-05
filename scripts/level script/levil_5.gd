@@ -12,9 +12,13 @@ extends Node2D
 
 @onready var wall_move_2: AnimatableBody2D = $"wall move 2"
 @onready var wall_move_2_s_p: Marker2D = $"wall move 2 S_P"
+@onready var wall_move_2_y: float = $"wall move 2".position.y
 
 @onready var key: Node2D = $Key
 @onready var button: Area2D = $button
+
+@onready var wall_move_3: AnimatableBody2D = $"wall move 3"
+@onready var wall_move_3_s_p: Marker2D = $"wall move 3 S_P"
 
 const CORRECT_ORDER: Array[String] = ["key 3", "key 2", "key 4", "key 1"]
 var player_order: Array[String] = []
@@ -25,12 +29,11 @@ func _ready() -> void:
 	key.hide()
 	for keys in key.get_children():
 		if keys is Area2D:
-			keys.get_node("CollisionShape2D").disabled = true
+			keys.get_node("CollisionShape2D").set_deferred("disabled", true)
 			
-
 	if button:
 		button.hide()
-		button.get_node("CollisionShape2D").disabled = true
+		button.get_node("CollisionShape2D").set_deferred("disabled", true)
 	
 func _on_trap_floor_1_trig_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
@@ -39,15 +42,19 @@ func _on_trap_floor_1_trig_body_entered(body: Node2D) -> void:
 	$"trap floor 1 trig/CollisionShape2D".set_deferred("disabled", true)
 	var tween = create_tween()
 	
-	$"trap floor 1/AudioStreamPlayer2D".play()
+	# Sync sound to the exact start frame of the movement
+	tween.tween_callback($"trap floor 1/AudioStreamPlayer2D".play)
 	tween.tween_property(trap_floor_1, "position:x", position.x + 400, 0.5).as_relative()
+	await tween.finished
 	
+#	wait for tween to finish processing
 	await get_tree().create_timer(1.0, false, true).timeout
 	
 	var rollback = create_tween()
+	
 	rollback.tween_property(trap_floor_1, "position:x", trap_floor_1_x, 0.5)
-	$"trap floor 1/AudioStreamPlayer2D".play()
 	await rollback.finished
+	$"trap floor 1/AudioStreamPlayer2D".play()
 	
 func _on_death_2_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
@@ -80,7 +87,7 @@ func _on_wall_move_1_trig_body_entered(body: Node2D) -> void:
 	wall_2_tween.tween_property(wall_move_2, "global_position:y", wall_move_2_s_p.global_position.y, 0.1)
 	
 	var trap_floor_tween = create_tween()
-	trap_floor_tween.tween_property(trap_floor_2, "global_position:y", trap_floor_2_s_p.global_position.y, 22.0)
+	trap_floor_tween.tween_property(trap_floor_2, "global_position:y", trap_floor_2_s_p.global_position.y, 20.0)
 
 func handle_key_pressed(key_node: Area2D) -> void:
 	# Prevent keys to be enetered twice
@@ -135,3 +142,41 @@ func reset_all_keys():
 		if keys is Area2D:
 			keys.show()
 			keys.get_node("CollisionShape2D").set_deferred("disabled", false)
+
+func _on_button_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$button/AudioStreamPlayer2D.play()
+	$button/CollisionShape2D.set_deferred("disabled", true)
+	
+	var tween = create_tween()
+	$"wall move 2/Audio 2".play()
+	tween.tween_property(wall_move_2, "position:y", wall_move_2_y, 0.1)\
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	
+func _on_wall_move_2_trig_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$"wall move 2 trig/CollisionShape2D".set_deferred("disabled", true)
+	
+	$"wall move 2/AudioStreamPlayer2D".play()
+	var tween = create_tween()
+	tween.tween_property(wall_move_2, "global_position:y", wall_move_2_s_p.global_position.y, 0.1)\
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+
+func _on_floor_3_trig_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	var tween = create_tween()
+	$"wall move 3/AudioStreamPlayer2D".play()
+	tween.tween_property(wall_move_3, "global_position:y", wall_move_3_s_p.global_position.y, 0.5)
+	
+func _on_death_3_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+		
+	if body.has_method("die"):
+		body.die()
