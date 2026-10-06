@@ -1,6 +1,57 @@
 [gd_scene format=3 uid="uid://div0433e7do36"]
 
 [ext_resource type="Script" uid="uid://cmqf3qbvgjtfc" path="res://scripts/rotate_warning.gd" id="1_e5t1g"]
+[ext_resource type="Texture2D" uid="uid://colwt51huraex" path="res://background/rotate_landscape_spritesheet.png" id="2_bcteo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y03s4"]
+atlas = ExtResource("2_bcteo")
+region = Rect2(0, 0, 960, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmfn2"]
+atlas = ExtResource("2_bcteo")
+region = Rect2(960, 0, 960, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymvqc"]
+atlas = ExtResource("2_bcteo")
+region = Rect2(1920, 0, 960, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tw47x"]
+atlas = ExtResource("2_bcteo")
+region = Rect2(2880, 0, 960, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3iked"]
+atlas = ExtResource("2_bcteo")
+region = Rect2(3840, 0, 960, 540)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kkjpd"]
+atlas = ExtResource("2_bcteo")
+region = Rect2(4800, 0, 960, 540)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b6mk5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y03s4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmfn2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ymvqc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tw47x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3iked")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kkjpd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="RotateWarning" type="CanvasLayer" unique_id=824178579]
 layer = 100
@@ -12,20 +63,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.10747976, 0.10747973, 0.10747973, 1)
+color = Color(0.062030144, 0.059642337, 0.09888365, 1)
 
-[node name="Label" type="Label" parent="RotatePromptPanel" unique_id=1251259536]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -440.0
-offset_top = -31.0
-offset_right = -14.0
-offset_bottom = -8.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(2, 2)
-text = "\"Please rotate your device to Landscape mode to play.\""
+[node name="AnimatableBody2D" type="AnimatedSprite2D" parent="RotatePromptPanel" unique_id=23913443]
+position = Vector2(576, 324)
+sprite_frames = SubResource("SpriteFrames_b6mk5")
+autoplay = "default"

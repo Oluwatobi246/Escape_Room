@@ -13,6 +13,13 @@ extends Node2D
 @onready var floor_1_trap_trig_coll: CollisionShape2D = $"floor 1 trap trig/CollisionShape2D"
 @onready var wall_move_coll: CollisionShape2D = $"wall move/CollisionShape2D"
 
+@onready var floor_trap: StaticBody2D = $"floor trap"
+@warning_ignore("shadowed_global_identifier")
+@onready var floor_floor: StaticBody2D = $"floor floor"
+
+@onready var marker_2d: Marker2D = $"wall move trig/Marker2D"
+
+
 var floor_1_start_x: float
 var is_wall_active: bool = false
 var trap_4_start_x: float
@@ -33,11 +40,17 @@ func _ready() -> void:
 	wall_move.hide()
 	wall_move_coll.set_deferred("disabled", true)
 	
-	trap_2.monitoring = false
-	trap_3.monitoring = false
+	trap_2.monitoring = true
+	trap_3.monitoring = true
 	trap_4.monitoring = true
 	trap_5.monitoring = true
 	trap_6.monitoring = true
+	
+	floor_trap.hide()
+	$"floor trap/CollisionShape2D".set_deferred("disabled", true)
+	
+	floor_floor.hide()
+	$"floor floor/CollisionShape2D".set_deferred("disabled", true)
 
 func _on_death_body_entered(body: Node2D) -> void:
 	if body.name == "player" or body.is_in_group("player"):
@@ -55,14 +68,8 @@ func _on_floor_1_trap_trig_body_entered(body: Node2D) -> void:
 	var tween = create_tween()
 	tween.tween_property(floor_1_trap, "position:x", floor_1_start_x + 250.0, 0.7)\
 	.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-
-	await get_tree().create_timer(2.0).timeout
+	tween.tween_callback(floor_1_trap.queue_free)
 	
-	$"floor sound".play()
-	var return_tween = create_tween()
-	return_tween.tween_property(floor_1_trap, "position:x", floor_1_start_x, 0.9)\
-	.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-
 # --- TRAP 2: Player steps on wall trigger ---
 func _on_wall_move_trig_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
@@ -74,14 +81,13 @@ func _on_wall_move_trig_body_entered(body: Node2D) -> void:
 	wall_move_coll.set_deferred("disabled", false)
 	$"wall move trig/CollisionShape2D".set_deferred("disabled", true)
 	
-	await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(0.3).timeout
 	
-	$"spike sound".play()
 	# Slide the wall across both triggers
 	var tween = create_tween()
-	tween.tween_property(wall_move, "position:x", wall_move.position.x - 150.0, 0.2)\
+	tween.tween_property(wall_move, "global_position:x", marker_2d.global_position.x, 0.2)\
 	.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-	
+	$"spike sound".play()
 	tween.tween_interval(0.5)
 	
 	tween.tween_callback(wall_move.queue_free)
@@ -92,17 +98,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		return
 		
 	$Area2D/CollisionShape2D.set_deferred("disabled", true)
-	
-	
-	var tween = create_tween()
-	tween.tween_property(floor_1_trap, "position:x", floor_1_start_x - 250.0, 0.9)\
-	.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-
-	await get_tree().create_timer(2.0).timeout
-	
-	var return_tween = create_tween()
-	return_tween.tween_property(floor_1_trap, "position:x", floor_1_start_x, 0.5)\
-	.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
 # --- TRAP 4: Wall hits Detector 2 (Activates trap_1_trig) ---
 func _on_trap_1_t_a_body_entered(body: Node2D) -> void:
@@ -112,7 +107,6 @@ func _on_trap_1_t_a_body_entered(body: Node2D) -> void:
 	# Enable the player detector now that wall passed through
 	trap_1_trig.monitoring = true
 	
-
 # --- TRAP 5: Player steps on activated trap_1_trig ---
 func _on_trap_1_trig_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
@@ -159,3 +153,21 @@ func _on_trap_5_trig_body_entered(body: Node2D) -> void:
 	var return_tween = create_tween()
 	return_tween.tween_property(trap_5, "position:x", trap_5_start_x, 0.3)\
 	.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+
+func _on_come_back_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$"come back/CollisionShape2D".set_deferred("disabled", true)
+	await get_tree().create_timer(0.5, false).timeout
+	
+	$"floor sound".play()
+	floor_trap.show()
+	$"floor trap/CollisionShape2D".set_deferred("disabled", false)
+	
+	floor_floor.show()
+	$"floor floor/CollisionShape2D".set_deferred("disabled", false)
+	
+	$"floor trap/trap".monitoring = true
+	$"floor trap/trap2".monitoring = true
+	$"floor trap/trap3".monitoring = true
