@@ -1,6 +1,7 @@
 extends Node2D
 
-"signal game_over_triggered" # remove this
+@warning_ignore("unused_signal")
+signal game_over_triggered # remove this
 signal level_unlocked
 
 "var max_hearts: int = 4
@@ -11,10 +12,8 @@ var max_unlocked_level: int = 1
 var save_path: String = "user://save_game.cfg" #remove this
 
 func _ready() -> void:
-	#load_progress() remove this
-	pass
+	load_progress() #remove this
 
-"""
 func save_progress() -> void:
 	var config = ConfigFile.new()
 	config.set_value("Progress", "max_unlocked_level", max_unlocked_level)
@@ -26,7 +25,7 @@ func load_progress() -> void:
 	
 	if error == OK:
 		max_unlocked_level = config.get_value("Progress", "max_unlocked_level", 1)
-""" #remove this
+#remove this
 	
 func load_level(level_num:int) -> void:
 	if level_num <= max_unlocked_level:
@@ -41,7 +40,7 @@ func load_next_level() -> void:
 	# Only raise next level if we just beat out current max level
 	if current_level == max_unlocked_level:
 		max_unlocked_level += 1
-		# save_progress() remvoe this
+		save_progress() #remvoe this
 		level_unlocked.emit()
 		
 	current_level += 1

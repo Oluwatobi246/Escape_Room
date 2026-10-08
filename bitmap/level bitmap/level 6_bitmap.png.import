@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://daybnkbsxtkav"
+path="res://.godot/imported/level 6_bitmap.png-153adc842b2266bcfcc9b3cbc01cd7c2.res"
+
+[deps]
+
+source_file="res://bitmap/level bitmap/level 6_bitmap.png"
+dest_files=["res://.godot/imported/level 6_bitmap.png-153adc842b2266bcfcc9b3cbc01cd7c2.res"]
+
+[params]
+
+create_from=0
+threshold=0.0

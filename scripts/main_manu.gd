@@ -32,3 +32,7 @@ func _on_level_4_pressed() -> void:
 func _on_level_5_pressed() -> void:
 	if not $"level panel/levels/level 5".disabled:
 		GameManager.load_level(5)
+
+func _on_level_6_pressed() -> void:
+	if not $"level panel/levels/level 6".disabled:
+		GameManager.load_level(6)
