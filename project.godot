@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Escape_Room (4.6)"
-run/main_scene="uid://1iom8hhwl7pw"
+run/main_scene="uid://b6oaum5v35dp3"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -27,6 +27,13 @@ window/stretch/mode="canvas_items"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
+
+[layer_names]
+
+2d_physics/layer_1="world"
+2d_physics/layer_2="player"
+2d_physics/layer_3="traps"
+2d_physics/layer_4="trigger"
 
 [physics]
 

@@ -1,26 +1,873 @@
 [gd_scene format=3 uid="uid://q6msuyuogdlw"]
 
 [ext_resource type="PackedScene" uid="uid://7vsx7vur82p0" path="res://scene/player.tscn" id="1_rlqy6"]
+[ext_resource type="Script" uid="uid://g6my36v4ovsn" path="res://scripts/level script/levil_6.gd" id="1_w34jq"]
+[ext_resource type="PackedScene" uid="uid://lm416vwudepn" path="res://scene/trap.tscn" id="3_nrrov"]
+[ext_resource type="AudioStream" uid="uid://bx4pgvt8ilxx6" path="res://Audio/return_sound.wav" id="4_k6f0y"]
+[ext_resource type="AudioStream" uid="uid://cmhovcxlk84ya" path="res://Audio/shoot out.wav" id="5_2jahs"]
+[ext_resource type="PackedScene" uid="uid://d23ux3gt3doyu" path="res://scene/door.tscn" id="6_sg1d6"]
+[ext_resource type="PackedScene" uid="uid://c1bjokt75p354" path="res://scene/canvas_layer.tscn" id="7_lskim"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p70x2"]
+size = Vector2(4, 52)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rlqy6"]
+size = Vector2(239.00018, 52.49992)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w34jq"]
+size = Vector2(32.500023, 32.500027)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nrrov"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k6f0y"]
+size = Vector2(31, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2jahs"]
+size = Vector2(31, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lskim"]
+size = Vector2(6.125, 98)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mvo7q"]
+size = Vector2(5, 97.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7x4fx"]
+size = Vector2(8, 106)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ob7mj"]
+size = Vector2(10.5, 95)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sg1d6"]
+size = Vector2(2.5, 126.250015)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a5xoq"]
+size = Vector2(92, 431)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q0oqp"]
+size = Vector2(1.2500062, 110.625)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_46uq2"]
+size = Vector2(197.37503, 470.00046)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_23pxj"]
+size = Vector2(3.8146973e-06, 810.0004)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kep4y"]
+size = Vector2(955.00085, 40.09385)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cw5ym"]
+size = Vector2(955, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2jjmi"]
+size = Vector2(88, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yg56p"]
+size = Vector2(1, 383.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bbwv8"]
+size = Vector2(3, 374)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lq1hq"]
+size = Vector2(5, 75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8q4uu"]
+size = Vector2(57, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ep3mf"]
+size = Vector2(48, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ifs2d"]
+size = Vector2(47, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fmfdl"]
+size = Vector2(0, 37)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5vab6"]
+size = Vector2(109, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xfv72"]
+size = Vector2(152, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2rol5"]
+size = Vector2(57, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lk8vr"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ncbj"]
+size = Vector2(69, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6sqhn"]
+size = Vector2(1, 46)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6bw68"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7teks"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8e8iv"]
+size = Vector2(1, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y8j2q"]
+size = Vector2(2, 94)
 
 [node name="levil_6" type="Node2D" unique_id=1886554788]
+script = ExtResource("1_w34jq")
 
 [node name="background" type="ColorRect" parent="." unique_id=1988390899]
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0.35542697, 0.1889607, 0.061198846, 1)
 
+[node name="door" parent="." unique_id=1223076365 instance=ExtResource("6_sg1d6")]
+position = Vector2(1125, 147)
+collision_layer = 8
+collision_mask = 2
+
 [node name="player" parent="." unique_id=1144730333 instance=ExtResource("1_rlqy6")]
-position = Vector2(-97, 66)
+position = Vector2(22, 140)
+collision_layer = 2
+
+[node name="stair 5 trig" type="Area2D" parent="player" unique_id=300241400]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player/stair 5 trig" unique_id=1417763361]
+position = Vector2(-18, 5)
+shape = SubResource("RectangleShape2D_p70x2")
 
 [node name="floor 1" type="StaticBody2D" parent="." unique_id=1513141711]
+position = Vector2(0, -48)
+collision_mask = 0
 
 [node name="ColorRect" type="ColorRect" parent="floor 1" unique_id=1188932906]
-offset_top = 71.0
-offset_right = 516.0
-offset_bottom = 163.0
+offset_top = 221.24998
+offset_right = 239.0
+offset_bottom = 273.75
 color = Color(0.24720669, 2.8589666e-05, 0.23444122, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor 1" unique_id=445505102]
+position = Vector2(119.49993, 247.24976)
+scale = Vector2(0.9999998, 0.9999998)
 shape = SubResource("RectangleShape2D_rlqy6")
+
+[node name="trap floors" type="Node" parent="." unique_id=910342681]
+
+[node name="trap floor 1" type="AnimatableBody2D" parent="trap floors" unique_id=907010333]
+position = Vector2(354.99997, 176.99998)
+scale = Vector2(0.79999995, 0.79999995)
+collision_mask = 0
+
+[node name="ColorRect" type="ColorRect" parent="trap floors/trap floor 1" unique_id=1888617239]
+offset_right = 32.0
+offset_bottom = 32.0
+color = Color(0.24705882, 0, 0.23529412, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trap floors/trap floor 1" unique_id=472008116]
+position = Vector2(16, 16)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_w34jq")
+
+[node name="trap floor 2" type="AnimatableBody2D" parent="trap floors" unique_id=2040628830]
+position = Vector2(480, 177)
+collision_mask = 0
+
+[node name="ColorRect" type="ColorRect" parent="trap floors/trap floor 2" unique_id=481157502]
+offset_right = 32.0
+offset_bottom = 32.0
+color = Color(0.24705882, 0, 0.23529412, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trap floors/trap floor 2" unique_id=1867691445]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_nrrov")
+
+[node name="trap floor 3" type="AnimatableBody2D" parent="trap floors" unique_id=1600880833]
+position = Vector2(605, 177)
+collision_mask = 0
+
+[node name="ColorRect" type="ColorRect" parent="trap floors/trap floor 3" unique_id=1094266277]
+offset_right = 31.0
+offset_bottom = 31.0
+color = Color(0.24705882, 0, 0.23529412, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trap floors/trap floor 3" unique_id=1828768962]
+position = Vector2(15.5, 15.5)
+shape = SubResource("RectangleShape2D_k6f0y")
+
+[node name="trap floor4" type="AnimatableBody2D" parent="trap floors" unique_id=1590291353]
+position = Vector2(729, 177)
+collision_mask = 0
+
+[node name="ColorRect" type="ColorRect" parent="trap floors/trap floor4" unique_id=758825807]
+offset_right = 31.0
+offset_bottom = 31.0
+color = Color(0.24705882, 0, 0.23529412, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trap floors/trap floor4" unique_id=1792186702]
+position = Vector2(15.5, 15.5)
+shape = SubResource("RectangleShape2D_2jahs")
+
+[node name="Node" type="Node" parent="." unique_id=1857061604]
+
+[node name="trap floor 1 trig" type="Area2D" parent="Node" unique_id=73647373]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/trap floor 1 trig" unique_id=698396245]
+position = Vector2(340.0625, 105)
+shape = SubResource("RectangleShape2D_lskim")
+
+[node name="trap floor 2 trig" type="Area2D" parent="Node" unique_id=362731533]
+position = Vector2(387, 167)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/trap floor 2 trig" unique_id=1940135875]
+position = Vector2(64, -56.75)
+shape = SubResource("RectangleShape2D_mvo7q")
+
+[node name="trap floor 3 trig" type="Area2D" parent="Node" unique_id=1598353541]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/trap floor 3 trig" unique_id=308432107]
+position = Vector2(586, 105)
+shape = SubResource("RectangleShape2D_7x4fx")
+
+[node name="trap floor 4 trig" type="Area2D" parent="Node" unique_id=225742345]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/trap floor 4 trig" unique_id=107395292]
+position = Vector2(702, 105)
+shape = SubResource("RectangleShape2D_ob7mj")
+
+[node name="trap floors hide" type="Area2D" parent="." unique_id=469028008]
+position = Vector2(163.75, 210)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trap floors hide" unique_id=1396311038]
+position = Vector2(0.25, -94)
+scale = Vector2(0.99999964, 0.99999964)
+shape = SubResource("RectangleShape2D_sg1d6")
+
+[node name="fake floor 1" type="StaticBody2D" parent="." unique_id=1735472655]
+position = Vector2(1066.2499, 221.24998)
+collision_mask = 0
+
+[node name="ColorRect" type="ColorRect" parent="fake floor 1" unique_id=1390686346]
+offset_left = -225.24988
+offset_top = -44.249985
+offset_right = -112.24988
+offset_bottom = 426.75
+color = Color(0.24705882, 0, 0.23529412, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fake floor 1" unique_id=354163173]
+position = Vector2(-178.24988, 171.25002)
+shape = SubResource("RectangleShape2D_a5xoq")
+
+[node name="fake floor trig" type="Area2D" parent="." unique_id=896648530]
+position = Vector2(836.7499, 113.249985)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fake floor trig" unique_id=882937489]
+position = Vector2(4.375061, 2.8124695)
+scale = Vector2(0.99999917, 0.99999917)
+shape = SubResource("RectangleShape2D_q0oqp")
+
+[node name="floor 2" type="StaticBody2D" parent="." unique_id=1797495802]
+position = Vector2(954, 177)
+collision_mask = 0
+
+[node name="ColorRect" type="ColorRect" parent="floor 2" unique_id=1908256366]
+offset_right = 198.0
+offset_bottom = 471.0
+color = Color(0.24705882, 0, 0.23529412, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor 2" unique_id=564363127]
+position = Vector2(99.31262, 234.99991)
+scale = Vector2(0.99999934, 0.99999934)
+shape = SubResource("RectangleShape2D_46uq2")
+
+[node name="wall" type="StaticBody2D" parent="." unique_id=1801403237]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall" unique_id=61335381]
+position = Vector2(-1.1920927e-06, 404.99985)
+scale = Vector2(0.9999995, 0.9999995)
+shape = SubResource("RectangleShape2D_23pxj")
+
+[node name="wall2" type="StaticBody2D" parent="." unique_id=557993626]
+position = Vector2(1152, 0)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall2" unique_id=525619984]
+position = Vector2(-1.1920927e-06, 404.99985)
+scale = Vector2(0.9999995, 0.9999995)
+shape = SubResource("RectangleShape2D_23pxj")
+
+[node name="floor 3" type="StaticBody2D" parent="." unique_id=800332869]
+position = Vector2(0, 617)
+collision_mask = 0
+
+[node name="ColorRect" type="ColorRect" parent="floor 3" unique_id=2117887567]
+offset_top = -9.0
+offset_right = 954.0
+offset_bottom = 31.0
+color = Color(0.24705882, 0, 0.23529412, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor 3" unique_id=772948488]
+position = Vector2(477.5, 11.046875)
+scale = Vector2(0.99999917, 0.99999917)
+shape = SubResource("RectangleShape2D_kep4y")
+
+[node name="death col" type="Area2D" parent="." unique_id=1567713599]
+position = Vector2(0, 648)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="death col" unique_id=794002833]
+position = Vector2(477.5, 0)
+shape = SubResource("RectangleShape2D_cw5ym")
+
+[node name="floor 3 trig" type="Area2D" parent="." unique_id=466248587]
+position = Vector2(876, 481)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor 3 trig" unique_id=2114413302]
+position = Vector2(34, 0)
+shape = SubResource("RectangleShape2D_2jjmi")
+
+[node name="trap wall" type="AnimatableBody2D" parent="." unique_id=1606994514]
+position = Vector2(1140, 224)
+collision_mask = 0
+
+[node name="ColorRect" type="ColorRect" parent="trap wall" unique_id=165457924]
+offset_left = -185.0
+offset_top = -1.0
+offset_right = 967.0
+offset_bottom = 382.0
+color = Color(0.24705882, 0, 0.23529412, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trap wall" unique_id=877933853]
+position = Vector2(-174, 190)
+shape = SubResource("RectangleShape2D_yg56p")
+
+[node name="spikes" type="Node2D" parent="trap wall" unique_id=540949075]
+position = Vector2(-1108, -226)
+
+[node name="trap" parent="trap wall/spikes" unique_id=598011232 instance=ExtResource("3_nrrov")]
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(923, 244)
+rotation = -1.5707964
+scale = Vector2(0.13, 0.13)
+monitoring = false
+
+[node name="trap2" parent="trap wall/spikes" unique_id=1289505015 instance=ExtResource("3_nrrov")]
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(922.99994, 282.00003)
+rotation = -1.5707964
+scale = Vector2(0.13, 0.13)
+monitoring = false
+
+[node name="trap3" parent="trap wall/spikes" unique_id=1009163417 instance=ExtResource("3_nrrov")]
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(922.99994, 320.00003)
+rotation = -1.5707964
+scale = Vector2(0.13, 0.13)
+monitoring = false
+
+[node name="trap4" parent="trap wall/spikes" unique_id=1607669439 instance=ExtResource("3_nrrov")]
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(922.99994, 358.00006)
+rotation = -1.5707964
+scale = Vector2(0.13, 0.13)
+monitoring = false
+
+[node name="trap5" parent="trap wall/spikes" unique_id=1007881719 instance=ExtResource("3_nrrov")]
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(922.99994, 396.00003)
+rotation = -1.5707964
+scale = Vector2(0.13, 0.13)
+monitoring = false
+
+[node name="trap6" parent="trap wall/spikes" unique_id=2087522685 instance=ExtResource("3_nrrov")]
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(922.99994, 434.00003)
+rotation = -1.5707964
+scale = Vector2(0.13, 0.13)
+monitoring = false
+
+[node name="trap7" parent="trap wall/spikes" unique_id=1270885443 instance=ExtResource("3_nrrov")]
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(922.99994, 472.00003)
+rotation = -1.5707964
+scale = Vector2(0.13, 0.13)
+monitoring = false
+
+[node name="trap8" parent="trap wall/spikes" unique_id=1047480936 instance=ExtResource("3_nrrov")]
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(922.99994, 510.00006)
+rotation = -1.5707964
+scale = Vector2(0.13, 0.13)
+monitoring = false
+
+[node name="trap9" parent="trap wall/spikes" unique_id=1977658870 instance=ExtResource("3_nrrov")]
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(922.99994, 548.00006)
+rotation = -1.5707964
+scale = Vector2(0.13, 0.13)
+monitoring = false
+
+[node name="trap10" parent="trap wall/spikes" unique_id=1439142325 instance=ExtResource("3_nrrov")]
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(922.99994, 585)
+rotation = -1.5707964
+scale = Vector2(0.13, 0.13)
+monitoring = false
+
+[node name="trap11" parent="trap wall/spikes" unique_id=1331608222 instance=ExtResource("3_nrrov")]
+visible = false
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(922.99994, 621)
+rotation = -1.5707964
+scale = Vector2(0.13, 0.13)
+monitoring = false
+
+[node name="death" type="Area2D" parent="trap wall" unique_id=1032287408]
+position = Vector2(-179, 15)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trap wall/death" unique_id=293412231]
+position = Vector2(-8.5, 177)
+shape = SubResource("RectangleShape2D_bbwv8")
+
+[node name="trap wall SP" type="Marker2D" parent="." unique_id=1275994658]
+position = Vector2(202, 226)
+
+[node name="trap wall trig" type="Area2D" parent="." unique_id=129512389]
+position = Vector2(827, 597)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trap wall trig" unique_id=2076447144]
+position = Vector2(-27, -26)
+shape = SubResource("RectangleShape2D_lq1hq")
+
+[node name="falling group" type="Node2D" parent="." unique_id=945036878]
+
+[node name="fall 1" type="AnimatableBody2D" parent="falling group" unique_id=299594426]
+position = Vector2(58, 608)
+collision_mask = 2
+
+[node name="ColorRect" type="ColorRect" parent="falling group/fall 1" unique_id=124539310]
+offset_right = 57.0
+offset_bottom = 17.0
+color = Color(0.24705882, 0, 0.23529412, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="falling group/fall 1" unique_id=1255175551]
+position = Vector2(28.5, 8.5)
+shape = SubResource("RectangleShape2D_8q4uu")
+
+[node name="fall 2" type="AnimatableBody2D" parent="falling group" unique_id=322539758]
+position = Vector2(115, 608)
+collision_mask = 2
+
+[node name="ColorRect" type="ColorRect" parent="falling group/fall 2" unique_id=295795360]
+offset_right = 48.0
+offset_bottom = 17.0
+color = Color(0.24705882, 0, 0.23529412, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="falling group/fall 2" unique_id=1005115321]
+position = Vector2(24, 8.5)
+shape = SubResource("RectangleShape2D_ep3mf")
+
+[node name="fall 3" type="AnimatableBody2D" parent="falling group" unique_id=1871317293]
+position = Vector2(163, 608)
+collision_mask = 2
+
+[node name="ColorRect" type="ColorRect" parent="falling group/fall 3" unique_id=2095051749]
+offset_right = 47.0
+offset_bottom = 17.0
+color = Color(0.24705882, 0, 0.23529412, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="falling group/fall 3" unique_id=796324505]
+position = Vector2(23.5, 8.5)
+shape = SubResource("RectangleShape2D_ifs2d")
+
+[node name="fall SP" type="Marker2D" parent="." unique_id=840355161]
+position = Vector2(58, 385)
+
+[node name="fall trig" type="Area2D" parent="." unique_id=507925657]
+position = Vector2(68, 598)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fall trig" unique_id=1832134712]
+position = Vector2(-10, -8.5)
+shape = SubResource("RectangleShape2D_fmfdl")
+
+[node name="stop trap" type="Area2D" parent="." unique_id=314551836]
+position = Vector2(68, 539)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stop trap" unique_id=1522119005]
+position = Vector2(44.5, -49)
+shape = SubResource("RectangleShape2D_5vab6")
+
+[node name="remove trig" type="Area2D" parent="." unique_id=1656825574]
+position = Vector2(58, 282)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="remove trig" unique_id=1552101580]
+position = Vector2(63, 103)
+shape = SubResource("RectangleShape2D_xfv72")
+
+[node name="return sound" type="AudioStreamPlayer2D" parent="." unique_id=1789653686]
+stream = ExtResource("4_k6f0y")
+volume_db = 24.0
+pitch_scale = 5.0
+
+[node name="appear sound" type="AudioStreamPlayer2D" parent="." unique_id=1326957814]
+stream = ExtResource("5_2jahs")
+volume_db = 24.0
+pitch_scale = 5.0
+
+[node name="traps" type="Node2D" parent="." unique_id=660588492]
+
+[node name="trap" parent="traps" unique_id=2088732016 instance=ExtResource("3_nrrov")]
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(19, 598)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap2" parent="traps" unique_id=1111078733 instance=ExtResource("3_nrrov")]
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(56, 598)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap3" parent="traps" unique_id=1702379505 instance=ExtResource("3_nrrov")]
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(93, 598)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap4" parent="traps" unique_id=659876392 instance=ExtResource("3_nrrov")]
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(130, 598)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap5" parent="traps" unique_id=1687002647 instance=ExtResource("3_nrrov")]
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(167, 598)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap6" parent="traps" unique_id=480798502 instance=ExtResource("3_nrrov")]
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(204, 598)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap7" parent="traps" unique_id=113934741 instance=ExtResource("3_nrrov")]
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(241, 598)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap8" parent="traps" unique_id=682437239 instance=ExtResource("3_nrrov")]
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(278, 598)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap9" parent="traps" unique_id=1700411963 instance=ExtResource("3_nrrov")]
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(315, 598)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap10" parent="traps" unique_id=450611126 instance=ExtResource("3_nrrov")]
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(352, 598)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap11" parent="traps" unique_id=1359424387 instance=ExtResource("3_nrrov")]
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(389, 598)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap12" parent="traps" unique_id=1253501338 instance=ExtResource("3_nrrov")]
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(426, 598)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap13" parent="traps" unique_id=1783114561 instance=ExtResource("3_nrrov")]
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(463, 598)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap14" parent="traps" unique_id=1260435600 instance=ExtResource("3_nrrov")]
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(500, 598)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap15" parent="traps" unique_id=1697749271 instance=ExtResource("3_nrrov")]
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(537, 598)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap16" parent="traps" unique_id=1950269045 instance=ExtResource("3_nrrov")]
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(574, 598)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap17" parent="traps" unique_id=1252778132 instance=ExtResource("3_nrrov")]
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(611, 598)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap18" parent="traps" unique_id=2020367484 instance=ExtResource("3_nrrov")]
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(647.99994, 598)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap19" parent="traps" unique_id=1815807292 instance=ExtResource("3_nrrov")]
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(684.99994, 598)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap20" parent="traps" unique_id=65876453 instance=ExtResource("3_nrrov")]
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(722, 598)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap21" parent="traps" unique_id=1670443774 instance=ExtResource("3_nrrov")]
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(758.99994, 598)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap22" parent="traps" unique_id=1010699518 instance=ExtResource("3_nrrov")]
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(795.99994, 598)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap23" parent="traps" unique_id=1072104592 instance=ExtResource("3_nrrov")]
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(832.99994, 598)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap24" parent="traps" unique_id=176711268 instance=ExtResource("3_nrrov")]
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(869.99994, 598)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap25" parent="traps" unique_id=258424924 instance=ExtResource("3_nrrov")]
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(906.99994, 598)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap26" parent="traps" unique_id=208727987 instance=ExtResource("3_nrrov")]
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(937, 598)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="stairs" type="Node2D" parent="." unique_id=1440336721]
+
+[node name="stair 1" type="StaticBody2D" parent="stairs" unique_id=210487522]
+position = Vector2(725, 384)
+collision_mask = 2
+
+[node name="ColorRect" type="ColorRect" parent="stairs/stair 1" unique_id=30456280]
+offset_left = -17.0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.24705882, 0, 0.23529412, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stairs/stair 1" unique_id=1569551682]
+position = Vector2(11.5, 20)
+shape = SubResource("RectangleShape2D_2rol5")
+
+[node name="stair 2" type="StaticBody2D" parent="stairs" unique_id=1632316352]
+position = Vector2(765, 343)
+
+[node name="ColorRect" type="ColorRect" parent="stairs/stair 2" unique_id=1366554297]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.24705882, 0, 0.23529412, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stairs/stair 2" unique_id=1778076626]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_lk8vr")
+
+[node name="stair 3" type="StaticBody2D" parent="stairs" unique_id=532233466]
+position = Vector2(805, 303)
+
+[node name="ColorRect" type="ColorRect" parent="stairs/stair 3" unique_id=997869460]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.24705882, 0, 0.23529412, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stairs/stair 3" unique_id=204973677]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_lk8vr")
+
+[node name="stair 4" type="StaticBody2D" parent="stairs" unique_id=9745134]
+position = Vector2(845, 263)
+
+[node name="ColorRect" type="ColorRect" parent="stairs/stair 4" unique_id=1224165195]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.24705882, 0, 0.23529412, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stairs/stair 4" unique_id=653941566]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_lk8vr")
+
+[node name="stair 5" type="AnimatableBody2D" parent="stairs" unique_id=430922404]
+position = Vector2(885, 263)
+
+[node name="ColorRect" type="ColorRect" parent="stairs/stair 5" unique_id=424681907]
+offset_right = 69.0
+offset_bottom = 40.0
+color = Color(0.24705882, 0, 0.23529412, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stairs/stair 5" unique_id=882643282]
+position = Vector2(34.5, 20)
+shape = SubResource("RectangleShape2D_6ncbj")
+
+[node name="stairs 5" type="Area2D" parent="stairs/stair 5" unique_id=1122518248]
+position = Vector2(10, -10)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stairs/stair 5/stairs 5" unique_id=1541321972]
+position = Vector2(-9.5, -13)
+shape = SubResource("RectangleShape2D_6sqhn")
+
+[node name="fall drop 1" type="Area2D" parent="." unique_id=538933309]
+position = Vector2(320, 392)
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fall drop 1" unique_id=1446132382]
+shape = SubResource("RectangleShape2D_6bw68")
+
+[node name="fall drop 2" type="Area2D" parent="." unique_id=358032390]
+position = Vector2(448, 392)
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fall drop 2" unique_id=1075538544]
+shape = SubResource("RectangleShape2D_7teks")
+
+[node name="reveal stairs" type="Area2D" parent="." unique_id=447774485]
+position = Vector2(596, 392)
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="reveal stairs" unique_id=632079703]
+position = Vector2(-9.5, 0)
+shape = SubResource("RectangleShape2D_8e8iv")
+
+[node name="fall 2 stop" type="Marker2D" parent="." unique_id=1020859051]
+position = Vector2(544, 384)
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1797455494]
+position = Vector2(320, 608)
+
+[node name="measure" type="ColorRect" parent="." unique_id=423598832]
+visible = false
+offset_left = 591.0
+offset_top = 384.0
+offset_right = 707.25
+offset_bottom = 424.0
+color = Color(0.19076231, 0.19076234, 0.19076231, 1)
+
+[node name="stair 5 SP" type="Marker2D" parent="." unique_id=1930222769]
+position = Vector2(885, 177)
+
+[node name="trap" parent="." unique_id=1262236828 instance=ExtResource("3_nrrov")]
+modulate = Color(0.24705882, 0, 0.23529412, 1)
+position = Vector2(1076, 167)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap trig" type="Area2D" parent="." unique_id=1250600370]
+position = Vector2(1064, 142)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trap trig" unique_id=640249351]
+position = Vector2(-10, -12)
+shape = SubResource("RectangleShape2D_y8j2q")
+
+[node name="CanvasLayer" parent="." unique_id=1030218085 instance=ExtResource("7_lskim")]
+
+[connection signal="body_entered" from="Node/trap floor 1 trig" to="." method="_on_trap_floor_1_trig_body_entered"]
+[connection signal="body_entered" from="Node/trap floor 2 trig" to="." method="_on_trap_floor_2_trig_body_entered"]
+[connection signal="body_entered" from="Node/trap floor 3 trig" to="." method="_on_trap_floor_3_trig_body_entered"]
+[connection signal="body_entered" from="Node/trap floor 4 trig" to="." method="_on_trap_floor_4_trig_body_entered"]
+[connection signal="body_entered" from="trap floors hide" to="." method="_on_trap_floors_hide_body_entered"]
+[connection signal="body_entered" from="fake floor trig" to="." method="_on_fake_floor_trig_body_entered"]
+[connection signal="body_entered" from="death col" to="." method="_on_death_col_body_entered"]
+[connection signal="body_entered" from="floor 3 trig" to="." method="_on_floor_3_trig_body_entered"]
+[connection signal="body_entered" from="trap wall/death" to="." method="_on_death_body_entered"]
+[connection signal="body_entered" from="trap wall trig" to="." method="_on_trap_wall_trig_body_entered"]
+[connection signal="body_entered" from="fall trig" to="." method="_on_fall_trig_body_entered"]
+[connection signal="body_entered" from="stop trap" to="." method="_on_stop_trap_body_entered"]
+[connection signal="body_entered" from="remove trig" to="." method="_on_remove_trig_body_entered"]
+[connection signal="area_entered" from="stairs/stair 5/stairs 5" to="." method="_on_stairs_5_area_entered"]
+[connection signal="body_entered" from="fall drop 1" to="." method="_on_fall_drop_1_body_entered"]
+[connection signal="body_entered" from="fall drop 2" to="." method="_on_fall_drop_2_body_entered"]
+[connection signal="body_entered" from="reveal stairs" to="." method="_on_reveal_stairs_body_entered"]
+[connection signal="body_entered" from="trap trig" to="." method="_on_trap_trig_body_entered"]
