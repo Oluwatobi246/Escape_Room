@@ -11,6 +11,9 @@ var current_level: int = 1
 var max_unlocked_level: int = 1
 var save_path: String = "user://save_game.cfg" #remove this
 
+# this is for level 7 strictly
+var level_7_sequence: Array = []
+
 func _ready() -> void:
 	load_progress() #remove this
 

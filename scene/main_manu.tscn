@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://mcql1vmo4aah" path="res://hover buttons/start_game_hover.png" id="5_c7iuy"]
 [ext_resource type="Texture2D" uid="uid://domdxfrl07w60" path="res://buttons/instruction button.png" id="5_e0csf"]
 [ext_resource type="BitMap" uid="uid://cibvl65ug1fwx" path="res://bitmap/instruction button_bitmap.png" id="6_prtvt"]
-[ext_resource type="Texture2D" uid="uid://03qwt0pt5ehe" path="res://buttons/level buttons/level 1 button.png" id="7_e0csf"]
+[ext_resource type="Texture2D" uid="uid://03qwt0pt5ehe" path="res://level buttons/level 1 button.png" id="7_e0csf"]
 [ext_resource type="Texture2D" uid="uid://bighqywq1crhl" path="res://buttons/back button.png" id="7_pcf25"]
 [ext_resource type="BitMap" uid="uid://bdnefu2jvpnpq" path="res://bitmap/back button_bitmap.png" id="8_ftjb1"]
 [ext_resource type="BitMap" uid="uid://bvvfiwxwqvv15" path="res://bitmap/level bitmap/level 1 button_bitmap.png" id="8_prtvt"]
@@ -16,22 +16,25 @@
 [ext_resource type="Script" uid="uid://b7js3mgoqs068" path="res://scripts/levels.gd" id="10_mjnih"]
 [ext_resource type="Texture2D" uid="uid://qitadyajivjp" path="res://hover buttons/back_button hover.png" id="10_n5kco"]
 [ext_resource type="AudioStream" uid="uid://irl47hu14g0h" path="res://Audio/space.mp3" id="12_avv75"]
-[ext_resource type="Texture2D" uid="uid://bby641tltd88t" path="res://buttons/level buttons/level 2.png" id="12_mf4i2"]
+[ext_resource type="Texture2D" uid="uid://bby641tltd88t" path="res://level buttons/level 2.png" id="12_mf4i2"]
 [ext_resource type="BitMap" uid="uid://b5ueps1bqixnl" path="res://bitmap/level bitmap/level 2 bitmap.png" id="13_ofyxv"]
 [ext_resource type="Texture2D" uid="uid://c4wetlxe6q8jr" path="res://hover levels/level 1 hover.png" id="15_chbaq"]
 [ext_resource type="Texture2D" uid="uid://miqyo24plx8" path="res://hover levels/level 2 hover.png" id="18_a741d"]
-[ext_resource type="Texture2D" uid="uid://dfo2m7cds3xg1" path="res://buttons/level buttons/level 3.png" id="20_a741d"]
+[ext_resource type="Texture2D" uid="uid://dfo2m7cds3xg1" path="res://level buttons/level 3.png" id="20_a741d"]
 [ext_resource type="Texture2D" uid="uid://ytestno2k7hh" path="res://hover levels/level 3 hover.png" id="21_a1xx6"]
 [ext_resource type="BitMap" uid="uid://bbxwhcovock58" path="res://bitmap/level bitmap/level 3 bitmap.png" id="22_nkukd"]
-[ext_resource type="Texture2D" uid="uid://cixjfnssmfiaj" path="res://buttons/level buttons/level 4.png" id="23_lgi37"]
+[ext_resource type="Texture2D" uid="uid://cixjfnssmfiaj" path="res://level buttons/level 4.png" id="23_lgi37"]
 [ext_resource type="Texture2D" uid="uid://bf67lkgg327p" path="res://hover levels/level 4 hover.png" id="24_t0qm0"]
 [ext_resource type="BitMap" uid="uid://5x8vwkxl8pox" path="res://bitmap/level bitmap/level 4_bitmap.png" id="25_v1101"]
-[ext_resource type="Texture2D" uid="uid://ckpmovpjv7oug" path="res://buttons/level buttons/level 5.png" id="26_0ujpo"]
+[ext_resource type="Texture2D" uid="uid://ckpmovpjv7oug" path="res://level buttons/level 5.png" id="26_0ujpo"]
 [ext_resource type="Texture2D" uid="uid://c8siam1lmhvx" path="res://hover levels/level 5 hover.png" id="27_38vr2"]
 [ext_resource type="BitMap" uid="uid://de0lnvw5t6epw" path="res://bitmap/level bitmap/level 5 bitmask.png" id="28_5srwc"]
-[ext_resource type="Texture2D" uid="uid://cg571skncuubv" path="res://buttons/level buttons/level 6.png" id="29_38vr2"]
+[ext_resource type="Texture2D" uid="uid://cg571skncuubv" path="res://level buttons/level 6.png" id="29_38vr2"]
 [ext_resource type="Texture2D" uid="uid://dcr7xu54l28rp" path="res://hover levels/level 6 hover.png" id="30_gpovu"]
 [ext_resource type="BitMap" uid="uid://daybnkbsxtkav" path="res://bitmap/level bitmap/level 6_bitmap.png" id="31_bgpf7"]
+[ext_resource type="Texture2D" uid="uid://bqkfnw550xemp" path="res://level buttons/level 7.png" id="32_pll5a"]
+[ext_resource type="Texture2D" uid="uid://bpeewep47ujyt" path="res://hover levels/level 7 hover.png" id="33_ggqrb"]
+[ext_resource type="BitMap" uid="uid://by2yhd6dg6qvw" path="res://bitmap/level bitmap/level 7 bitmap.png" id="34_6j08s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1t8re"]
 atlas = ExtResource("1_4fkee")
@@ -499,6 +502,19 @@ texture_click_mask = ExtResource("31_bgpf7")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="level 7" type="TextureButton" parent="level panel/levels" unique_id=1981753377]
+layout_mode = 0
+offset_left = 645.0
+offset_top = 115.0
+offset_right = 765.0
+offset_bottom = 203.0
+texture_normal = ExtResource("32_pll5a")
+texture_pressed = ExtResource("33_ggqrb")
+texture_hover = ExtResource("33_ggqrb")
+texture_click_mask = ExtResource("34_6j08s")
+ignore_texture_size = true
+stretch_mode = 0
+
 [node name="menu music" type="AudioStreamPlayer2D" parent="." unique_id=1081290876]
 stream = ExtResource("12_avv75")
 autoplay = true
@@ -513,3 +529,4 @@ autoplay = true
 [connection signal="pressed" from="level panel/levels/level 4" to="." method="_on_level_4_pressed"]
 [connection signal="pressed" from="level panel/levels/level 5" to="." method="_on_level_5_pressed"]
 [connection signal="pressed" from="level panel/levels/level 6" to="." method="_on_level_6_pressed"]
+[connection signal="pressed" from="level panel/levels/level 7" to="." method="_on_level_7_pressed"]
