@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://bx4pgvt8ilxx6" path="res://Audio/return_sound.wav" id="4_1b50b"]
 [ext_resource type="AudioStream" uid="uid://35dpat8bl0wn" path="res://Audio/door_soft_close.wav" id="5_1b50b"]
 [ext_resource type="AudioStream" uid="uid://cgtdxjxgexfwb" path="res://Audio/door_soft_opening.wav" id="6_bgqog"]
+[ext_resource type="PackedScene" uid="uid://d23ux3gt3doyu" path="res://scene/door.tscn" id="8_1rn5i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r4fy4"]
 size = Vector2(1, 52)
@@ -367,6 +368,13 @@ monitoring = false
 position = Vector2(-5, 104.5)
 shape = SubResource("RectangleShape2D_8cr7e")
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=393730743]
+offset_left = 923.0
+offset_top = 144.0
+offset_right = 1152.0
+offset_bottom = 378.0
+color = Color(0.88235295, 0.7921569, 0, 1)
+
 [node name="trap SP" type="Marker2D" parent="." unique_id=805910228]
 position = Vector2(404, 144)
 
@@ -493,6 +501,9 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="death2" unique_id=384839964]
 position = Vector2(116.25, 513.75)
 shape = SubResource("RectangleShape2D_rokx5")
+
+[node name="door" parent="." unique_id=1223076365 instance=ExtResource("8_1rn5i")]
+position = Vector2(1126, 349)
 
 [connection signal="body_entered" from="trap floor trig" to="." method="_on_trap_floor_trig_body_entered"]
 [connection signal="body_entered" from="floor wall trig" to="." method="_on_floor_wall_trig_body_entered"]

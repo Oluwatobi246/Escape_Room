@@ -84,7 +84,9 @@ func open_gate_2() -> void:
 func trigger_trap() -> void:
 	trap.show()
 	$"trap/death trap".monitoring = true
+	
 	trap.get_node("CollisionShape2D").set_deferred("disabled", false)
+	
 	var tween = create_tween()
 	tween.tween_property(trap, "global_position:x", trap_sp.global_position.x, 0.2)
 	
