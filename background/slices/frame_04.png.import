@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmmga32jts2lw"
-path="res://.godot/imported/escape_room_fire_spritesheet.png-6d9c169d5d2de5cb9392940d50fc4276.ctex"
+uid="uid://bw8lv3jhxkpw7"
+path="res://.godot/imported/frame_04.png-4e239dce5535f24f1a98cbd6a93820a9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://background/escape_room_fire_spritesheet.png"
-dest_files=["res://.godot/imported/escape_room_fire_spritesheet.png-6d9c169d5d2de5cb9392940d50fc4276.ctex"]
+source_file="res://background/slices/frame_04.png"
+dest_files=["res://.godot/imported/frame_04.png-4e239dce5535f24f1a98cbd6a93820a9.ctex"]
 
 [params]
 

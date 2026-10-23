@@ -2,6 +2,13 @@
 
 [node name="levil_8" type="Node2D" unique_id=1516983287]
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=805985553]
+[node name="background" type="ColorRect" parent="." unique_id=805985553]
 offset_right = 1152.0
 offset_bottom = 648.0
+color = Color(1, 0.8901961, 0.46666667, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=813132903]
+offset_top = 261.0
+offset_right = 265.0
+offset_bottom = 436.0
+color = Color(0.7529412, 0.22352941, 0.16862746, 1)

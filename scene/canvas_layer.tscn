@@ -349,7 +349,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="left" type="TouchScreenButton" parent="MobileButtons" unique_id=1388673800]
-position = Vector2(-58.999996, 384)
+position = Vector2(-116.99999, 384)
 scale = Vector2(0.70261437, 0.625)
 texture_normal = ExtResource("19_fqykr")
 texture_pressed = ExtResource("24_ums5s")
