@@ -26,8 +26,8 @@ extends Node2D
 
 var player_sequence: Array = []
 
-func _ready() -> void:
-	
+func _ready() -> void:	
+	$door.hide()
 	trap.hide()
 	trap.get_node("CollisionShape2D").set_deferred("disabled", true)
 	
@@ -70,7 +70,8 @@ func _on_death_body_entered(body: Node2D) -> void:
 func _on_floor_wall_trig_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
-
+		
+	$"floor wall trig/CollisionShape2D".set_deferred("disabled", true)
 	var tween = create_tween().set_parallel(true)
 	$"floor wall 2/gate close".play()
 	tween.tween_property(floor_wall_1, "global_position:y", floor_wall_1_sp.global_position.y, 0.2)
@@ -97,6 +98,7 @@ func _on_death_2_body_entered(body: Node2D) -> void:
 	if body.has_method("die"):
 		body.die()
 
+"""
 func _on_fake_floor_trig_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
@@ -109,7 +111,7 @@ func _on_fake_floor_trig_body_entered(body: Node2D) -> void:
 
 	var return_tween = create_tween()
 	return_tween.tween_property(fake_floor, "global_position:y", fake_floor_y, 0.2)
-
+"""
 
 func _on_key_1_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
@@ -140,6 +142,8 @@ func register_key_touch(key_num: int) -> void:
 	# Only evaluate when player has collected 2 keys	
 	if player_sequence.size() == 2:
 		if player_sequence == GameManager.level_7_sequence:
+			$"trap trick".hide()
+			$door.show()
 			open_gate_2()
 			$"Key button".hide()
 			$"Key button".get_node("key 1/CollisionShape2D").set_deferred("disabled", true)
@@ -153,3 +157,16 @@ func _on_death_trap_body_entered(body: Node2D) -> void:
 	
 	if body.has_method("die"):
 		body.die()
+
+
+func _on_fake_floor_trig_area_entered(area: Area2D) -> void:
+	if area.is_in_group("spike_trig") or area == $"player/spike trig":
+		$"fake floor trig/CollisionShape2D".set_deferred("disabled",true)
+		
+		var tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+		tween.tween_property(fake_floor, "global_position:y", fake_floor_sp.global_position.y, 0.2)
+
+		await get_tree().create_timer(1.5, false).timeout
+
+		var return_tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+		return_tween.tween_property(fake_floor, "global_position:y", fake_floor_y, 0.2)

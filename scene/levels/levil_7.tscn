@@ -8,9 +8,10 @@
 [ext_resource type="AudioStream" uid="uid://35dpat8bl0wn" path="res://Audio/door_soft_close.wav" id="5_1b50b"]
 [ext_resource type="AudioStream" uid="uid://cgtdxjxgexfwb" path="res://Audio/door_soft_opening.wav" id="6_bgqog"]
 [ext_resource type="PackedScene" uid="uid://d23ux3gt3doyu" path="res://scene/door.tscn" id="8_1rn5i"]
+[ext_resource type="PackedScene" uid="uid://c1bjokt75p354" path="res://scene/canvas_layer.tscn" id="9_8u5u5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r4fy4"]
-size = Vector2(1, 52)
+size = Vector2(3, 52)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o7ffk"]
 size = Vector2(0, 648)
@@ -77,17 +78,22 @@ offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0.88235295, 0.7921569, 0, 1)
 
+[node name="door" parent="." unique_id=1223076365 instance=ExtResource("8_1rn5i")]
+position = Vector2(1126, 349)
+collision_layer = 8
+collision_mask = 2
+
 [node name="player" parent="." unique_id=1144730333 instance=ExtResource("3_o7ffk")]
 position = Vector2(21, 346)
 collision_layer = 2
 collision_mask = 13
 
-[node name="spike trig" type="Area2D" parent="player" unique_id=123757261]
+[node name="spike trig" type="Area2D" parent="player" unique_id=123757261 groups=["spike_trig"]]
 collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player/spike trig" unique_id=1979982206]
-position = Vector2(-17.5, 5)
+position = Vector2(-13.5, 5)
 shape = SubResource("RectangleShape2D_r4fy4")
 
 [node name="wall" type="StaticBody2D" parent="." unique_id=821323972]
@@ -368,7 +374,7 @@ monitoring = false
 position = Vector2(-5, 104.5)
 shape = SubResource("RectangleShape2D_8cr7e")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=393730743]
+[node name="trap trick" type="ColorRect" parent="." unique_id=393730743]
 offset_left = 923.0
 offset_top = 144.0
 offset_right = 1152.0
@@ -485,7 +491,7 @@ shape = SubResource("RectangleShape2D_e42xe")
 [node name="fake floor trig" type="Area2D" parent="." unique_id=1860269106]
 position = Vector2(902, 339)
 collision_layer = 8
-collision_mask = 2
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="fake floor trig" unique_id=473628839]
 position = Vector2(20, 9)
@@ -502,8 +508,7 @@ collision_mask = 2
 position = Vector2(116.25, 513.75)
 shape = SubResource("RectangleShape2D_rokx5")
 
-[node name="door" parent="." unique_id=1223076365 instance=ExtResource("8_1rn5i")]
-position = Vector2(1126, 349)
+[node name="CanvasLayer" parent="." unique_id=1030218085 instance=ExtResource("9_8u5u5")]
 
 [connection signal="body_entered" from="trap floor trig" to="." method="_on_trap_floor_trig_body_entered"]
 [connection signal="body_entered" from="floor wall trig" to="." method="_on_floor_wall_trig_body_entered"]
@@ -512,5 +517,5 @@ position = Vector2(1126, 349)
 [connection signal="body_entered" from="Key button/key 2" to="." method="_on_key_2_body_entered"]
 [connection signal="body_entered" from="Key button/key 3" to="." method="_on_key_3_body_entered"]
 [connection signal="body_entered" from="death" to="." method="_on_death_body_entered"]
-[connection signal="body_entered" from="fake floor trig" to="." method="_on_fake_floor_trig_body_entered"]
+[connection signal="area_entered" from="fake floor trig" to="." method="_on_fake_floor_trig_area_entered"]
 [connection signal="body_entered" from="death2" to="." method="_on_death_2_body_entered"]
