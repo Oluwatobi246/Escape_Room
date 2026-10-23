@@ -88,6 +88,7 @@ func _on_traps_vanish_area_entered(area: Area2D) -> void:
 func _on_trap_wall_trig_area_entered(area: Area2D) -> void:
 	if area.name == "trap 2":
 		$"block way/CollisionShape2D".set_deferred("disabled",true)
+		
 		trap_wall.show()
 		$"trap wall trig/CollisionShape2D".set_deferred("disabled",true)
 		
@@ -129,6 +130,8 @@ func _on_floor_trap_1_trig_body_entered(body: Node2D) -> void:
 		return
 	
 	$"floor trap 1 trig/CollisionShape2D".set_deferred("disabled", true)
+	
+	$wallupsound.play()
 	var tween = create_tween()
 	tween.tween_property(floor_trap_1, "global_position:x", floor_move_pos.global_position.x, 0.2)
 	
@@ -136,7 +139,8 @@ func _on_floor_trap_1_trig_body_entered(body: Node2D) -> void:
 	
 	var back = create_tween()
 	back.tween_property(floor_trap_1, "global_position:x", floor_trap_1_x, 0.2)
-
+	$wallupsound.play()
+	
 func _on_death_body_entered(body: Node2D) -> void:
 	if body.name == "player" or body.is_in_group("player"):
 		if body.has_method("die"):

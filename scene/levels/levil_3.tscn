@@ -540,18 +540,22 @@ shape = SubResource("RectangleShape2D_mpfxa")
 
 [node name="button sound" type="AudioStreamPlayer2D" parent="." unique_id=1973395403]
 stream = ExtResource("7_slf3q")
+volume_db = 24.0
 pitch_scale = 6.0
 
 [node name="wallclosesound" type="AudioStreamPlayer2D" parent="." unique_id=1251783430]
 stream = ExtResource("7_slf3q")
+volume_db = 24.0
 pitch_scale = 5.0
 
 [node name="walldownsound" type="AudioStreamPlayer2D" parent="." unique_id=72161340]
 stream = ExtResource("7_slf3q")
+volume_db = 24.0
 pitch_scale = 10.0
 
 [node name="wallupsound" type="AudioStreamPlayer2D" parent="." unique_id=1641964048]
 stream = ExtResource("8_2gsgo")
+volume_db = 24.0
 pitch_scale = 10.0
 
 [node name="spikewallsound" type="AudioStreamPlayer2D" parent="." unique_id=215345782]

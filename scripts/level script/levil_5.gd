@@ -87,7 +87,7 @@ func _on_wall_move_1_trig_body_entered(body: Node2D) -> void:
 	wall_2_tween.tween_property(wall_move_2, "global_position:y", wall_move_2_s_p.global_position.y, 0.1)
 	
 	var trap_floor_tween = create_tween()
-	trap_floor_tween.tween_property(trap_floor_2, "global_position:y", trap_floor_2_s_p.global_position.y, 20.0)
+	trap_floor_tween.tween_property(trap_floor_2, "global_position:y", trap_floor_2_s_p.global_position.y, 17.0)
 
 func handle_key_pressed(key_node: Area2D) -> void:
 	# Prevent keys to be enetered twice

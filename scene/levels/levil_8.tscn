@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bpg8ro2jr51vl"]
+
+[node name="levil_8" type="Node2D" unique_id=1516983287]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=805985553]
+offset_right = 1152.0
+offset_bottom = 648.0
