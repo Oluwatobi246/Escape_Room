@@ -128,6 +128,7 @@ func _on_floor_trap_1_trig_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
 	
+	$"floor trap 1 trig/CollisionShape2D".set_deferred("disabled", true)
 	var tween = create_tween()
 	tween.tween_property(floor_trap_1, "global_position:x", floor_move_pos.global_position.x, 0.2)
 	
