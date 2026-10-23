@@ -6,12 +6,14 @@ extends Area2D
 @onready var door: AnimatedSprite2D = $AnimatedSprite2D
 @onready var mobile_button: Control = $"../CanvasLayer/MobileButtons"
 
+var is_mobile: bool = false
+
 func _on_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
 	
 	# stil the same thing as .hide()
-	mobile_button.visible = true
+	mobile_button.visible = false
 	
 	# tells Godot to stop running any code inside this node
 	mobile_button.process_mode = Node.PROCESS_MODE_DISABLED
