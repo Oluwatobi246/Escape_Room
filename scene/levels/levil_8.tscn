@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://lm416vwudepn" path="res://scene/trap.tscn" id="2_d0pn8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_krpcd"]
-size = Vector2(1171.3479, 163.7501)
+size = Vector2(1440.0979, 163.7501)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xl2d4"]
 size = Vector2(1.1368705e-13, 649.0003)
@@ -23,7 +23,7 @@ scale = Vector2(0.8, 0.8)
 color = Color(1, 0.8901961, 0.46666667, 1)
 
 [node name="player" parent="." unique_id=1144730333 instance=ExtResource("1_xl2d4")]
-position = Vector2(25.999998, 486.99997)
+position = Vector2(167, 490.99997)
 scale = Vector2(0.8, 0.8)
 collision_layer = 2
 collision_mask = 13
@@ -34,13 +34,13 @@ collision_mask = 0
 
 [node name="ColorRect" type="ColorRect" parent="floor 1" unique_id=813132903]
 offset_top = -0.9999997
-offset_right = 1171.2499
+offset_right = 1439.9999
 offset_bottom = 162.75
 scale = Vector2(0.8, 0.8)
 color = Color(0.7529412, 0.22352941, 0.16862746, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor 1" unique_id=294041455]
-position = Vector2(468.46094, 64.5)
+position = Vector2(575.96094, 64.5)
 scale = Vector2(0.7999999, 0.7999999)
 shape = SubResource("RectangleShape2D_krpcd")
 
@@ -76,12 +76,40 @@ scale = Vector2(0.12, 0.12)
 collision_layer = 4
 collision_mask = 2
 
+[node name="trap2" parent="trap show" unique_id=1506020054 instance=ExtResource("2_d0pn8")]
+modulate = Color(0.7529412, 0.22352941, 0.16862746, 1)
+position = Vector2(238.00002, 508.00006)
+scale = Vector2(0.12, 0.12)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap3" parent="trap show" unique_id=659805772 instance=ExtResource("2_d0pn8")]
+modulate = Color(0.7529412, 0.22352941, 0.16862746, 1)
+position = Vector2(346, 508.00006)
+scale = Vector2(0.12, 0.12)
+collision_layer = 4
+collision_mask = 2
+
 [node name="trap hide" type="Node2D" parent="." unique_id=1754624015]
 
-[node name="trap2" parent="trap hide" unique_id=1421080781 instance=ExtResource("2_d0pn8")]
+[node name="up trap" parent="trap hide" unique_id=1421080781 instance=ExtResource("2_d0pn8")]
 modulate = Color(0.7529412, 0.22352941, 0.16862746, 1)
 position = Vector2(130, 9.999999)
 rotation = -3.1415927
 scale = Vector2(0.12, 0.12)
 collision_layer = 4
 collision_mask = 2
+
+[node name="up trap2" parent="trap hide" unique_id=402072828 instance=ExtResource("2_d0pn8")]
+modulate = Color(0.7529412, 0.22352941, 0.16862746, 1)
+position = Vector2(223, 9)
+rotation = -3.1415927
+scale = Vector2(0.12, 0.12)
+collision_layer = 4
+collision_mask = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=620541510]
+offset_left = 256.0
+offset_top = 477.0
+offset_right = 328.0
+offset_bottom = 517.0
