@@ -17,7 +17,13 @@ size = Vector2(1152, 0)
 size = Vector2(78, 5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3sr2c"]
-size = Vector2(79, 6)
+size = Vector2(147, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yik3o"]
+size = Vector2(127, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lvvde"]
+size = Vector2(128, 3)
 
 [node name="levil_8" type="Node2D" unique_id=1516983287]
 script = ExtResource("1_ps63s")
@@ -29,7 +35,7 @@ scale = Vector2(0.8, 0.8)
 color = Color(1, 0.8901961, 0.46666667, 1)
 
 [node name="player" parent="." unique_id=1144730333 instance=ExtResource("1_xl2d4")]
-position = Vector2(275, 484.00003)
+position = Vector2(28.00003, 492)
 scale = Vector2(0.8, 0.8)
 collision_layer = 2
 collision_mask = 13
@@ -110,11 +116,18 @@ scale = Vector2(0.12, 0.12)
 collision_layer = 4
 collision_mask = 2
 
+[node name="trap6" parent="trap show" unique_id=1172074853 instance=ExtResource("2_d0pn8")]
+modulate = Color(0.7529412, 0.22352941, 0.16862746, 1)
+position = Vector2(641.00006, 507.99994)
+scale = Vector2(0.12, 0.12)
+collision_layer = 4
+collision_mask = 2
+
 [node name="trap hide" type="Node2D" parent="." unique_id=1754624015]
 
 [node name="up trap" parent="trap hide" unique_id=1421080781 instance=ExtResource("2_d0pn8")]
 modulate = Color(0.7529412, 0.22352941, 0.16862746, 1)
-position = Vector2(130, 9.999999)
+position = Vector2(130, 9.999998)
 rotation = -3.1415927
 scale = Vector2(0.12, 0.12)
 collision_layer = 4
@@ -144,11 +157,36 @@ scale = Vector2(0.12, 0.12)
 collision_layer = 4
 collision_mask = 2
 
+[node name="up trap5" parent="trap hide" unique_id=183608191 instance=ExtResource("2_d0pn8")]
+modulate = Color(0.7529412, 0.22352941, 0.16862746, 1)
+position = Vector2(468, 8.999999)
+rotation = -3.1415927
+scale = Vector2(0.12, 0.12)
+collision_layer = 4
+collision_mask = 2
+monitoring = false
+
+[node name="up trap6" parent="trap hide" unique_id=1940306351 instance=ExtResource("2_d0pn8")]
+modulate = Color(0.7529412, 0.22352941, 0.16862746, 1)
+position = Vector2(576, 9.000003)
+rotation = -3.1415927
+scale = Vector2(0.12, 0.12)
+collision_layer = 4
+collision_mask = 2
+
+[node name="up trap7" parent="trap hide" unique_id=1508676570 instance=ExtResource("2_d0pn8")]
+modulate = Color(0.7529412, 0.22352941, 0.16862746, 1)
+position = Vector2(641, 9)
+rotation = -3.1415927
+scale = Vector2(0.12, 0.12)
+collision_layer = 4
+collision_mask = 2
+
 [node name="ColorRect" type="ColorRect" parent="." unique_id=620541510]
 visible = false
-offset_left = 435.0
+offset_left = 521.0
 offset_top = 477.0
-offset_right = 507.0
+offset_right = 593.0
 offset_bottom = 517.0
 
 [node name="trap 3 trig" type="Area2D" parent="." unique_id=1236141568]
@@ -156,7 +194,7 @@ collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="trap 3 trig" unique_id=1085541058]
-position = Vector2(304, 120.5)
+position = Vector2(318, 120.5)
 shape = SubResource("RectangleShape2D_ps63s")
 
 [node name="trap 4 trig" type="Area2D" parent="." unique_id=2073873430]
@@ -164,11 +202,38 @@ collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="trap 4 trig" unique_id=842630568]
-position = Vector2(429.5, 229)
+position = Vector2(463.5, 404)
 shape = SubResource("RectangleShape2D_3sr2c")
 
 [node name="trap 4 SP" type="Marker2D" parent="." unique_id=1813022547]
 position = Vector2(528, 508)
 
+[node name="up trap 6" type="Marker2D" parent="." unique_id=1260155191]
+position = Vector2(512, 0)
+
+[node name="up trap 6 trig" type="Area2D" parent="." unique_id=311551743]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="up trap 6 trig" unique_id=60900386]
+position = Vector2(521.5, 84.5)
+shape = SubResource("RectangleShape2D_yik3o")
+
+[node name="up trap 7 SP start" type="Marker2D" parent="." unique_id=2079288294]
+position = Vector2(641, 9)
+
+[node name="up trap 7 SP stop" type="Marker2D" parent="." unique_id=1117559378]
+position = Vector2(535, 9)
+
+[node name="up trap 7 trig" type="Area2D" parent="." unique_id=1515720927]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="up trap 7 trig" unique_id=1666779377]
+position = Vector2(604, 241.5)
+shape = SubResource("RectangleShape2D_lvvde")
+
 [connection signal="body_entered" from="trap 3 trig" to="." method="_on_trap_3_trig_body_entered"]
 [connection signal="body_entered" from="trap 4 trig" to="." method="_on_trap_4_trig_body_entered"]
+[connection signal="body_entered" from="up trap 6 trig" to="." method="_on_up_trap_6_trig_body_entered"]
+[connection signal="body_entered" from="up trap 7 trig" to="." method="_on_up_trap_7_trig_body_entered"]

@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://5up42c5qio14"
+path="res://.godot/imported/level 8 bitmap.png-a7a1f6d8841d2ad860b409f9c6e0fe4e.res"
+
+[deps]
+
+source_file="res://bitmap/level bitmap/level 8 bitmap.png"
+dest_files=["res://.godot/imported/level 8 bitmap.png-a7a1f6d8841d2ad860b409f9c6e0fe4e.res"]
+
+[params]
+
+create_from=0
+threshold=0.0
