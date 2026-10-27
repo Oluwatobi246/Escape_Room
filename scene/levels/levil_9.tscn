@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bjwqsanlaoyj3"]
+
+[node name="levil_9" type="Node2D" unique_id=1649787623]
+
+[node name="background" type="ColorRect" parent="." unique_id=1628015952]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.9607843, 0.53333336, 0.3372549, 1)
+
+[node name="floor 1" type="StaticBody2D" parent="." unique_id=1549994517]
+
+[node name="ColorRect" type="ColorRect" parent="floor 1" unique_id=1012700797]
+offset_left = 208.0
+offset_top = 174.0
+offset_right = 597.0
+offset_bottom = 423.0
+scale = Vector2(0.5, 0.5)
+color = Color(0.8509804, 0.24313726, 0.27450982, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor 1" unique_id=2034563262]

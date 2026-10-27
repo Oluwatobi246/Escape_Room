@@ -24,7 +24,7 @@ func _ready() -> void:
 	$"trap hide/up trap8".hide()
 	$"trap show/trap8".hide()
 	$"trap show/trap9".hide()
-	$"trap show/trap13".hide()
+	$"trap show/trap12".hide()
 	
 	$"count trig".monitoring = false
 	$"count trig".get_node("CollisionShape2D").set_deferred("disabled", true)
@@ -152,7 +152,7 @@ func _on_up_trap_9_trig_body_entered(body: Node2D) -> void:
 	$"trap hide/up trap9".show()
 	
 	var tween = create_tween()
-	tween.tween_property($"trap hide/up trap10", "global_position:x", $"up trap 10 sp".global_position.x, 0.1)
+	tween.tween_property($"trap hide/up trap10", "global_position:x", $"up trap 10 sp".global_position.x, 0.05)
 	
 func _on_trig_up_trap_9_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
@@ -162,10 +162,3 @@ func _on_trig_up_trap_9_body_entered(body: Node2D) -> void:
 	
 	$"up trap 9 trig".set_deferred("monitoring", true)
 	$"up trap 9 trig/CollisionShape2D".set_deferred("disabled", false)
-	
-func _on_trap_13_trig_body_entered(body: Node2D) -> void:
-	if not (body.name == "player" or body.is_in_group("player")):
-		return
-	
-	$"trap 13 trig/CollisionShape2D".set_deferred("disabled", true)
-	$"trap show/trap13".show()
