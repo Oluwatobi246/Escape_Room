@@ -24,12 +24,20 @@ func _ready() -> void:
 	$"trap hide/up trap8".hide()
 	$"trap show/trap8".hide()
 	$"trap show/trap9".hide()
+	$"trap show/trap13".hide()
 	
 	$"count trig".monitoring = false
 	$"count trig".get_node("CollisionShape2D").set_deferred("disabled", true)
 	
 	$"bring back count trig2".monitoring = false
 	$"bring back count trig2".get_node("CollisionShape2D").set_deferred("disabled", true)
+	
+	$"trap hide/up trap9".hide()
+	
+	$"up trap 9 trig".set_deferred("monitoring", false)
+	$"up trap 9 trig/CollisionShape2D".set_deferred("disabled", true)
+	
+	$"up trap 7 trig/CollisionShape2D".set_deferred("disabled", true)
 	
 func _on_trap_3_trig_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
@@ -58,7 +66,9 @@ func _on_up_trap_6_trig_body_entered(body: Node2D) -> void:
 	
 	var tween = create_tween()
 	tween.tween_property($"trap hide/up trap6", "global_position:x", $"up trap 6".global_position.x, 0.1)
-
+	
+	$"up trap 7 trig/CollisionShape2D".set_deferred("disabled", false)
+	
 var trap_loop = Tween
 func _on_up_trap_7_trig_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
@@ -130,7 +140,32 @@ func _on_bring_back_count_trig_2_body_entered(body: Node2D) -> void:
 		return
 	
 	can_count = false
-	$"bring back count trig2".monitoring = false
+	$"bring back count trig2".set_deferred("monitoring",false)
 	$"bring back count trig2".get_node("CollisionShape2D").set_deferred("disabled", true)
 	$"count trig/CollisionShape2D".set_deferred("disabled", false)
 	
+func _on_up_trap_9_trig_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$"up trap 9 trig/CollisionShape2D".set_deferred("disabled", true)
+	$"trap hide/up trap9".show()
+	
+	var tween = create_tween()
+	tween.tween_property($"trap hide/up trap10", "global_position:x", $"up trap 10 sp".global_position.x, 0.1)
+	
+func _on_trig_up_trap_9_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$"trig up trap 9/CollisionShape2D".set_deferred("disabled", true)
+	
+	$"up trap 9 trig".set_deferred("monitoring", true)
+	$"up trap 9 trig/CollisionShape2D".set_deferred("disabled", false)
+	
+func _on_trap_13_trig_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$"trap 13 trig/CollisionShape2D".set_deferred("disabled", true)
+	$"trap show/trap13".show()

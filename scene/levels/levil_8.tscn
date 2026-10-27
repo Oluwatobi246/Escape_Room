@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://cwkybdm6ouvtg" path="res://scripts/level script/levil_8.gd" id="1_ps63s"]
 [ext_resource type="PackedScene" uid="uid://7vsx7vur82p0" path="res://scene/player.tscn" id="1_xl2d4"]
 [ext_resource type="PackedScene" uid="uid://lm416vwudepn" path="res://scene/trap.tscn" id="2_d0pn8"]
+[ext_resource type="PackedScene" uid="uid://d23ux3gt3doyu" path="res://scene/door.tscn" id="4_3sr2c"]
+[ext_resource type="PackedScene" uid="uid://c1bjokt75p354" path="res://scene/canvas_layer.tscn" id="5_yik3o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_krpcd"]
 size = Vector2(1440.0979, 163.7501)
@@ -23,7 +25,7 @@ size = Vector2(147, 6)
 size = Vector2(127, 5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lvvde"]
-size = Vector2(128, 3)
+size = Vector2(135, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uredh"]
 size = Vector2(58, 6)
@@ -33,6 +35,12 @@ size = Vector2(99, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nq3c1"]
 size = Vector2(52, 4.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8f0th"]
+size = Vector2(76, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n15es"]
+size = Vector2(84, 3)
 
 [node name="levil_8" type="Node2D" unique_id=1516983287]
 script = ExtResource("1_ps63s")
@@ -44,7 +52,7 @@ scale = Vector2(0.8, 0.8)
 color = Color(1, 0.8901961, 0.46666667, 1)
 
 [node name="player" parent="." unique_id=1144730333 instance=ExtResource("1_xl2d4")]
-position = Vector2(28.000061, 492)
+position = Vector2(25, 492.99997)
 scale = Vector2(0.8, 0.8)
 collision_layer = 2
 collision_mask = 13
@@ -160,6 +168,27 @@ scale = Vector2(0.12, 0.12)
 collision_layer = 4
 collision_mask = 2
 
+[node name="trap11" parent="trap show" unique_id=607268959 instance=ExtResource("2_d0pn8")]
+modulate = Color(0.7529412, 0.22352941, 0.16862746, 1)
+position = Vector2(941, 507.99997)
+scale = Vector2(0.12, 0.12)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap12" parent="trap show" unique_id=1197510431 instance=ExtResource("2_d0pn8")]
+modulate = Color(0.7529412, 0.22352941, 0.16862746, 1)
+position = Vector2(1043, 508)
+scale = Vector2(0.12, 0.12)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap13" parent="trap show" unique_id=48064271 instance=ExtResource("2_d0pn8")]
+modulate = Color(0.7529412, 0.22352941, 0.16862746, 1)
+position = Vector2(1086, 507.99994)
+scale = Vector2(0.12, 0.12)
+collision_layer = 4
+collision_mask = 2
+
 [node name="trap hide" type="Node2D" parent="." unique_id=1754624015]
 
 [node name="up trap" parent="trap hide" unique_id=1421080781 instance=ExtResource("2_d0pn8")]
@@ -227,12 +256,43 @@ scale = Vector2(0.12, 0.12)
 collision_layer = 4
 collision_mask = 2
 
+[node name="up trap9" parent="trap hide" unique_id=862641141 instance=ExtResource("2_d0pn8")]
+modulate = Color(0.7529412, 0.22352941, 0.16862746, 1)
+position = Vector2(778, 9.000001)
+rotation = -3.1415927
+scale = Vector2(0.12, 0.12)
+collision_layer = 4
+collision_mask = 2
+
+[node name="up trap10" parent="trap hide" unique_id=836022804 instance=ExtResource("2_d0pn8")]
+modulate = Color(0.7529412, 0.22352941, 0.16862746, 1)
+position = Vector2(830, 9)
+rotation = -3.1415927
+scale = Vector2(0.12, 0.12)
+collision_layer = 4
+collision_mask = 2
+
+[node name="up trap11" parent="trap hide" unique_id=5617680 instance=ExtResource("2_d0pn8")]
+modulate = Color(0.7529412, 0.22352941, 0.16862746, 1)
+position = Vector2(1002, 9.000001)
+rotation = -3.1415927
+scale = Vector2(0.12, 0.12)
+collision_layer = 4
+collision_mask = 2
+
+[node name="up trap12" parent="trap hide" unique_id=742216108 instance=ExtResource("2_d0pn8")]
+modulate = Color(0.7529412, 0.22352941, 0.16862746, 1)
+position = Vector2(1102, 9.000001)
+rotation = -3.1415927
+scale = Vector2(0.12, 0.12)
+collision_layer = 4
+collision_mask = 2
+
 [node name="ColorRect" type="ColorRect" parent="." unique_id=620541510]
 visible = false
-offset_left = 521.0
-offset_top = 477.0
-offset_right = 593.0
-offset_bottom = 517.0
+offset_left = 794.0
+offset_right = 862.0
+offset_bottom = 40.0
 
 [node name="trap 3 trig" type="Area2D" parent="." unique_id=1236141568]
 collision_layer = 8
@@ -278,7 +338,7 @@ collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="up trap 7 trig" unique_id=1666779377]
-position = Vector2(604, 241.5)
+position = Vector2(600.5, 241)
 shape = SubResource("RectangleShape2D_lvvde")
 
 [node name="up trap 7 stop" type="Area2D" parent="." unique_id=1033745240]
@@ -322,6 +382,37 @@ collision_mask = 2
 position = Vector2(692, 508)
 shape = SubResource("RectangleShape2D_nq3c1")
 
+[node name="up trap 9 trig" type="Area2D" parent="." unique_id=223897804]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="up trap 9 trig" unique_id=736364578]
+position = Vector2(816, 136)
+shape = SubResource("RectangleShape2D_8f0th")
+
+[node name="trig up trap 9" type="Area2D" parent="." unique_id=1681343592]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trig up trap 9" unique_id=1715944950]
+position = Vector2(794, 514)
+shape = SubResource("RectangleShape2D_8f0th")
+
+[node name="up trap 10 sp" type="Marker2D" parent="." unique_id=828544036]
+position = Vector2(894, 9)
+
+[node name="door" parent="." unique_id=1223076365 instance=ExtResource("4_3sr2c")]
+position = Vector2(1131, 493)
+scale = Vector2(0.8, 0.8)
+
+[node name="trap 13 trig" type="Area2D" parent="." unique_id=1920811598]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trap 13 trig" unique_id=897440014]
+position = Vector2(1105, 463.5)
+shape = SubResource("RectangleShape2D_n15es")
+
+[node name="CanvasLayer" parent="." unique_id=1030218085 instance=ExtResource("5_yik3o")]
+
 [connection signal="body_entered" from="trap 3 trig" to="." method="_on_trap_3_trig_body_entered"]
 [connection signal="body_entered" from="trap 4 trig" to="." method="_on_trap_4_trig_body_entered"]
 [connection signal="body_entered" from="up trap 6 trig" to="." method="_on_up_trap_6_trig_body_entered"]
@@ -330,3 +421,6 @@ shape = SubResource("RectangleShape2D_nq3c1")
 [connection signal="body_entered" from="fake traps" to="." method="_on_fake_traps_body_entered"]
 [connection signal="body_entered" from="count trig" to="." method="_on_count_trig_body_entered"]
 [connection signal="body_entered" from="bring back count trig2" to="." method="_on_bring_back_count_trig_2_body_entered"]
+[connection signal="body_entered" from="up trap 9 trig" to="." method="_on_up_trap_9_trig_body_entered"]
+[connection signal="body_entered" from="trig up trap 9" to="." method="_on_trig_up_trap_9_body_entered"]
+[connection signal="body_entered" from="trap 13 trig" to="." method="_on_trap_13_trig_body_entered"]
