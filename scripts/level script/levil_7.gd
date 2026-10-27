@@ -42,7 +42,7 @@ func generate_level_code() -> void:
 	GameManager.level_7_sequence = [key_pool[0], key_pool[1]]
 	
 	# Debug print in console to verify the code
-	print("Level 7 Gate Code: ", GameManager.level_7_sequence)
+	# print("Level 7 Gate Code: ", GameManager.level_7_sequence)
 	
 func _on_trap_floor_trig_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):

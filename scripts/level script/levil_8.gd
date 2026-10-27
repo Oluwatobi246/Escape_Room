@@ -6,9 +6,11 @@ extends Node2D
 
 @onready var trap_show: Node2D = $"trap show"
 
-var count_trig = 0
+var touch_count = 0
+var can_count: bool = false
 
 func _ready() -> void:
+	print(touch_count  )
 	if player:
 		# higher/faster jump
 		player.JUMP_VELOCITY = -2000
@@ -23,8 +25,11 @@ func _ready() -> void:
 	$"trap show/trap8".hide()
 	$"trap show/trap9".hide()
 	
+	$"count trig".monitoring = false
 	$"count trig".get_node("CollisionShape2D").set_deferred("disabled", true)
-	$"bring back count trig".get_node("CollisionShape2D").set_deferred("disabled", true)
+	
+	$"bring back count trig2".monitoring = false
+	$"bring back count trig2".get_node("CollisionShape2D").set_deferred("disabled", true)
 	
 func _on_trap_3_trig_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
@@ -82,8 +87,7 @@ func _on_up_trap_7_stop_body_entered(body: Node2D) -> void:
 	
 	$"trap hide/up trap8".show()
 	$"count trig".get_node("CollisionShape2D").set_deferred("disabled", false)
-	$"bring back count trig".get_node("CollisionShape2D").set_deferred("disabled", false)
-	
+	$"count trig".monitoring = true
 
 func _on_fake_traps_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
@@ -96,21 +100,37 @@ func _on_count_trig_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
 	
-	count_trig += 1
-	if count_trig == 2:
-		$"count trig/CollisionShape2D".set_deferred("disabled", true)
-		$"fake traps/CollisionShape2D".set_deferred("disabled", true)
-		$"remove count trig/CollisionShape2D".set_deferred("disabled", true)
-		$"bring back count trig/CollisionShape2D".set_deferred("disabled", true)
-
-func _on_remove_count_trig_body_entered(body: Node2D) -> void:
-	if not (body.name == "player" or body.is_in_group("player")):
-		return
-	
 	$"count trig/CollisionShape2D".set_deferred("disabled", true)
+	$"bring back count trig2".monitoring = true
+	$"bring back count trig2".get_node("CollisionShape2D").set_deferred("disabled", false)
 	
-func _on_bring_back_count_trig_body_entered(body: Node2D) -> void:
+	if can_count:
+		return
+		
+	can_count = true
+	
+	touch_count += 1
+	print(touch_count)
+	
+	if touch_count >= 2:
+		$"count trig".set_deferred("monitoring",false)
+		$"count trig/CollisionShape2D".set_deferred("disabled",true)		
+		
+		$"fake traps".set_deferred("monitoring",false)
+		$"fake traps/CollisionShape2D".set_deferred("disabled",true)
+		
+		$"trap show/trap8".get_node("CollisionShape2D").set_deferred("disabled", true)
+		$"trap show/trap9".get_node("CollisionShape2D").set_deferred("disabled", true)
+		
+		$"bring back count trig2".set_deferred("monitoring",false)
+		$"bring back count trig2".get_node("CollisionShape2D").set_deferred("disabled", true)
+
+func _on_bring_back_count_trig_2_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
-
+	
+	can_count = false
+	$"bring back count trig2".monitoring = false
+	$"bring back count trig2".get_node("CollisionShape2D").set_deferred("disabled", true)
 	$"count trig/CollisionShape2D".set_deferred("disabled", false)
+	

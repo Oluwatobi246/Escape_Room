@@ -34,12 +34,6 @@ size = Vector2(99, 6)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nq3c1"]
 size = Vector2(52, 4.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8f0th"]
-size = Vector2(61, 6)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n15es"]
-size = Vector2(61, 5)
-
 [node name="levil_8" type="Node2D" unique_id=1516983287]
 script = ExtResource("1_ps63s")
 
@@ -311,17 +305,22 @@ collision_mask = 2
 position = Vector2(692, 55.75)
 shape = SubResource("RectangleShape2D_nq3c1")
 
-[node name="remove count trig" type="Area2D" parent="." unique_id=1765567558]
+[node name="remove count trig" type="Area2D" parent="." unique_id=2064356143]
+visible = false
+collision_layer = 8
+collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="remove count trig" unique_id=422786626]
-position = Vector2(689.5, 7)
-shape = SubResource("RectangleShape2D_8f0th")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="remove count trig" unique_id=612619816]
+position = Vector2(692, 3)
+shape = SubResource("RectangleShape2D_nq3c1")
 
-[node name="bring back count trig" type="Area2D" parent="." unique_id=628537650]
+[node name="bring back count trig2" type="Area2D" parent="." unique_id=1360956153]
+collision_layer = 8
+collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bring back count trig" unique_id=1038529845]
-position = Vector2(694.5, 427.5)
-shape = SubResource("RectangleShape2D_n15es")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bring back count trig2" unique_id=1820804379]
+position = Vector2(692, 508)
+shape = SubResource("RectangleShape2D_nq3c1")
 
 [connection signal="body_entered" from="trap 3 trig" to="." method="_on_trap_3_trig_body_entered"]
 [connection signal="body_entered" from="trap 4 trig" to="." method="_on_trap_4_trig_body_entered"]
@@ -330,5 +329,4 @@ shape = SubResource("RectangleShape2D_n15es")
 [connection signal="body_entered" from="up trap 7 stop" to="." method="_on_up_trap_7_stop_body_entered"]
 [connection signal="body_entered" from="fake traps" to="." method="_on_fake_traps_body_entered"]
 [connection signal="body_entered" from="count trig" to="." method="_on_count_trig_body_entered"]
-[connection signal="body_entered" from="remove count trig" to="." method="_on_remove_count_trig_body_entered"]
-[connection signal="body_entered" from="bring back count trig" to="." method="_on_bring_back_count_trig_body_entered"]
+[connection signal="body_entered" from="bring back count trig2" to="." method="_on_bring_back_count_trig_2_body_entered"]
