@@ -80,7 +80,7 @@ position = Vector2(274, 162)
 shape = SubResource("RectangleShape2D_44fxx")
 
 [node name="floor 3" type="AnimatableBody2D" parent="." unique_id=315718338]
-position = Vector2(185, 472)
+position = Vector2(186, 472)
 
 [node name="ColorRect" type="ColorRect" parent="floor 3" unique_id=1043775204]
 offset_left = 12.0
@@ -122,10 +122,10 @@ collision_mask = 2
 position = Vector2(21, 97)
 shape = SubResource("RectangleShape2D_j4qjq")
 
-[node name="Marker2D" type="Marker2D" parent="." unique_id=990143750]
+[node name="floor 3 S_P" type="Marker2D" parent="." unique_id=990143750]
 position = Vector2(206, 570)
 
-[node name="Marker2D2" type="Marker2D" parent="." unique_id=239058578]
+[node name="floor 3 S_T" type="Marker2D" parent="." unique_id=239058578]
 position = Vector2(206, 596)
 
 [node name="floor 4" type="StaticBody2D" parent="." unique_id=2000028758]
@@ -141,6 +141,7 @@ position = Vector2(403.5, 123)
 shape = SubResource("RectangleShape2D_d1p7c")
 
 [node name="floor 5" type="AnimatableBody2D" parent="." unique_id=1744898617]
+visible = false
 position = Vector2(186, 583)
 
 [node name="ColorRect" type="ColorRect" parent="floor 5" unique_id=269925639]
