@@ -13,7 +13,7 @@ size = Vector2(0, 648)
 size = Vector2(46, 324)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_enj7y"]
-size = Vector2(40, 33)
+size = Vector2(17, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0vic3"]
 size = Vector2(40, 2)
@@ -83,17 +83,18 @@ shape = SubResource("RectangleShape2D_44fxx")
 position = Vector2(186, 446)
 
 [node name="ColorRect" type="ColorRect" parent="floor 3" unique_id=1043775204]
-offset_top = 104.0
-offset_right = 40.0
+offset_left = 12.0
+offset_top = 131.0
+offset_right = 29.0
 offset_bottom = 137.0
 color = Color(0.8509804, 0.24313726, 0.27450982, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor 3" unique_id=1900846597]
-position = Vector2(20, 120.5)
+position = Vector2(20.5, 134)
 shape = SubResource("RectangleShape2D_enj7y")
 
 [node name="push up" type="AnimatableBody2D" parent="floor 3" unique_id=187391388]
-position = Vector2(-1, 0)
+position = Vector2(-1, 27)
 
 [node name="ColorRect" type="ColorRect" parent="floor 3/push up" unique_id=114576808]
 offset_left = 13.0
@@ -113,9 +114,11 @@ color = Color(0.8509804, 0.24313726, 0.27450982, 1)
 position = Vector2(21, 98)
 shape = SubResource("RectangleShape2D_0vic3")
 
-[node name="Area2D" type="Area2D" parent="floor 3/push up" unique_id=1571046512]
+[node name="push up trig" type="Area2D" parent="floor 3/push up" unique_id=1571046512]
+collision_layer = 8
+collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="floor 3/push up/Area2D" unique_id=1807258161]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor 3/push up/push up trig" unique_id=1807258161]
 position = Vector2(21, 97)
 shape = SubResource("RectangleShape2D_j4qjq")
 
@@ -158,3 +161,5 @@ position = Vector2(101, 616)
 
 [node name="floor 3 SP" type="Marker2D" parent="." unique_id=1800411113]
 position = Vector2(101, 567)
+
+[connection signal="body_entered" from="floor 3/push up/push up trig" to="." method="_on_push_up_trig_body_entered"]
