@@ -27,6 +27,18 @@ size = Vector2(807, 246)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6hfb"]
 size = Vector2(40, 65)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f8csj"]
+size = Vector2(179, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lkhbt"]
+size = Vector2(345, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u3bss"]
+size = Vector2(40, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_me0vc"]
+size = Vector2(41, 2.25)
+
 [node name="levil_9" type="Node2D" unique_id=1649787623]
 script = ExtResource("1_bd5mh")
 
@@ -92,6 +104,7 @@ color = Color(0.8509804, 0.24313726, 0.27450982, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor 3" unique_id=1900846597]
 position = Vector2(20.5, 124)
 shape = SubResource("RectangleShape2D_enj7y")
+disabled = true
 
 [node name="push up" type="AnimatableBody2D" parent="floor 3" unique_id=187391388]
 position = Vector2(-1, 7)
@@ -123,10 +136,7 @@ position = Vector2(21, 97)
 shape = SubResource("RectangleShape2D_j4qjq")
 
 [node name="floor 3 S_P" type="Marker2D" parent="." unique_id=990143750]
-position = Vector2(206, 570)
-
-[node name="floor 3 S_T" type="Marker2D" parent="." unique_id=239058578]
-position = Vector2(206, 596)
+position = Vector2(186, 446)
 
 [node name="floor 4" type="StaticBody2D" parent="." unique_id=2000028758]
 position = Vector2(345, 402)
@@ -141,7 +151,6 @@ position = Vector2(403.5, 123)
 shape = SubResource("RectangleShape2D_d1p7c")
 
 [node name="floor 5" type="AnimatableBody2D" parent="." unique_id=1744898617]
-visible = false
 position = Vector2(186, 583)
 
 [node name="ColorRect" type="ColorRect" parent="floor 5" unique_id=269925639]
@@ -166,4 +175,44 @@ position = Vector2(101, 616)
 [node name="floor 3 SP" type="Marker2D" parent="." unique_id=1800411113]
 position = Vector2(101, 567)
 
+[node name="floor 3 M T" type="Area2D" parent="." unique_id=432255053]
+position = Vector2(162, 446)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor 3 M T" unique_id=1568299068]
+position = Vector2(-24.5, -4)
+shape = SubResource("RectangleShape2D_f8csj")
+
+[node name="death trig" type="Area2D" parent="." unique_id=1125858030]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="death trig" unique_id=985561963]
+position = Vector2(172.5, 648)
+shape = SubResource("RectangleShape2D_lkhbt")
+
+[node name="count trig" type="Area2D" parent="." unique_id=1598068170]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="count trig" unique_id=1764251730]
+position = Vector2(109, 572)
+shape = SubResource("RectangleShape2D_u3bss")
+
+[node name="count trig CB" type="Area2D" parent="." unique_id=381734226]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="count trig CB" unique_id=1448159523]
+position = Vector2(109, 427)
+shape = SubResource("RectangleShape2D_me0vc")
+
+[node name="return" type="Marker2D" parent="." unique_id=478444969]
+position = Vector2(207, 596)
+
 [connection signal="body_entered" from="floor 3/push up/push up trig" to="." method="_on_push_up_trig_body_entered"]
+[connection signal="body_entered" from="floor 3 M T" to="." method="_on_floor_3_m_t_body_entered"]
+[connection signal="body_entered" from="death trig" to="." method="_on_death_trig_body_entered"]
+[connection signal="body_entered" from="count trig" to="." method="_on_count_trig_body_entered"]
+[connection signal="body_entered" from="count trig CB" to="." method="_on_count_trig_cb_body_entered"]

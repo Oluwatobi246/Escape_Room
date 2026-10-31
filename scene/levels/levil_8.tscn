@@ -406,20 +406,14 @@ position = Vector2(894, 9)
 
 [node name="CanvasLayer" parent="." unique_id=1030218085 instance=ExtResource("5_yik3o")]
 
-[node name="pause button" parent="CanvasLayer/UI" parent_id_path=PackedInt32Array(1030218085, 891609872) index="0" unique_id=2131871755]
-offset_left = -57.0
-offset_top = -39.0
-offset_right = 121.0
-offset_bottom = 97.0
-
 [node name="left" parent="CanvasLayer/MobileButtons" parent_id_path=PackedInt32Array(1030218085, 706401408) index="0" unique_id=1388673800]
-position = Vector2(-113, 459.00003)
+position = Vector2(-116.99999, 460.00003)
 
 [node name="right" parent="CanvasLayer/MobileButtons" parent_id_path=PackedInt32Array(1030218085, 706401408) index="1" unique_id=1738402819]
-position = Vector2(600, 462)
+position = Vector2(539, 460)
 
 [node name="up" parent="CanvasLayer/MobileButtons" parent_id_path=PackedInt32Array(1030218085, 706401408) index="2" unique_id=584869261]
-position = Vector2(1177, 404.00003)
+position = Vector2(1177, 406.00003)
 
 [connection signal="body_entered" from="trap 3 trig" to="." method="_on_trap_3_trig_body_entered"]
 [connection signal="body_entered" from="trap 4 trig" to="." method="_on_trap_4_trig_body_entered"]
