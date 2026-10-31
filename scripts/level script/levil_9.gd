@@ -10,7 +10,10 @@ var launch_force: float = -650.0
 
 func _ready() -> void:
 	$"count trig CB".get_node("CollisionShape2D").set_deferred("disabled", true)
-
+	
+	$trap.set_deferred("monitoring", false)
+	$trap.hide()
+	
 func _on_death_trig_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
@@ -74,6 +77,29 @@ func _on_count_trig_cb_body_entered(body: Node2D) -> void:
 	$"count trig CB".set_deferred("monitoring", false)
 	
 	var tween = create_tween().set_parallel(true)
-	tween.tween_property(floor_3, "global_position:x",$"floor 3 SP ED".global_position.x, 5.0)
-	tween.tween_property(floor_5, "global_position:x",$"floor 5 SP ED".global_position.x, 5.0)
+	tween.tween_property(floor_3, "global_position:x",$"floor 3 SP ED".global_position.x, 1.0)
+	tween.tween_property(floor_5, "global_position:x",$"floor 5 SP ED".global_position.x, 1.0)
+
+func _on_jump_1_trig_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
 	
+	if body is CharacterBody2D:
+		body.velocity.y = launch_force
+	bounce_up($"jump 1", $"jump 1 SP")
+
+func _on_trap_1_trig_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$trap.set_deferred("monitoring", true)
+	$trap.show()
+
+func _on_jump_2_trig_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	if body is CharacterBody2D:
+		body.velocity.y = launch_force
+	
+	bounce_up($"jump 2", $"jump 2 SP")
