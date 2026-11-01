@@ -1,5 +1,8 @@
 # Escape_Room
 
+## Screenshots
+![Gameplay Screenshot](Screenshot_20261101-225553_1.jpg)
+
 A rage bait game just like Level Devel, where the player has to survive the non lookable death room just to reach the Exit (door)
 
 ## Motivation & Inspiration
