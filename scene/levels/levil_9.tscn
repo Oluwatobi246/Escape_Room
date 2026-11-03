@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://lm416vwudepn" path="res://scene/trap.tscn" id="3_44fxx"]
 [ext_resource type="PackedScene" uid="uid://d23ux3gt3doyu" path="res://scene/door.tscn" id="4_enj7y"]
 [ext_resource type="PackedScene" uid="uid://c1bjokt75p354" path="res://scene/canvas_layer.tscn" id="5_d1p7c"]
+[ext_resource type="AudioStream" uid="uid://cmhovcxlk84ya" path="res://Audio/shoot out.wav" id="6_c6hfb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dboa1"]
 size = Vector2(162, 152)
@@ -625,10 +626,10 @@ shape = SubResource("RectangleShape2D_2vt7l")
 [node name="CanvasLayer" parent="." unique_id=1030218085 instance=ExtResource("5_d1p7c")]
 
 [node name="pause button" parent="CanvasLayer/UI" parent_id_path=PackedInt32Array(1030218085, 891609872) index="0" unique_id=2131871755]
-offset_left = -27.0
-offset_top = -41.0
-offset_right = 151.0
-offset_bottom = 95.0
+offset_left = 1040.0
+offset_top = -45.0
+offset_right = 1218.0
+offset_bottom = 91.0
 
 [node name="left" parent="CanvasLayer/MobileButtons" parent_id_path=PackedInt32Array(1030218085, 706401408) index="0" unique_id=1388673800]
 position = Vector2(-126, 472)
@@ -638,6 +639,11 @@ position = Vector2(548, 479)
 
 [node name="up" parent="CanvasLayer/MobileButtons" parent_id_path=PackedInt32Array(1030218085, 706401408) index="2" unique_id=584869261]
 position = Vector2(1175, 401.00003)
+
+[node name="jump sound" type="AudioStreamPlayer2D" parent="." unique_id=101218252]
+stream = ExtResource("6_c6hfb")
+volume_db = 24.0
+pitch_scale = 20.0
 
 [connection signal="body_entered" from="floor 3/push up/push up trig" to="." method="_on_push_up_trig_body_entered"]
 [connection signal="body_entered" from="floor 3 M T" to="." method="_on_floor_3_m_t_body_entered"]

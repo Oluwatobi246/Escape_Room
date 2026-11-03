@@ -1,3 +1,161 @@
 [gd_scene format=3 uid="uid://dlf3fpj4j183e"]
 
-[node name="levil_10" type="Node2D" unique_id=1122268442]
+[ext_resource type="PackedScene" uid="uid://c1bjokt75p354" path="res://scene/canvas_layer.tscn" id="1_ghsvp"]
+[ext_resource type="PackedScene" uid="uid://7vsx7vur82p0" path="res://scene/player.tscn" id="2_7qn6x"]
+[ext_resource type="PackedScene" uid="uid://glrah25e5h8b" path="res://scene/saw.tscn" id="3_83n7p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_83n7p"]
+size = Vector2(0, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qn6x"]
+size = Vector2(1152, 137)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6fu4i"]
+size = Vector2(1152, 139)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c5tj7"]
+size = Vector2(313, 205)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8unik"]
+size = Vector2(155, 134)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3bgg0"]
+size = Vector2(41, 39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k0c8v"]
+size = Vector2(41, 95)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8lrut"]
+size = Vector2(1152, 84)
+
+[node name="levil_10" type="Node2D" unique_id=1146258747]
+
+[node name="background" type="ColorRect" parent="." unique_id=1890036759]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.5064554, 0.8236953, 0.5046511, 1)
+
+[node name="saw" parent="." unique_id=390407809 instance=ExtResource("3_83n7p")]
+modulate = Color(0.2627451, 0.5176471, 0.21176471, 1)
+position = Vector2(683, 179.99998)
+scale = Vector2(5.7, 5.7)
+collision_layer = 4
+collision_mask = 2
+
+[node name="player" parent="." unique_id=1144730333 instance=ExtResource("2_7qn6x")]
+position = Vector2(16, 198)
+scale = Vector2(0.7, 0.7)
+collision_layer = 2
+collision_mask = 13
+
+[node name="CanvasLayer" parent="." unique_id=1030218085 instance=ExtResource("1_ghsvp")]
+visible = false
+
+[node name="left" parent="CanvasLayer/MobileButtons" parent_id_path=PackedInt32Array(1030218085, 706401408) index="0" unique_id=1388673800]
+position = Vector2(-117, 468)
+
+[node name="right" parent="CanvasLayer/MobileButtons" parent_id_path=PackedInt32Array(1030218085, 706401408) index="1" unique_id=1738402819]
+position = Vector2(539, 468)
+
+[node name="up" parent="CanvasLayer/MobileButtons" parent_id_path=PackedInt32Array(1030218085, 706401408) index="2" unique_id=584869261]
+position = Vector2(1177, 395)
+
+[node name="wall" type="StaticBody2D" parent="." unique_id=563249126]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall" unique_id=1608125470]
+position = Vector2(0, 324)
+shape = SubResource("RectangleShape2D_83n7p")
+
+[node name="wall2" type="StaticBody2D" parent="." unique_id=349045514]
+position = Vector2(1152, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall2" unique_id=318946512]
+position = Vector2(0, 324)
+shape = SubResource("RectangleShape2D_83n7p")
+
+[node name="floor 1" type="StaticBody2D" parent="." unique_id=415595448]
+
+[node name="ColorRect" type="ColorRect" parent="floor 1" unique_id=1973151919]
+offset_right = 1152.0
+offset_bottom = 137.0
+color = Color(0.26184538, 0.5177995, 0.21241838, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor 1" unique_id=1207921327]
+position = Vector2(576, 68.5)
+shape = SubResource("RectangleShape2D_7qn6x")
+
+[node name="floor 2" type="StaticBody2D" parent="." unique_id=1406398482]
+position = Vector2(0, 558)
+
+[node name="ColorRect" type="ColorRect" parent="floor 2" unique_id=1761616410]
+offset_top = -48.0
+offset_right = 1152.0
+offset_bottom = 91.0
+color = Color(0.2627451, 0.5176471, 0.21176471, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor 2" unique_id=466144387]
+position = Vector2(576, 21.5)
+shape = SubResource("RectangleShape2D_6fu4i")
+
+[node name="floor 3" type="StaticBody2D" parent="." unique_id=901059816]
+position = Vector2(0, 221)
+
+[node name="ColorRect" type="ColorRect" parent="floor 3" unique_id=1130503925]
+offset_right = 313.0
+offset_bottom = 205.0
+color = Color(0.2627451, 0.5176471, 0.21176471, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor 3" unique_id=395537759]
+position = Vector2(156.5, 102.5)
+shape = SubResource("RectangleShape2D_c5tj7")
+
+[node name="floor 4" type="StaticBody2D" parent="." unique_id=368496677]
+position = Vector2(548, 384)
+
+[node name="ColorRect" type="ColorRect" parent="floor 4" unique_id=842607153]
+offset_left = -115.0
+offset_top = -163.0
+offset_right = 184.0
+offset_bottom = -29.0
+color = Color(0.2627451, 0.5176471, 0.21176471, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor 4" unique_id=241208138]
+visible = false
+position = Vector2(-37.5, -96)
+shape = SubResource("RectangleShape2D_8unik")
+
+[node name="ColorRect2" type="ColorRect" parent="floor 4" unique_id=1168750248]
+offset_left = -156.0
+offset_top = -163.0
+offset_right = -115.0
+offset_bottom = -124.0
+color = Color(0.2627451, 0.5176471, 0.21176471, 1)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="floor 4" unique_id=1973401628]
+position = Vector2(-135.5, -143.5)
+shape = SubResource("RectangleShape2D_3bgg0")
+
+[node name="ColorRect3" type="ColorRect" parent="floor 4" unique_id=1373849778]
+offset_left = -156.0
+offset_top = -124.0
+offset_right = -115.0
+offset_bottom = -29.0
+color = Color(0.2627451, 0.5176471, 0.21176471, 1)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="floor 4" unique_id=1343966223]
+position = Vector2(-135.5, -76.5)
+shape = SubResource("RectangleShape2D_k0c8v")
+
+[node name="floor 5" type="StaticBody2D" parent="." unique_id=623053016]
+position = Vector2(0, 426)
+
+[node name="ColorRect" type="ColorRect" parent="floor 5" unique_id=2038826494]
+offset_right = 1152.0
+offset_bottom = 84.0
+color = Color(0.2627451, 0.5176471, 0.21176471, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor 5" unique_id=1744734952]
+position = Vector2(576, 42)
+shape = SubResource("RectangleShape2D_8lrut")
+
+[editable path="CanvasLayer"]

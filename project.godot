@@ -15,6 +15,10 @@ run/main_scene="uid://b6oaum5v35dp3"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+general/default_playback_type.web=0
+
 [autoload]
 
 GameManager="*uid://doqcghq2u4m4y"

@@ -44,7 +44,7 @@ func bounce_up(block: AnimatableBody2D, target_marker: Marker2D) -> void:
 	is_bouncing = true
 	
 	var start_global_y: float = block.position.y
-	
+	$"jump sound".play()
 	var bounce_tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	bounce_tween.tween_property(block, "global_position:y", target_marker.global_position.y, 0.08)\
 	.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
