@@ -59,6 +59,11 @@ size = Vector2(14, 8)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t3alj"]
 size = Vector2(11, 9)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ykqu"]
+size = Vector2(1, 84)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrmg5"]
+
 [node name="levil_10" type="Node2D" unique_id=1146258747]
 script = ExtResource("1_c5tj7")
 
@@ -232,6 +237,7 @@ position = Vector2(420, -31)
 shape = SubResource("RectangleShape2D_a83h1")
 
 [node name="7" type="ColorRect" parent="floor 4" unique_id=681612764]
+visible = false
 offset_left = -156.0
 offset_top = -247.0
 offset_right = -19.0
@@ -255,7 +261,7 @@ color = Color(0.2627451, 0.5176471, 0.21176471, 1)
 position = Vector2(576, 42)
 shape = SubResource("RectangleShape2D_8lrut")
 
-[node name="spike" type="Node2D" parent="." unique_id=114887495]
+[node name="spike" type="Node2D" parent="." unique_id=84802926]
 position = Vector2(0, 22)
 
 [node name="trap" parent="spike" unique_id=598011232 instance=ExtResource("4_6fu4i")]
@@ -287,6 +293,9 @@ collision_mask = 2
 position = Vector2(353.5, 360.5)
 shape = SubResource("RectangleShape2D_dhj14")
 
+[node name="spike SP" type="Marker2D" parent="." unique_id=53994684]
+position = Vector2(332, 416)
+
 [node name="saw 1 movenment" type="Node" parent="." unique_id=960042642]
 
 [node name="Marker2D" type="Marker2D" parent="saw 1 movenment" unique_id=1932495577]
@@ -300,6 +309,9 @@ position = Vector2(684, 180)
 
 [node name="Marker2D4" type="Marker2D" parent="saw 1 movenment" unique_id=1893598818]
 position = Vector2(684, 271)
+
+[node name="Marker2D5" type="Marker2D" parent="saw 1 movenment" unique_id=1855958078]
+position = Vector2(-63, 179)
 
 [node name="saw 2 movenment" type="Node" parent="." unique_id=853379593]
 
@@ -322,6 +334,7 @@ position = Vector2(1175, 404)
 [node name="cover" type="AnimatableBody2D" parent="." unique_id=865484196]
 
 [node name="cover" type="ColorRect" parent="cover" unique_id=2033803874]
+visible = false
 offset_left = 157.0
 offset_top = 137.0
 offset_right = 1152.0
@@ -399,11 +412,29 @@ collision_mask = 2
 position = Vector2(4.5, 5.5)
 shape = SubResource("RectangleShape2D_t3alj")
 
+[node name="saw 1 Resume" type="Area2D" parent="saw 1 trig" unique_id=1325669433]
+position = Vector2(504, 175)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="saw 1 trig/saw 1 Resume" unique_id=1969606884]
+position = Vector2(-5.5, 4)
+shape = SubResource("RectangleShape2D_3ykqu")
+
+[node name="block 2" type="Area2D" parent="." unique_id=1997513216]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="block 2" unique_id=112184290]
+shape = SubResource("RectangleShape2D_xrmg5")
+
+[connection signal="body_entered" from="spike trig" to="." method="_on_spike_trig_body_entered"]
 [connection signal="body_entered" from="cover 1" to="." method="_on_cover_1_body_entered"]
 [connection signal="area_entered" from="cover 2" to="." method="_on_cover_2_area_entered"]
 [connection signal="area_entered" from="block 7 trig" to="." method="_on_block_7_trig_area_entered"]
 [connection signal="body_entered" from="saw 1 trig/saw 1 trig" to="." method="_on_saw_1_trig_body_entered"]
 [connection signal="body_entered" from="saw 1 trig/saw 1 trig2" to="." method="_on_saw_1_trig_2_body_entered"]
 [connection signal="body_entered" from="saw 1 trig/saw 1 trig CM" to="." method="_on_saw_1_trig_cm_body_entered"]
+[connection signal="body_entered" from="saw 1 trig/saw 1 Resume" to="." method="_on_saw_1_resume_body_entered"]
 
 [editable path="CanvasLayer"]
