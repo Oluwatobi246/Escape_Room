@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c1bjokt75p354" path="res://scene/canvas_layer.tscn" id="1_ghsvp"]
 [ext_resource type="PackedScene" uid="uid://7vsx7vur82p0" path="res://scene/player.tscn" id="2_7qn6x"]
 [ext_resource type="PackedScene" uid="uid://glrah25e5h8b" path="res://scene/saw.tscn" id="3_83n7p"]
+[ext_resource type="PackedScene" uid="uid://lm416vwudepn" path="res://scene/trap.tscn" id="4_6fu4i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_83n7p"]
 size = Vector2(0, 648)
@@ -17,7 +18,7 @@ size = Vector2(1152, 139)
 size = Vector2(313, 205)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8unik"]
-size = Vector2(155, 134)
+size = Vector2(299, 134)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3bgg0"]
 size = Vector2(41, 39)
@@ -25,8 +26,20 @@ size = Vector2(41, 39)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k0c8v"]
 size = Vector2(41, 95)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ahjdj"]
+size = Vector2(97, 71)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hxp3g"]
+size = Vector2(355, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a83h1"]
+size = Vector2(368, 58)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8lrut"]
 size = Vector2(1152, 84)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dhj14"]
+size = Vector2(81, 5)
 
 [node name="levil_10" type="Node2D" unique_id=1146258747]
 
@@ -37,13 +50,34 @@ color = Color(0.5064554, 0.8236953, 0.5046511, 1)
 
 [node name="saw" parent="." unique_id=390407809 instance=ExtResource("3_83n7p")]
 modulate = Color(0.2627451, 0.5176471, 0.21176471, 1)
-position = Vector2(683, 179.99998)
+position = Vector2(591, 391)
 scale = Vector2(5.7, 5.7)
 collision_layer = 4
 collision_mask = 2
 
+[node name="saw2" parent="." unique_id=713117778 instance=ExtResource("3_83n7p")]
+modulate = Color(0.2627451, 0.5176471, 0.21176471, 1)
+position = Vector2(591, 94.99998)
+scale = Vector2(5.7, 5.7)
+collision_layer = 4
+collision_mask = 2
+
+[node name="saw3" parent="." unique_id=2058510231 instance=ExtResource("3_83n7p")]
+modulate = Color(0.2627451, 0.5176471, 0.21176471, 1)
+position = Vector2(1184, 293)
+scale = Vector2(4, 4)
+collision_layer = 4
+collision_mask = 2
+
+[node name="saw4" parent="." unique_id=1433804037 instance=ExtResource("3_83n7p")]
+modulate = Color(0.2627451, 0.5176471, 0.21176471, 1)
+position = Vector2(710, 404)
+scale = Vector2(3, 3)
+collision_layer = 4
+collision_mask = 2
+
 [node name="player" parent="." unique_id=1144730333 instance=ExtResource("2_7qn6x")]
-position = Vector2(16, 198)
+position = Vector2(18.000002, 196.99998)
 scale = Vector2(0.7, 0.7)
 collision_layer = 2
 collision_mask = 13
@@ -112,7 +146,7 @@ shape = SubResource("RectangleShape2D_c5tj7")
 [node name="floor 4" type="StaticBody2D" parent="." unique_id=368496677]
 position = Vector2(548, 384)
 
-[node name="ColorRect" type="ColorRect" parent="floor 4" unique_id=842607153]
+[node name="1" type="ColorRect" parent="floor 4" unique_id=842607153]
 offset_left = -115.0
 offset_top = -163.0
 offset_right = 184.0
@@ -120,11 +154,10 @@ offset_bottom = -29.0
 color = Color(0.2627451, 0.5176471, 0.21176471, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor 4" unique_id=241208138]
-visible = false
-position = Vector2(-37.5, -96)
+position = Vector2(34.5, -96)
 shape = SubResource("RectangleShape2D_8unik")
 
-[node name="ColorRect2" type="ColorRect" parent="floor 4" unique_id=1168750248]
+[node name="2" type="ColorRect" parent="floor 4" unique_id=1168750248]
 offset_left = -156.0
 offset_top = -163.0
 offset_right = -115.0
@@ -135,7 +168,7 @@ color = Color(0.2627451, 0.5176471, 0.21176471, 1)
 position = Vector2(-135.5, -143.5)
 shape = SubResource("RectangleShape2D_3bgg0")
 
-[node name="ColorRect3" type="ColorRect" parent="floor 4" unique_id=1373849778]
+[node name="3" type="ColorRect" parent="floor 4" unique_id=1373849778]
 offset_left = -156.0
 offset_top = -124.0
 offset_right = -115.0
@@ -145,6 +178,39 @@ color = Color(0.2627451, 0.5176471, 0.21176471, 1)
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="floor 4" unique_id=1343966223]
 position = Vector2(-135.5, -76.5)
 shape = SubResource("RectangleShape2D_k0c8v")
+
+[node name="4" type="ColorRect" parent="floor 4" unique_id=519027213]
+offset_left = 87.0
+offset_top = -29.0
+offset_right = 184.0
+offset_bottom = 42.0
+color = Color(0.2627451, 0.5176471, 0.21176471, 1)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="floor 4" unique_id=1774632195]
+position = Vector2(135.5, 6.5)
+shape = SubResource("RectangleShape2D_ahjdj")
+
+[node name="5" type="ColorRect" parent="floor 4" unique_id=2008448411]
+offset_left = 184.0
+offset_top = -163.0
+offset_right = 539.0
+offset_bottom = -123.0
+color = Color(0.2627451, 0.5176471, 0.21176471, 1)
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="floor 4" unique_id=928563883]
+position = Vector2(361.5, -143)
+shape = SubResource("RectangleShape2D_hxp3g")
+
+[node name="6" type="ColorRect" parent="floor 4" unique_id=126544583]
+offset_left = 236.0
+offset_top = -60.0
+offset_right = 604.0
+offset_bottom = -2.0
+color = Color(0.2627451, 0.5176471, 0.21176471, 1)
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="floor 4" unique_id=124076255]
+position = Vector2(420, -31)
+shape = SubResource("RectangleShape2D_a83h1")
 
 [node name="floor 5" type="StaticBody2D" parent="." unique_id=623053016]
 position = Vector2(0, 426)
@@ -157,5 +223,75 @@ color = Color(0.2627451, 0.5176471, 0.21176471, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor 5" unique_id=1744734952]
 position = Vector2(576, 42)
 shape = SubResource("RectangleShape2D_8lrut")
+
+[node name="spike" type="Node2D" parent="." unique_id=114887495]
+position = Vector2(0, 22)
+
+[node name="trap" parent="spike" unique_id=598011232 instance=ExtResource("4_6fu4i")]
+modulate = Color(0.2627451, 0.5176471, 0.21176471, 1)
+position = Vector2(332, 416)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap2" parent="spike" unique_id=2131760758 instance=ExtResource("4_6fu4i")]
+modulate = Color(0.2627451, 0.5176471, 0.21176471, 1)
+position = Vector2(370.99997, 416)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap3" parent="spike" unique_id=471887413 instance=ExtResource("4_6fu4i")]
+modulate = Color(0.2627451, 0.5176471, 0.21176471, 1)
+position = Vector2(409.99997, 416)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="spike trig" type="Area2D" parent="." unique_id=221863469]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spike trig" unique_id=1602179297]
+position = Vector2(353.5, 360.5)
+shape = SubResource("RectangleShape2D_dhj14")
+
+[node name="saw 1 movenment" type="Node" parent="." unique_id=960042642]
+
+[node name="Marker2D" type="Marker2D" parent="saw 1 movenment" unique_id=1932495577]
+position = Vector2(354, 391)
+
+[node name="Marker2D2" type="Marker2D" parent="saw 1 movenment" unique_id=2084545213]
+position = Vector2(354, 180)
+
+[node name="Marker2D3" type="Marker2D" parent="saw 1 movenment" unique_id=1529992537]
+position = Vector2(684, 180)
+
+[node name="Marker2D4" type="Marker2D" parent="saw 1 movenment" unique_id=1893598818]
+position = Vector2(684, 271)
+
+[node name="saw 2 movenment" type="Node" parent="." unique_id=853379593]
+
+[node name="Marker2D" type="Marker2D" parent="saw 2 movenment" unique_id=302840650]
+position = Vector2(591, 180)
+
+[node name="Marker2D2" type="Marker2D" parent="saw 2 movenment" unique_id=1009423414]
+position = Vector2(1195, 180)
+
+[node name="saw 3 movenment" type="Node" parent="." unique_id=794617660]
+
+[node name="Marker2D" type="Marker2D" parent="saw 3 movenment" unique_id=1294363636]
+position = Vector2(703, 293)
+
+[node name="saw 4 movenment" type="Node" parent="." unique_id=87620977]
+
+[node name="Marker2D" type="Marker2D" parent="saw 4 movenment" unique_id=1557838577]
+position = Vector2(1175, 404)
+
+[node name="cover" type="ColorRect" parent="." unique_id=2033803874]
+offset_left = 157.0
+offset_top = 137.0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.2627451, 0.5176471, 0.21176471, 1)
 
 [editable path="CanvasLayer"]
