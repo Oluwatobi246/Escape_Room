@@ -7,12 +7,28 @@ extends Node2D
 
 var is_bouncing: bool = false
 var launch_force: float = -650.0
+var counting: int = 0
 
 func _ready() -> void:
 	$"count trig CB".get_node("CollisionShape2D").set_deferred("disabled", true)
 	
 	$trap.set_deferred("monitoring", false)
 	$trap.hide()
+	$Node/trap5.hide()
+	$Node/trap6.hide()
+	
+	$"jump 4".hide()
+	
+	$Node/trap10.hide()
+	$Node/trap10.set_deferred("monitoring", false)
+	
+	$Node/trap14.hide()
+	$Node/trap14.set_deferred("monitoring", false)
+	
+	$"trap 13 trig/CollisionShape2D".set_deferred("disabled", true)
+	
+	$door.hide()
+	$door.set_deferred("monitoring", false)
 	
 func _on_death_trig_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
@@ -103,3 +119,96 @@ func _on_jump_2_trig_body_entered(body: Node2D) -> void:
 		body.velocity.y = launch_force
 	
 	bounce_up($"jump 2", $"jump 2 SP")
+
+func _on_jump_3_trig_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	if body is CharacterBody2D:
+		body.velocity.y = -950
+	
+	bounce_up($"jump 3", $"jump 3 SP")
+
+func _on_trap_5_hide_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+		
+	$"trap 5 hide/CollisionShape2D".set_deferred("disabled", true)
+	
+	$Node/trap5.show()
+	$Node/trap6.show()
+	
+func _on_trap_8_trig_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$Node/trap10.show()
+	$Node/trap10.set_deferred("monitoring", true)
+	$Node/trap8.hide()
+	$"jump 4".show()
+
+func _on_jump_4_trig_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	if body is CharacterBody2D:
+		body.velocity.y = -950
+	
+	bounce_up($"jump 4", $"jump 4 SP")
+
+func _on_trap_10_trig_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+
+	$"jump 5".hide()
+	$Node/trap10.show()
+	$Node/trap10.set_deferred("monitoring", true)	
+
+func _on_jump_7_trig_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	if body is CharacterBody2D:
+		body.velocity.y = -950
+	
+	bounce_up($"jump 7", $"jump 7 SP")
+
+
+func _on__trap_trig_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$Node/trap14.show()
+	$Node/trap14.set_deferred("monitoring", true)
+
+
+func _on_trap_14_trig_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$"trap 14 trig/CollisionShape2D".set_deferred("disabled", true)
+	$"trap 13 trig/CollisionShape2D".set_deferred("disabled", false)
+	counting += 1
+	
+	if counting >= 2:
+		$"trap 13 trig/CollisionShape2D".set_deferred("disabled", true)
+		$Node/trap15.hide()
+		$Node/trap15.set_deferred("monitoring", false)
+		$door.show()
+		$door.set_deferred("monitoring", true)
+	
+func _on_trap_13_trig_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$"trap 13 trig/CollisionShape2D".set_deferred("disabled", true)
+	$"trap 14 trig/CollisionShape2D".set_deferred("disabled", false)
+
+func _on_jump_8_trig_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	if body is CharacterBody2D:
+		body.velocity.y = -950
+	
+	bounce_up($"jump 8",$"jump 8 SP")
