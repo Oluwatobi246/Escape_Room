@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dlf3fpj4j183e"]
 
+[ext_resource type="Script" uid="uid://b67mmu6u21grb" path="res://scripts/level script/levil_10.gd" id="1_c5tj7"]
 [ext_resource type="PackedScene" uid="uid://c1bjokt75p354" path="res://scene/canvas_layer.tscn" id="1_ghsvp"]
 [ext_resource type="PackedScene" uid="uid://7vsx7vur82p0" path="res://scene/player.tscn" id="2_7qn6x"]
 [ext_resource type="PackedScene" uid="uid://glrah25e5h8b" path="res://scene/saw.tscn" id="3_83n7p"]
@@ -35,20 +36,38 @@ size = Vector2(355, 40)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a83h1"]
 size = Vector2(368, 58)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjfe3"]
+size = Vector2(137, 84)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8lrut"]
 size = Vector2(1152, 84)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dhj14"]
 size = Vector2(81, 5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6na4j"]
+size = Vector2(995, 511)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o4mvw"]
+size = Vector2(6, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_px0fe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8oidp"]
+size = Vector2(14, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t3alj"]
+size = Vector2(11, 9)
+
 [node name="levil_10" type="Node2D" unique_id=1146258747]
+script = ExtResource("1_c5tj7")
 
 [node name="background" type="ColorRect" parent="." unique_id=1890036759]
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0.5064554, 0.8236953, 0.5046511, 1)
 
-[node name="saw" parent="." unique_id=390407809 instance=ExtResource("3_83n7p")]
+[node name="saw" parent="." unique_id=390407809 groups=["saw"] instance=ExtResource("3_83n7p")]
 modulate = Color(0.2627451, 0.5176471, 0.21176471, 1)
 position = Vector2(591, 391)
 scale = Vector2(5.7, 5.7)
@@ -212,6 +231,18 @@ color = Color(0.2627451, 0.5176471, 0.21176471, 1)
 position = Vector2(420, -31)
 shape = SubResource("RectangleShape2D_a83h1")
 
+[node name="7" type="ColorRect" parent="floor 4" unique_id=681612764]
+offset_left = -156.0
+offset_top = -247.0
+offset_right = -19.0
+offset_bottom = -163.0
+color = Color(0.2627451, 0.5176471, 0.21176471, 1)
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="floor 4" unique_id=738543805]
+visible = false
+position = Vector2(-87.5, -205)
+shape = SubResource("RectangleShape2D_cjfe3")
+
 [node name="floor 5" type="StaticBody2D" parent="." unique_id=623053016]
 position = Vector2(0, 426)
 
@@ -249,7 +280,8 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="spike trig" type="Area2D" parent="." unique_id=221863469]
-monitoring = false
+collision_layer = 8
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spike trig" unique_id=1602179297]
 position = Vector2(353.5, 360.5)
@@ -287,11 +319,91 @@ position = Vector2(703, 293)
 [node name="Marker2D" type="Marker2D" parent="saw 4 movenment" unique_id=1557838577]
 position = Vector2(1175, 404)
 
-[node name="cover" type="ColorRect" parent="." unique_id=2033803874]
+[node name="cover" type="AnimatableBody2D" parent="." unique_id=865484196]
+
+[node name="cover" type="ColorRect" parent="cover" unique_id=2033803874]
 offset_left = 157.0
 offset_top = 137.0
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0.2627451, 0.5176471, 0.21176471, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cover" unique_id=1351926057]
+visible = false
+position = Vector2(654.5, 392.5)
+shape = SubResource("RectangleShape2D_6na4j")
+
+[node name="cover movenment" type="Node" parent="." unique_id=1576670132]
+
+[node name="Marker2D" type="Marker2D" parent="cover movenment" unique_id=550597723]
+position = Vector2(370, 0)
+
+[node name="Marker2D2" type="Marker2D" parent="cover movenment" unique_id=388096124]
+position = Vector2(576, 0)
+
+[node name="Marker2D3" type="Marker2D" parent="cover movenment" unique_id=1082188046]
+position = Vector2(995, 0)
+
+[node name="cover 1" type="Area2D" parent="." unique_id=1671711128]
+position = Vector2(123, 200)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cover 1" unique_id=440699615]
+position = Vector2(-13, 18.5)
+shape = SubResource("RectangleShape2D_o4mvw")
+
+[node name="cover 2" type="Area2D" parent="." unique_id=2078182196]
+position = Vector2(354, 175)
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cover 2" unique_id=1153130856]
+position = Vector2(-13, 18.5)
+shape = SubResource("RectangleShape2D_o4mvw")
+
+[node name="block 7 trig" type="Area2D" parent="." unique_id=278713636]
+position = Vector2(354, 188)
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="block 7 trig" unique_id=1011766913]
+shape = SubResource("RectangleShape2D_px0fe")
+
+[node name="saw 1 trig" type="Node" parent="." unique_id=810824450]
+
+[node name="saw 1 trig" type="Area2D" parent="saw 1 trig" unique_id=2061826346]
+position = Vector2(242, 210)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="saw 1 trig/saw 1 trig" unique_id=1735480421]
+position = Vector2(-3, 6)
+shape = SubResource("RectangleShape2D_8oidp")
+
+[node name="saw 1 trig2" type="Area2D" parent="saw 1 trig" unique_id=255644885]
+position = Vector2(474, 416)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="saw 1 trig/saw 1 trig2" unique_id=764369366]
+position = Vector2(-3, 6)
+shape = SubResource("RectangleShape2D_8oidp")
+
+[node name="saw 1 trig CM" type="Area2D" parent="saw 1 trig" unique_id=434636874]
+position = Vector2(292, 210)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="saw 1 trig/saw 1 trig CM" unique_id=1493370346]
+position = Vector2(4.5, 5.5)
+shape = SubResource("RectangleShape2D_t3alj")
+
+[connection signal="body_entered" from="cover 1" to="." method="_on_cover_1_body_entered"]
+[connection signal="area_entered" from="cover 2" to="." method="_on_cover_2_area_entered"]
+[connection signal="area_entered" from="block 7 trig" to="." method="_on_block_7_trig_area_entered"]
+[connection signal="body_entered" from="saw 1 trig/saw 1 trig" to="." method="_on_saw_1_trig_body_entered"]
+[connection signal="body_entered" from="saw 1 trig/saw 1 trig2" to="." method="_on_saw_1_trig_2_body_entered"]
+[connection signal="body_entered" from="saw 1 trig/saw 1 trig CM" to="." method="_on_saw_1_trig_cm_body_entered"]
 
 [editable path="CanvasLayer"]
