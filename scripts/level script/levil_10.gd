@@ -20,6 +20,8 @@ func _ready() -> void:
 	$"cover move 3".set_deferred("monitoring", false)
 	$"cover move 3 open".set_deferred("monitoring", false)
 	
+	$"saw 3 trigs/saw 3 block".hide()
+	
 func _on_cover_1_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
@@ -155,7 +157,7 @@ func _on_starting_trig_body_entered(body: Node2D) -> void:
 	tween.tween_property(saw_2, "global_position:y", $"saw 2 movenment/Marker2D".global_position.y, 0.5)\
 		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	
-	tween.tween_property(saw_2, "global_position:x", $"saw 2 movenment/Marker2D2".global_position.x, 3.5)\
+	tween.tween_property(saw_2, "global_position:x", $"saw 2 movenment/Marker2D2".global_position.x, 3.4)\
 		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
 
@@ -181,4 +183,34 @@ func _on_saw_3_start_body_entered(body: Node2D) -> void:
 	$"saw 3 trigs/saw 3 start/CollisionShape2D".set_deferred("disabled", true)
 	
 	var tween = create_tween()
-	tween.tween_property(saw_3, "global_position:x", $"saw 3 movenment/Marker2D".global_position.x, 3.0)
+	tween.tween_property(saw_3, "global_position:x", $"saw 3 movenment/Marker2D".global_position.x, 2.2)
+
+func _on_saw_3_block_trig_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$"saw 3 trigs/saw 3 block trig/CollisionShape2D".set_deferred("disabled", true)
+	$"saw 3 trigs/saw 3 block".show()
+	
+func _on_saw_4_start_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$"saw 4 trig/saw 4 start/CollisionShape2D".set_deferred("disabled", true)
+	
+	var tween = create_tween()
+	tween.tween_property(saw_4, "global_position:x", $"saw 4 movenment/Marker2D".global_position.x, 2.1)
+
+
+func _on_floor_6_trig_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$"floor 6 trig/CollisionShape2D".set_deferred("disabled", true)
+	
+	$"floor 6".hide()
+	$"floor 6".get_node("CollisionShape2D").set_deferred("disabled", true)
+	
+	for spikes in spike.get_children():
+		spikes.hide()
+		spikes.get_node("CollisionShape2D").set_deferred("disabled", true)
