@@ -6,6 +6,8 @@ extends Node2D
 @onready var saw_3: Area2D = $saw3
 @onready var saw_4: Area2D = $saw4
 @onready var spike: Node2D = $spike
+@onready var saw_5: Area2D = $saw5
+@onready var saw_6: Area2D = $saw6
 
 
 func _ready() -> void:
@@ -21,6 +23,12 @@ func _ready() -> void:
 	$"cover move 3 open".set_deferred("monitoring", false)
 	
 	$"saw 3 trigs/saw 3 block".hide()
+	
+	$"saw 5 trig/saw 5 block".hide()
+	
+	$saw6.hide()
+	
+	$"block 2 trig".set_deferred("monitoring", false)
 	
 func _on_cover_1_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
@@ -183,7 +191,7 @@ func _on_saw_3_start_body_entered(body: Node2D) -> void:
 	$"saw 3 trigs/saw 3 start/CollisionShape2D".set_deferred("disabled", true)
 	
 	var tween = create_tween()
-	tween.tween_property(saw_3, "global_position:x", $"saw 3 movenment/Marker2D".global_position.x, 2.2)
+	tween.tween_property(saw_3, "global_position:x", $"saw 3 movenment/Marker2D".global_position.x, 2.1)
 
 func _on_saw_3_block_trig_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
@@ -199,7 +207,7 @@ func _on_saw_4_start_body_entered(body: Node2D) -> void:
 	$"saw 4 trig/saw 4 start/CollisionShape2D".set_deferred("disabled", true)
 	
 	var tween = create_tween()
-	tween.tween_property(saw_4, "global_position:x", $"saw 4 movenment/Marker2D".global_position.x, 2.1)
+	tween.tween_property(saw_4, "global_position:x", $"saw 4 movenment/Marker2D".global_position.x, 2.109)
 
 
 func _on_floor_6_trig_body_entered(body: Node2D) -> void:
@@ -214,3 +222,46 @@ func _on_floor_6_trig_body_entered(body: Node2D) -> void:
 	for spikes in spike.get_children():
 		spikes.hide()
 		spikes.get_node("CollisionShape2D").set_deferred("disabled", true)
+
+
+func _on_saw_5_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$"saw 5 trig/saw 5/CollisionShape2D".set_deferred("disabled", true)
+	
+	var tween = create_tween()
+	tween.tween_property(saw_5, "global_position:x", $"saw 5 movenment/new move 1".global_position.x, 2.4)
+	tween.tween_property(saw_5, "global_position:y", $"saw 5 movenment/new move 2".global_position.y, 2.0)
+
+
+func _on_saw_5_block_trig_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$"saw 5 trig/saw 5 block trig/CollisionShape2D".set_deferred("disabled", true)
+	$"saw 5 trig/saw 5 block".show()
+
+
+func _on_saw_6_trig_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$"saw 6 trig/CollisionShape2D".set_deferred("disabled", true)
+	$saw6.show()
+	
+	$"block 2 trig".set_deferred("monitoring", true)
+	
+	var tween = create_tween()
+	tween.tween_property(saw_6, "global_position:x", $"saw 6 movenment/Marker2D".global_position.x, 2.4)
+	tween.tween_property(saw_6, "global_position:y", $"saw 6 movenment/Marker2D2".global_position.y, 2.4)
+
+
+func _on_block_2_trig_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$"block 2 trig/CollisionShape2D".set_deferred("disabled", true)
+
+	$"floor 2/2".hide()
+	$"floor 2/CollisionShape2D2".set_deferred("disabled", true)
