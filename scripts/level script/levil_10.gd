@@ -17,6 +17,9 @@ func _ready() -> void:
 
 	$"saw 2 block floor".hide()
 	
+	$"cover move 3".set_deferred("monitoring", false)
+	$"cover move 3 open".set_deferred("monitoring", false)
+	
 func _on_cover_1_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
@@ -84,7 +87,7 @@ func _on_cover_2_area_entered(area: Area2D) -> void:
 	$"cover 2/CollisionShape2D".set_deferred("disabled", false)
 	
 	var tween = create_tween()
-	tween.tween_property(cover, "global_position:x", $"cover movenment/Marker2D2".global_position.x, 1.0)
+	tween.tween_property(cover, "global_position:x", $"cover movenment/Marker2D2".global_position.x, 0.5)
 
 
 func _on_block_7_trig_area_entered(area: Area2D) -> void:
@@ -102,9 +105,10 @@ func _on_spike_trig_body_entered(body: Node2D) -> void:
 	$"spike trig/CollisionShape2D".set_deferred("disabled", true)
 	
 	for spikes in spike.get_children():
+		$"spike trig/AudioStreamPlayer2D".play()
 		var tween = create_tween()
 		tween.tween_property(spikes, "global_position:y", $"spike SP".global_position.y, 0.05)
-
+	
 func _on_saw_1_resume_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
@@ -113,7 +117,7 @@ func _on_saw_1_resume_body_entered(body: Node2D) -> void:
 	$"block 2 open".set_deferred("monitoring", true)
 	
 	var tween = create_tween()
-	tween.tween_property(saw, "global_position:y",$"saw 1 movenment/Marker2D3".global_position.y, 0.8)\
+	tween.tween_property(saw, "global_position:y",$"saw 1 movenment/Marker2D3".global_position.y, 0.7)\
 		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	
 	tween.tween_property(saw, "global_position:x", $"saw 1 movenment/Marker2D5".global_position.x, 1.0)\
@@ -125,6 +129,7 @@ func _on_block_2_open_body_entered(body: Node2D) -> void:
 		return
 	
 	$"block 2 open/CollisionShape2D".set_deferred("disabled", true)
+	$"cover move 3 open".set_deferred("monitoring", true)
 	
 	$"floor 4/2".hide()
 	$"floor 4/CollisionShape2D2".set_deferred("disabled", true)
@@ -137,7 +142,7 @@ func _on_cover_move_3_body_entered(body: Node2D) -> void:
 	$"cover move 3/CollisionShape2D".set_deferred("disabled", true)
 	
 	var tween = create_tween()
-	tween.tween_property(cover, "global_position:x", $"cover movenment/Marker2D3".global_position.x, 1.0)
+	tween.tween_property(cover, "global_position:x", $"cover movenment/Marker2D3".global_position.x, 3.0)
 
 
 func _on_starting_trig_body_entered(body: Node2D) -> void:
@@ -147,10 +152,10 @@ func _on_starting_trig_body_entered(body: Node2D) -> void:
 	$"saw 2 trig/starting trig/CollisionShape2D".set_deferred("disabled", true)
 	
 	var tween = create_tween()
-	tween.tween_property(saw_2, "global_position:x", $"saw 2 movenment/Marker2D".global_position.x, 0.5)\
+	tween.tween_property(saw_2, "global_position:y", $"saw 2 movenment/Marker2D".global_position.y, 0.5)\
 		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	
-	tween.tween_property(saw_2, "global_position:x", $"saw 2 movenment/Marker2D2".global_position.x, 2.0)\
+	tween.tween_property(saw_2, "global_position:x", $"saw 2 movenment/Marker2D2".global_position.x, 3.5)\
 		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
 
@@ -161,3 +166,19 @@ func _on_saw_2_block_trig_body_entered(body: Node2D) -> void:
 	$"saw 2 block trig/CollisionShape2D".set_deferred("disabled", true)
 	$"saw 2 block floor".show()
 	
+	
+func _on_cover_move_3_open_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+		
+	$"cover move 3".set_deferred("monitoring", true)
+
+
+func _on_saw_3_start_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$"saw 3 trigs/saw 3 start/CollisionShape2D".set_deferred("disabled", true)
+	
+	var tween = create_tween()
+	tween.tween_property(saw_3, "global_position:x", $"saw 3 movenment/Marker2D".global_position.x, 3.0)
