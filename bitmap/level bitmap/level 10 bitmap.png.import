@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://pcpfwqiaaika"
+path="res://.godot/imported/level 10 bitmap.png-091ec73526c91139d414c9d99c4f2a7f.res"
+
+[deps]
+
+source_file="res://bitmap/level bitmap/level 10 bitmap.png"
+dest_files=["res://.godot/imported/level 10 bitmap.png-091ec73526c91139d414c9d99c4f2a7f.res"]
+
+[params]
+
+create_from=0
+threshold=0.0

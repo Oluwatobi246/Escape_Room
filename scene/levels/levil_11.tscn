@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://nmhjjpbmd8wl"]
+
+[node name="levil_11" type="Node2D" unique_id=1303106890]
+
+[node name="background" type="ColorRect" parent="." unique_id=472294612]
+offset_right = 1151.0
+offset_bottom = 648.0
+color = Color(0.4434225, 0.72168887, 0.9433506, 1)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1727684838]
+offset_left = 20.0
+offset_top = 90.0
+offset_right = 289.0
+offset_bottom = 304.0
+color = Color(0.15395463, 0.35332704, 0.8173382, 1)

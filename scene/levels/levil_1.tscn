@@ -33,7 +33,7 @@ size = Vector2(40, 90)
 size = Vector2(12, 184)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_htpt3"]
-size = Vector2(240, 350)
+size = Vector2(114, 350)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c5gmw"]
 size = Vector2(11, 9)
@@ -42,7 +42,7 @@ size = Vector2(11, 9)
 size = Vector2(240, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f10bp"]
-size = Vector2(254, 350)
+size = Vector2(380, 350)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_51frr"]
 size = Vector2(40, 83)
@@ -157,12 +157,12 @@ shape = SubResource("RectangleShape2D_vlv2q")
 [node name="ColorRect" type="ColorRect" parent="trap floor" unique_id=853369500]
 offset_left = 658.0
 offset_top = 298.0
-offset_right = 898.0
+offset_right = 772.0
 offset_bottom = 648.0
 color = Color(0, 0, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="trap floor" unique_id=1269114348]
-position = Vector2(778, 473)
+position = Vector2(715, 473)
 shape = SubResource("RectangleShape2D_htpt3")
 
 [node name="trap floor trigger" type="Area2D" parent="." unique_id=907195121]
@@ -180,14 +180,14 @@ shape = SubResource("RectangleShape2D_0v1lh")
 [node name="floor 3" type="StaticBody2D" parent="." unique_id=480662595]
 
 [node name="ColorRect" type="ColorRect" parent="floor 3" unique_id=1356221071]
-offset_left = 898.0
+offset_left = 772.0
 offset_top = 298.0
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0, 0, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor 3" unique_id=1946974427]
-position = Vector2(1025, 473)
+position = Vector2(962, 473)
 shape = SubResource("RectangleShape2D_f10bp")
 
 [node name="trap wall 2" type="AnimatableBody2D" parent="." unique_id=1027876202]

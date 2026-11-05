@@ -107,13 +107,13 @@ size = Vector2(1, 83)
 size = Vector2(2, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e57ml"]
+size = Vector2(2, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hk7oh"]
 size = Vector2(1, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d7o1a"]
 size = Vector2(26, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hk7oh"]
-size = Vector2(1, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pxgl1"]
 size = Vector2(2, 64)
@@ -139,9 +139,11 @@ collision_mask = 2
 
 [node name="door" parent="." unique_id=1223076365 instance=ExtResource("7_3bgg0")]
 position = Vector2(29, 481)
+collision_layer = 8
+collision_mask = 2
 
 [node name="player" parent="." unique_id=1144730333 instance=ExtResource("2_7qn6x")]
-position = Vector2(17, 197.00002)
+position = Vector2(17, 197)
 scale = Vector2(0.7, 0.7)
 collision_layer = 2
 collision_mask = 13
@@ -182,7 +184,6 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CanvasLayer" parent="." unique_id=1030218085 instance=ExtResource("1_ghsvp")]
-visible = false
 
 [node name="left" parent="CanvasLayer/MobileButtons" parent_id_path=PackedInt32Array(1030218085, 706401408) index="0" unique_id=1388673800]
 position = Vector2(-117, 468)
@@ -369,7 +370,6 @@ position = Vector2(555, 10)
 shape = SubResource("RectangleShape2D_8lrut")
 
 [node name="floor 6" type="StaticBody2D" parent="." unique_id=863669070]
-visible = false
 position = Vector2(0, 446)
 
 [node name="ColorRect" type="ColorRect" parent="floor 6" unique_id=69653880]
@@ -475,7 +475,6 @@ position = Vector2(772, 542)
 [node name="cover" type="AnimatableBody2D" parent="." unique_id=865484196]
 
 [node name="cover" type="ColorRect" parent="cover" unique_id=2033803874]
-visible = false
 offset_left = 157.0
 offset_top = 137.0
 offset_right = 1152.0
@@ -483,7 +482,6 @@ offset_bottom = 648.0
 color = Color(0.2627451, 0.5176471, 0.21176471, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cover" unique_id=1351926057]
-visible = false
 position = Vector2(654.5, 392.5)
 shape = SubResource("RectangleShape2D_6na4j")
 
@@ -685,8 +683,17 @@ collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="saw 5 trig/saw 5" unique_id=1310022483]
-position = Vector2(-9.5, 0)
+position = Vector2(-9, 0)
 shape = SubResource("RectangleShape2D_e57ml")
+
+[node name="saw 5 block trig" type="Area2D" parent="saw 5 trig" unique_id=1023214465]
+position = Vector2(781, 500)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="saw 5 trig/saw 5 block trig" unique_id=470005240]
+position = Vector2(-9.5, -22)
+shape = SubResource("RectangleShape2D_hk7oh")
 
 [node name="saw 5 block" type="StaticBody2D" parent="saw 5 trig" unique_id=1694494433]
 position = Vector2(732, 470)
@@ -701,15 +708,6 @@ color = Color(0.2627451, 0.5176471, 0.21176471, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="saw 5 trig/saw 5 block" unique_id=1747902570]
 position = Vector2(20, 32)
 shape = SubResource("RectangleShape2D_d7o1a")
-
-[node name="saw 5 block trig" type="Area2D" parent="saw 5 trig" unique_id=1023214465]
-position = Vector2(781, 500)
-collision_layer = 8
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="saw 5 trig/saw 5 block trig" unique_id=470005240]
-position = Vector2(-9.5, -22)
-shape = SubResource("RectangleShape2D_hk7oh")
 
 [node name="block 2 trig" type="Area2D" parent="." unique_id=2085787660]
 position = Vector2(645, 500)
@@ -747,6 +745,7 @@ shape = SubResource("RectangleShape2D_o6p1q")
 [connection signal="body_entered" from="cover move 3 open" to="." method="_on_cover_move_3_open_body_entered"]
 [connection signal="body_entered" from="floor 6 trig" to="." method="_on_floor_6_trig_body_entered"]
 [connection signal="body_entered" from="saw 5 trig/saw 5" to="." method="_on_saw_5_body_entered"]
+[connection signal="body_entered" from="saw 5 trig/saw 5 block trig" to="." method="_on_saw_5_block_trig_body_entered"]
 [connection signal="body_entered" from="block 2 trig" to="." method="_on_block_2_trig_body_entered"]
 [connection signal="body_entered" from="saw 6 trig" to="." method="_on_saw_6_trig_body_entered"]
 

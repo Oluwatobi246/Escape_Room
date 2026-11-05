@@ -53,6 +53,9 @@
 [ext_resource type="Texture2D" uid="uid://dxbsj27d310qs" path="res://level buttons/level 9.png" id="50_b67hu"]
 [ext_resource type="Texture2D" uid="uid://d1jhv4b0my75r" path="res://hover levels/level 9 hover.jpg" id="51_2yxu1"]
 [ext_resource type="BitMap" uid="uid://cvc5ny4qq0fq0" path="res://bitmap/level bitmap/level 9 bitmap.png" id="52_tvvb1"]
+[ext_resource type="Texture2D" uid="uid://du7i28spxryne" path="res://level buttons/level 10.png" id="53_cawab"]
+[ext_resource type="Texture2D" uid="uid://bh2yafmbfsnnf" path="res://hover levels/level 10 hover.png" id="54_tnidi"]
+[ext_resource type="BitMap" uid="uid://pcpfwqiaaika" path="res://bitmap/level bitmap/level 10 bitmap.png" id="55_pulmb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_avv75"]
 animations = [{
@@ -441,6 +444,19 @@ texture_click_mask = ExtResource("52_tvvb1")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="level 10" type="TextureButton" parent="level panel/levels" unique_id=1248687446]
+layout_mode = 0
+offset_left = 943.0
+offset_top = 115.0
+offset_right = 1072.0
+offset_bottom = 203.0
+texture_normal = ExtResource("53_cawab")
+texture_pressed = ExtResource("54_tnidi")
+texture_hover = ExtResource("54_tnidi")
+texture_click_mask = ExtResource("55_pulmb")
+ignore_texture_size = true
+stretch_mode = 0
+
 [node name="menu music" type="AudioStreamPlayer2D" parent="." unique_id=1081290876]
 stream = ExtResource("12_avv75")
 autoplay = true
@@ -458,3 +474,4 @@ autoplay = true
 [connection signal="pressed" from="level panel/levels/level 7" to="." method="_on_level_7_pressed"]
 [connection signal="pressed" from="level panel/levels/level 8" to="." method="_on_level_8_pressed"]
 [connection signal="pressed" from="level panel/levels/level 9" to="." method="_on_level_9_pressed"]
+[connection signal="pressed" from="level panel/levels/level 10" to="." method="_on_level_10_pressed"]

@@ -253,7 +253,7 @@ func _on_saw_6_trig_body_entered(body: Node2D) -> void:
 	$"block 2 trig".set_deferred("monitoring", true)
 	
 	var tween = create_tween()
-	tween.tween_property(saw_6, "global_position:x", $"saw 6 movenment/Marker2D".global_position.x, 2.4)
+	tween.tween_property(saw_6, "global_position:x", $"saw 6 movenment/Marker2D".global_position.x, 3.5)
 	tween.tween_property(saw_6, "global_position:y", $"saw 6 movenment/Marker2D2".global_position.y, 2.4)
 
 
