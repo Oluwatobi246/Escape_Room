@@ -6,9 +6,6 @@ extends Node2D
 # --- TRAP 1 & WALL 1 ---
 @onready var trap_1: Area2D = $"trap 1"
 @onready var t_t_1: Area2D = $"t_t 1"
-@onready var trap_wall_1: AnimatableBody2D = $"trap wall 1"
-@onready var wall_trigger: Area2D = $"trap wall trigger"
-@onready var trap_wall_1_shape: CollisionShape2D = $"trap wall 1/CollisionShape2D"
 
 # --- TRAP FLOOR & DEATH TRIGGER ---
 @onready var trap_floor: AnimatableBody2D = $"trap floor"
@@ -32,10 +29,7 @@ func _ready() -> void:
 	trap_1.hide()
 	trap_1.monitoring = false
 	
-	# Hide wall 1
-	trap_wall_1.hide()
-	trap_wall_1_shape.set_deferred("disabled", true)
-	
+
 	# Hide trap 2
 	trap_2.hide()
 	trap_2.monitoring = false
