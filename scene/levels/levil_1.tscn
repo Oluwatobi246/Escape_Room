@@ -26,29 +26,17 @@ size = Vector2(34, 17.875)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dh8ng"]
 size = Vector2(212, 353)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vqiql"]
-size = Vector2(40, 90)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vlv2q"]
-size = Vector2(12, 184)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_htpt3"]
 size = Vector2(114, 350)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c5gmw"]
-size = Vector2(11, 9)
+size = Vector2(2.5, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0v1lh"]
 size = Vector2(240, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f10bp"]
 size = Vector2(380, 350)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_51frr"]
-size = Vector2(40, 83)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nfirf"]
-size = Vector2(6, 171)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o1plc"]
 size = Vector2(35, 19)
@@ -132,26 +120,6 @@ color = Color(0, 0, 0, 1)
 position = Vector2(552, 474.5)
 shape = SubResource("RectangleShape2D_dh8ng")
 
-[node name="trap wall 1" type="AnimatableBody2D" parent="." unique_id=940525708]
-
-[node name="ColorRect" type="ColorRect" parent="trap wall 1" unique_id=96578232]
-offset_left = 478.0
-offset_top = 207.0
-offset_right = 518.0
-offset_bottom = 297.0
-color = Color(0, 0, 0, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="trap wall 1" unique_id=1956271924]
-position = Vector2(498, 252)
-shape = SubResource("RectangleShape2D_vqiql")
-
-[node name="trap wall trigger" type="Area2D" parent="." unique_id=1266267743]
-position = Vector2(400, 296)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="trap wall trigger" unique_id=1160275192]
-position = Vector2(39, -90)
-shape = SubResource("RectangleShape2D_vlv2q")
-
 [node name="trap floor" type="AnimatableBody2D" parent="." unique_id=474112611]
 
 [node name="ColorRect" type="ColorRect" parent="trap floor" unique_id=853369500]
@@ -168,7 +136,7 @@ shape = SubResource("RectangleShape2D_htpt3")
 [node name="trap floor trigger" type="Area2D" parent="." unique_id=907195121]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="trap floor trigger" unique_id=1532309960]
-position = Vector2(718, 293)
+position = Vector2(656.25, 293)
 shape = SubResource("RectangleShape2D_c5gmw")
 
 [node name="death trigger" type="Area2D" parent="." unique_id=1404226157]
@@ -189,25 +157,6 @@ color = Color(0, 0, 0, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor 3" unique_id=1946974427]
 position = Vector2(962, 473)
 shape = SubResource("RectangleShape2D_f10bp")
-
-[node name="trap wall 2" type="AnimatableBody2D" parent="." unique_id=1027876202]
-
-[node name="ColorRect" type="ColorRect" parent="trap wall 2" unique_id=1250789319]
-offset_left = 900.0
-offset_top = 215.0
-offset_right = 940.0
-offset_bottom = 298.0
-color = Color(0, 0, 0, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="trap wall 2" unique_id=136687601]
-position = Vector2(920, 256.5)
-shape = SubResource("RectangleShape2D_51frr")
-
-[node name="trap wall 2 trigger" type="Area2D" parent="." unique_id=1082260359]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="trap wall 2 trigger" unique_id=647131909]
-position = Vector2(817, 212.5)
-shape = SubResource("RectangleShape2D_nfirf")
 
 [node name="trap 2" type="Area2D" parent="." unique_id=560497094]
 position = Vector2(-18, 0)
@@ -250,9 +199,7 @@ pitch_scale = 5.0
 [connection signal="body_entered" from="door" to="." method="_on_door_body_entered"]
 [connection signal="body_entered" from="t_t 1" to="." method="_on_t_t_1_body_entered"]
 [connection signal="body_entered" from="trap 1" to="trap 1" method="_on_body_entered"]
-[connection signal="body_entered" from="trap wall trigger" to="." method="_on_trap_wall_trigger_body_entered"]
 [connection signal="body_entered" from="trap floor trigger" to="." method="_on_trap_floor_trigger_body_entered"]
 [connection signal="body_entered" from="death trigger" to="." method="_on_death_trigger_body_entered"]
-[connection signal="body_entered" from="trap wall 2 trigger" to="." method="_on_trap_wall_2_trigger_body_entered"]
 [connection signal="body_entered" from="trap 2" to="trap 2" method="_on_body_entered"]
 [connection signal="body_entered" from="trap 2 trigger" to="." method="_on_trap_2_trigger_body_entered"]

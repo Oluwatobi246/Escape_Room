@@ -16,11 +16,6 @@ extends Node2D
 @onready var death_trigger: Area2D = $"death trigger"
 @onready var trap_floor_trig_coll: CollisionShape2D = $"trap floor trigger/CollisionShape2D"
 
-# --- TRAP WALL 2 ---
-@onready var trap_wall_2: AnimatableBody2D = $"trap wall 2"
-@onready var trap_wall_2_coll: CollisionShape2D = $"trap wall 2/CollisionShape2D"
-@onready var trap_wall_2_trig: Area2D = $"trap wall 2 trigger"
-
 # --- TRAP 2 (SPIKE 2) ---
 @onready var trap_2: Area2D = $"trap 2"
 @onready var trap_2_trigger: Area2D = $"trap 2 trigger"
@@ -41,10 +36,6 @@ func _ready() -> void:
 	trap_wall_1.hide()
 	trap_wall_1_shape.set_deferred("disabled", true)
 	
-	# Hide wall 2
-	trap_wall_2.hide()
-	trap_wall_2_coll.set_deferred("disabled", true)
-	
 	# Hide trap 2
 	trap_2.hide()
 	trap_2.monitoring = false
@@ -58,23 +49,6 @@ func _on_t_t_1_body_entered(body: Node2D) -> void:
 		trap_1.show()
 		trap_1.monitoring = true
 		t_t_1.queue_free()
-
-func _on_trap_wall_trigger_body_entered(body: Node2D) -> void:
-	if body.name == "player" or body.is_in_group("player"):
-		trap_wall_1.show()
-		trap_wall_1_shape.set_deferred("disabled", false)
-		
-		$"move wall sound".play()
-		
-		var tween = create_tween()
-		tween.tween_property(trap_wall_1, "position:x", trap_wall_1.position.x - 180, 0.2)\
-			.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-			
-		tween.tween_callback(func():
-			trap_wall_1.queue_free()
-		)
-		
-		wall_trigger.queue_free()
 
 # --- TRAP FLOOR FUNCTIONS ---
 func _on_trap_floor_trigger_body_entered(body: Node2D) -> void:
@@ -99,27 +73,6 @@ func _on_death_trigger_body_entered(body: Node2D) -> void:
 	if body.name == "player" or body.is_in_group("player"):
 		if body.has_method("die"):
 			body.die()
-
-# --- TRAP WALL 2 FUNCTIONS ---
-func _on_trap_wall_2_trigger_body_entered(body: Node2D) -> void:
-	if body.name == "player" or body.is_in_group("player"):
-		
-		trap_wall_2.show()
-		trap_wall_2_coll.set_deferred("disabled", false)
-		
-		# Reactivate trap floor trigger!
-		trap_floor_trig_coll.set_deferred("disabled", false)
-		
-		$"move wall sound".play()
-		var tween = create_tween()
-		tween.tween_property(trap_wall_2, "position:x", trap_wall_2.position.x - 200, 0.25)\
-			.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-			
-		tween.tween_callback(func():
-			trap_wall_2.queue_free()
-		)
-		
-		trap_wall_2_trig.queue_free()
 
 # --- TRAP 2 FUNCTIONS ---
 func _on_trap_2_trigger_body_entered(body: Node2D) -> void:

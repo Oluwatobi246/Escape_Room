@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://biesas0by4uri"
-path="res://.godot/imported/level 9.png-cef562b068baf3cd5047b1e873f99532.ctex"
+uid="uid://bemnkossv5wcv"
+path="res://.godot/imported/spiral_03.png-2d26c12a76c35fef71e8c1e5aa1bc32d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scene/levels/level 9.png"
-dest_files=["res://.godot/imported/level 9.png-cef562b068baf3cd5047b1e873f99532.ctex"]
+source_file="res://assets/square_spiral_frames/spiral_03.png"
+dest_files=["res://.godot/imported/spiral_03.png-2d26c12a76c35fef71e8c1e5aa1bc32d.ctex"]
 
 [params]
 
