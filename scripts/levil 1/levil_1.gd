@@ -29,7 +29,6 @@ func _ready() -> void:
 	trap_1.hide()
 	trap_1.monitoring = false
 	
-
 	# Hide trap 2
 	trap_2.hide()
 	trap_2.monitoring = false

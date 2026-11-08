@@ -23,6 +23,7 @@ general/default_playback_type.web=0
 
 GameManager="*uid://doqcghq2u4m4y"
 RotateWarning="*uid://div0433e7do36"
+PhantomCameraManager="*uid://duq6jhf6unyis"
 
 [display]
 
@@ -30,7 +31,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/godot_super-wakatime/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
 
 [input]
 
