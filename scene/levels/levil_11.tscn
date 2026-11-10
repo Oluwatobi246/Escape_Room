@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://7vsx7vur82p0" path="res://scene/player.tscn" id="1_y0al6"]
 [ext_resource type="PackedScene" uid="uid://d23ux3gt3doyu" path="res://scene/door.tscn" id="2_0nebb"]
 [ext_resource type="PackedScene" uid="uid://lm416vwudepn" path="res://scene/trap.tscn" id="5_yaygb"]
+[ext_resource type="AudioStream" uid="uid://cmhovcxlk84ya" path="res://Audio/shoot out.wav" id="6_ib7yo"]
 [ext_resource type="PackedScene" uid="uid://c1bjokt75p354" path="res://scene/canvas_layer.tscn" id="28_biy3j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fkyu4"]
@@ -33,8 +34,29 @@ size = Vector2(94, 85)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0henf"]
 size = Vector2(106, 85)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ou0g"]
+size = Vector2(77, 85)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dcmsc"]
+size = Vector2(259, 85)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iiuq5"]
+size = Vector2(44, 85)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tsv68"]
+size = Vector2(35, 85)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p06v0"]
+size = Vector2(153, 85)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rip1k"]
+size = Vector2(129, 85)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yaygb"]
 size = Vector2(5, 62)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uv6xd"]
+size = Vector2(17, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hjc3f"]
 size = Vector2(35, 3)
@@ -50,9 +72,12 @@ offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0.8255751, 0.66155535, 0.4191688, 1)
 
-[node name="door" parent="." unique_id=1223076365 instance=ExtResource("2_0nebb")]
+[node name="fake door" parent="." unique_id=1223076365 instance=ExtResource("2_0nebb")]
 position = Vector2(1131, 302)
 scale = Vector2(0.8, 0.8)
+collision_layer = 8
+collision_mask = 2
+monitoring = false
 
 [node name="player" parent="." unique_id=1144730333 instance=ExtResource("1_y0al6")]
 position = Vector2(58, 299)
@@ -138,6 +163,7 @@ position = Vector2(74, 301.5)
 shape = SubResource("RectangleShape2D_y0al6")
 
 [node name="floor 2" type="StaticBody2D" parent="." unique_id=1729412064]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="floor 2" unique_id=1152154589]
 offset_left = 576.0
@@ -157,6 +183,32 @@ shape = SubResource("RectangleShape2D_2e784")
 [node name="3" type="CollisionShape2D" parent="floor 2" unique_id=873982327]
 position = Vector2(523, 367.5)
 shape = SubResource("RectangleShape2D_0henf")
+
+[node name="4" type="CollisionShape2D" parent="floor 2" unique_id=1223728181]
+position = Vector2(739.5, 367.5)
+shape = SubResource("RectangleShape2D_1ou0g")
+
+[node name="5" type="CollisionShape2D" parent="floor 2" unique_id=821162871]
+position = Vector2(1022.5, 367.5)
+shape = SubResource("RectangleShape2D_dcmsc")
+
+[node name="floor 3" type="StaticBody2D" parent="." unique_id=82919201]
+
+[node name="1" type="CollisionShape2D" parent="floor 3" unique_id=25898367]
+position = Vector2(1130, 367.5)
+shape = SubResource("RectangleShape2D_iiuq5")
+
+[node name="2" type="CollisionShape2D" parent="floor 3" unique_id=1217309369]
+position = Vector2(1015.5, 367.5)
+shape = SubResource("RectangleShape2D_tsv68")
+
+[node name="3" type="CollisionShape2D" parent="floor 3" unique_id=129608048]
+position = Vector2(847.5, 367.5)
+shape = SubResource("RectangleShape2D_p06v0")
+
+[node name="4" type="CollisionShape2D" parent="floor 3" unique_id=863983272]
+position = Vector2(627.5, 367.5)
+shape = SubResource("RectangleShape2D_rip1k")
 
 [node name="traps" type="Node" parent="." unique_id=1913927560]
 
@@ -181,6 +233,20 @@ scale = Vector2(-0.13, -0.13)
 collision_layer = 4
 collision_mask = 2
 
+[node name="trap4" parent="traps" unique_id=1801100434 instance=ExtResource("5_yaygb")]
+modulate = Color(0.64705884, 0.25490198, 0.09803922, 1)
+position = Vector2(1067, 315)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap5" parent="traps" unique_id=1390978489 instance=ExtResource("5_yaygb")]
+modulate = Color(0.64705884, 0.25490198, 0.09803922, 1)
+position = Vector2(834, 315)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
 [node name="trap trig" type="Node" parent="." unique_id=278024498]
 
 [node name="trap trig" type="Area2D" parent="trap trig" unique_id=729614607]
@@ -190,6 +256,33 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="trap trig/trap trig" unique_id=1556353273]
 position = Vector2(520.5, 294)
 shape = SubResource("RectangleShape2D_yaygb")
+
+[node name="trap 4 trig" type="Area2D" parent="trap trig" unique_id=138143885]
+position = Vector2(292, -5)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trap trig/trap 4 trig" unique_id=983888459]
+position = Vector2(748, 299)
+shape = SubResource("RectangleShape2D_yaygb")
+
+[node name="trap 5 trig" type="Area2D" parent="trap trig" unique_id=1183027309]
+position = Vector2(113, -5)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trap trig/trap 5 trig" unique_id=1034293545]
+position = Vector2(748, 299)
+shape = SubResource("RectangleShape2D_yaygb")
+
+[node name="fake door trig" type="Area2D" parent="trap trig" unique_id=1533830490]
+position = Vector2(1132, 315)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trap trig/fake door trig" unique_id=484668849]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_uv6xd")
 
 [node name="jump block" type="AnimatableBody2D" parent="." unique_id=632021345]
 
@@ -221,13 +314,51 @@ collision_mask = 2
 position = Vector2(7.5, 9.5)
 shape = SubResource("RectangleShape2D_ho1lq")
 
-[node name="jump block start" type="Marker2D" parent="." unique_id=173548048]
+[node name="jump block2" type="AnimatableBody2D" parent="." unique_id=1410820182]
+position = Vector2(-3, 40)
+
+[node name="ColorRect" type="ColorRect" parent="jump block2" unique_id=1540902973]
+offset_left = 612.0
+offset_top = 285.0
+offset_right = 647.0
+offset_bottom = 288.0
+color = Color(0.64705884, 0.25490198, 0.09803922, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="jump block2" unique_id=1777218772]
+visible = false
+position = Vector2(629.5, 286.5)
+shape = SubResource("RectangleShape2D_hjc3f")
+
+[node name="ColorRect2" type="ColorRect" parent="jump block2" unique_id=469988468]
+offset_left = 621.0
+offset_top = 288.0
+offset_right = 637.0
+offset_bottom = 304.0
+color = Color(0.64705884, 0.25490198, 0.09803922, 1)
+
+[node name="jump block trig" type="Area2D" parent="jump block2" unique_id=668631541]
+position = Vector2(622, 275)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="jump block2/jump block trig" unique_id=804295506]
+position = Vector2(7.5, 9.5)
+shape = SubResource("RectangleShape2D_ho1lq")
 
 [node name="jump block end" type="Marker2D" parent="." unique_id=1739697522]
-position = Vector2(630, 266)
+position = Vector2(0, -19)
+
+[node name="jump block sound" type="AudioStreamPlayer2D" parent="." unique_id=696514324]
+stream = ExtResource("6_ib7yo")
+volume_db = 24.0
+pitch_scale = 10.0
 
 [connection signal="body_entered" from="death" to="." method="_on_death_body_entered"]
 [connection signal="body_entered" from="trap trig/trap trig" to="." method="_on_trap_trig_body_entered"]
+[connection signal="body_entered" from="trap trig/trap 4 trig" to="." method="_on_trap_4_trig_body_entered"]
+[connection signal="body_entered" from="trap trig/trap 5 trig" to="." method="_on_trap_5_trig_body_entered"]
+[connection signal="body_entered" from="trap trig/fake door trig" to="." method="_on_fake_door_trig_body_entered"]
 [connection signal="body_entered" from="jump block/jump block trig" to="." method="_on_jump_block_trig_body_entered"]
+[connection signal="body_entered" from="jump block2/jump block trig" to="." method="_on_jump_block_trig_body_entered"]
 
 [editable path="CanvasLayer"]
