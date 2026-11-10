@@ -52,6 +52,9 @@ size = Vector2(153, 85)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rip1k"]
 size = Vector2(129, 85)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iw1l3"]
+size = Vector2(279, 85)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yaygb"]
 size = Vector2(5, 62)
 
@@ -163,7 +166,6 @@ position = Vector2(74, 301.5)
 shape = SubResource("RectangleShape2D_y0al6")
 
 [node name="floor 2" type="StaticBody2D" parent="." unique_id=1729412064]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="floor 2" unique_id=1152154589]
 offset_left = 576.0
@@ -193,6 +195,7 @@ position = Vector2(1022.5, 367.5)
 shape = SubResource("RectangleShape2D_dcmsc")
 
 [node name="floor 3" type="StaticBody2D" parent="." unique_id=82919201]
+visible = false
 
 [node name="1" type="CollisionShape2D" parent="floor 3" unique_id=25898367]
 position = Vector2(1130, 367.5)
@@ -209,6 +212,10 @@ shape = SubResource("RectangleShape2D_p06v0")
 [node name="4" type="CollisionShape2D" parent="floor 3" unique_id=863983272]
 position = Vector2(627.5, 367.5)
 shape = SubResource("RectangleShape2D_rip1k")
+
+[node name="5" type="CollisionShape2D" parent="floor 3" unique_id=523814469]
+position = Vector2(327.5, 367.5)
+shape = SubResource("RectangleShape2D_iw1l3")
 
 [node name="traps" type="Node" parent="." unique_id=1913927560]
 
@@ -314,6 +321,9 @@ collision_mask = 2
 position = Vector2(7.5, 9.5)
 shape = SubResource("RectangleShape2D_ho1lq")
 
+[node name="jump block end" type="Marker2D" parent="." unique_id=1596983753]
+position = Vector2(0, -19)
+
 [node name="jump block2" type="AnimatableBody2D" parent="." unique_id=1410820182]
 position = Vector2(-3, 40)
 
@@ -336,17 +346,17 @@ offset_right = 637.0
 offset_bottom = 304.0
 color = Color(0.64705884, 0.25490198, 0.09803922, 1)
 
-[node name="jump block trig" type="Area2D" parent="jump block2" unique_id=668631541]
+[node name="jump block 2 trig" type="Area2D" parent="jump block2" unique_id=668631541]
 position = Vector2(622, 275)
 collision_layer = 8
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="jump block2/jump block trig" unique_id=804295506]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="jump block2/jump block 2 trig" unique_id=804295506]
 position = Vector2(7.5, 9.5)
 shape = SubResource("RectangleShape2D_ho1lq")
 
-[node name="jump block end" type="Marker2D" parent="." unique_id=1739697522]
-position = Vector2(0, -19)
+[node name="jump block 2 end" type="Marker2D" parent="." unique_id=1739697522]
+position = Vector2(-3, 21)
 
 [node name="jump block sound" type="AudioStreamPlayer2D" parent="." unique_id=696514324]
 stream = ExtResource("6_ib7yo")
@@ -359,6 +369,6 @@ pitch_scale = 10.0
 [connection signal="body_entered" from="trap trig/trap 5 trig" to="." method="_on_trap_5_trig_body_entered"]
 [connection signal="body_entered" from="trap trig/fake door trig" to="." method="_on_fake_door_trig_body_entered"]
 [connection signal="body_entered" from="jump block/jump block trig" to="." method="_on_jump_block_trig_body_entered"]
-[connection signal="body_entered" from="jump block2/jump block trig" to="." method="_on_jump_block_trig_body_entered"]
+[connection signal="body_entered" from="jump block2/jump block 2 trig" to="." method="_on_jump_block_2_trig_body_entered"]
 
 [editable path="CanvasLayer"]
