@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://ccuvlxib0iaoa"]
+
+[ext_resource type="PackedScene" uid="uid://c1bjokt75p354" path="res://scene/canvas_layer.tscn" id="1_n3aq7"]
+[ext_resource type="PackedScene" uid="uid://7vsx7vur82p0" path="res://scene/player.tscn" id="2_cgl1m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ou0g"]
+size = Vector2(833, 112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dcmsc"]
+size = Vector2(319, 0)
+
+[node name="levil_12" type="Node2D" unique_id=1361431381]
+
+[node name="background" type="ColorRect" parent="." unique_id=776796421]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.9387391, 0.9741047, 0.517749, 1)
+
+[node name="player" parent="." unique_id=1144730333 instance=ExtResource("2_cgl1m")]
+position = Vector2(18, 511.00003)
+scale = Vector2(0.7, 0.7)
+collision_layer = 2
+collision_mask = 13
+
+[node name="floor 1" type="StaticBody2D" parent="." unique_id=1033102799]
+position = Vector2(0, 285)
+
+[node name="ColorRect" type="ColorRect" parent="floor 1" unique_id=1403303800]
+offset_top = 251.0
+offset_right = 833.0
+offset_bottom = 363.0
+color = Color(0.5546366, 0.7317821, 3.85046e-07, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor 1" unique_id=610884897]
+position = Vector2(416.5, 307)
+shape = SubResource("RectangleShape2D_1ou0g")
+
+[node name="CanvasLayer" parent="." unique_id=1030218085 instance=ExtResource("1_n3aq7")]
+
+[node name="left" parent="CanvasLayer/MobileButtons" parent_id_path=PackedInt32Array(1030218085, 706401408) index="0" unique_id=1388673800]
+position = Vector2(-117, 474)
+
+[node name="right" parent="CanvasLayer/MobileButtons" parent_id_path=PackedInt32Array(1030218085, 706401408) index="1" unique_id=1738402819]
+position = Vector2(543, 474)
+scale = Vector2(-0.723, 0.62)
+
+[node name="up" parent="CanvasLayer/MobileButtons" parent_id_path=PackedInt32Array(1030218085, 706401408) index="2" unique_id=584869261]
+position = Vector2(1245.0001, 461)
+scale = Vector2(0.44764367, 1.0754901)
+
+[node name="triggers" type="Node" parent="." unique_id=1145095622]
+
+[node name="death" type="Area2D" parent="triggers" unique_id=705888449]
+position = Vector2(843, 638)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="triggers/death" unique_id=1229591400]
+position = Vector2(149.5, 10)
+shape = SubResource("RectangleShape2D_dcmsc")
+
+[editable path="CanvasLayer"]

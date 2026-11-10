@@ -56,6 +56,12 @@
 [ext_resource type="Texture2D" uid="uid://du7i28spxryne" path="res://level buttons/level 10.png" id="53_cawab"]
 [ext_resource type="Texture2D" uid="uid://bh2yafmbfsnnf" path="res://hover levels/level 10 hover.png" id="54_tnidi"]
 [ext_resource type="BitMap" uid="uid://pcpfwqiaaika" path="res://bitmap/level bitmap/level 10 bitmap.png" id="55_pulmb"]
+[ext_resource type="Texture2D" uid="uid://b3g4eh5jycfeg" path="res://level buttons/level 11.png" id="56_2qn31"]
+[ext_resource type="Texture2D" uid="uid://ctjv7je0xnu6p" path="res://hover levels/level 11 hover.png" id="57_f0sft"]
+[ext_resource type="BitMap" uid="uid://dqh2hojfg5btx" path="res://bitmap/level bitmap/level 11 bitmap.png" id="58_pwreb"]
+[ext_resource type="Texture2D" uid="uid://gkix6v37uh5c" path="res://level buttons/level 12.png" id="59_ub502"]
+[ext_resource type="Texture2D" uid="uid://bwvf1hykmnswy" path="res://hover levels/level 12 hover.png" id="60_rtm1u"]
+[ext_resource type="BitMap" uid="uid://pcfm1hvp2bd7" path="res://bitmap/level bitmap/level 12 bitmap.png" id="61_qgn4h"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_avv75"]
 animations = [{
@@ -84,7 +90,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("9_xwsgw")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 25.0
 }]
@@ -116,7 +122,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("17_2yxu1")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 18.0
 }]
@@ -148,7 +154,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("9_xwsgw")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 25.0
 }]
@@ -180,7 +186,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("9_xwsgw")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 25.0
 }]
@@ -457,6 +463,32 @@ texture_click_mask = ExtResource("55_pulmb")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="level 11" type="TextureButton" parent="level panel/levels" unique_id=955583755]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 206.0
+offset_right = 186.0
+offset_bottom = 294.0
+texture_normal = ExtResource("56_2qn31")
+texture_pressed = ExtResource("57_f0sft")
+texture_hover = ExtResource("57_f0sft")
+texture_click_mask = ExtResource("58_pwreb")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="level 12" type="TextureButton" parent="level panel/levels" unique_id=25965215]
+layout_mode = 0
+offset_left = 153.0
+offset_top = 206.0
+offset_right = 282.0
+offset_bottom = 294.0
+texture_normal = ExtResource("59_ub502")
+texture_pressed = ExtResource("60_rtm1u")
+texture_hover = ExtResource("60_rtm1u")
+texture_click_mask = ExtResource("61_qgn4h")
+ignore_texture_size = true
+stretch_mode = 0
+
 [node name="menu music" type="AudioStreamPlayer2D" parent="." unique_id=1081290876]
 stream = ExtResource("12_avv75")
 autoplay = true
@@ -475,3 +507,5 @@ autoplay = true
 [connection signal="pressed" from="level panel/levels/level 8" to="." method="_on_level_8_pressed"]
 [connection signal="pressed" from="level panel/levels/level 9" to="." method="_on_level_9_pressed"]
 [connection signal="pressed" from="level panel/levels/level 10" to="." method="_on_level_10_pressed"]
+[connection signal="pressed" from="level panel/levels/level 11" to="." method="_on_level_11_pressed"]
+[connection signal="pressed" from="level panel/levels/level 12" to="." method="_on_level_12_pressed"]

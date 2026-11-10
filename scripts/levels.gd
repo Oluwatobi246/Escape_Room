@@ -27,3 +27,5 @@ func update_level(num: int) -> void:
 	$"level 8".disabled = num < 8
 	$"level 9".disabled = num < 9
 	$"level 10".disabled = num < 10
+	$"level 11".disabled = num < 11
+	$"level 12".disabled = num < 12
