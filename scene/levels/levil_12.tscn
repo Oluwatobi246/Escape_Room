@@ -86,6 +86,12 @@ size = Vector2(27, 2)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1h2n6"]
 size = Vector2(40, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_duk4e"]
+size = Vector2(768, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cuppt"]
+size = Vector2(833, 40)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dcmsc"]
 size = Vector2(319, 0)
 
@@ -113,6 +119,15 @@ size = Vector2(1, 67)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0r3is"]
 size = Vector2(3, 66)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xolm4"]
+size = Vector2(2, 67)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bxxwn"]
+size = Vector2(4, 66.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tlf2n"]
+size = Vector2(2, 67)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hjc3f"]
 size = Vector2(0, 648)
 
@@ -126,6 +141,9 @@ size = Vector2(38, 2)
 size = Vector2(36, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ex71"]
+size = Vector2(36, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ibkj"]
 size = Vector2(36, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1ou0g"]
@@ -238,7 +256,7 @@ collision_layer = 8
 collision_mask = 2
 
 [node name="player" parent="." unique_id=1144730333 instance=ExtResource("2_cgl1m")]
-position = Vector2(144.00005, 292)
+position = Vector2(753, 292)
 scale = Vector2(0.7, 0.7)
 collision_layer = 2
 collision_mask = 13
@@ -492,6 +510,32 @@ color = Color(0.5529412, 0.73333335, 0, 1)
 position = Vector2(20, 30)
 shape = SubResource("RectangleShape2D_1h2n6")
 
+[node name="floor 12" type="StaticBody2D" parent="floor" unique_id=903091308]
+position = Vector2(353, 103)
+
+[node name="ColorRect" type="ColorRect" parent="floor/floor 12" unique_id=1169016645]
+offset_left = -288.0
+offset_right = 480.0
+offset_bottom = 40.0
+color = Color(0.5529412, 0.73333335, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor/floor 12" unique_id=1754837902]
+position = Vector2(96, 20)
+shape = SubResource("RectangleShape2D_duk4e")
+
+[node name="floor 13" type="StaticBody2D" parent="floor" unique_id=216462659]
+position = Vector2(289, 0)
+
+[node name="ColorRect" type="ColorRect" parent="floor/floor 13" unique_id=255927970]
+offset_left = -289.0
+offset_right = 544.0
+offset_bottom = 40.0
+color = Color(0.5529412, 0.73333335, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor/floor 13" unique_id=2022363813]
+position = Vector2(127.5, 20)
+shape = SubResource("RectangleShape2D_cuppt")
+
 [node name="triggers" type="Node" parent="." unique_id=1145095622]
 
 [node name="death" type="Area2D" parent="triggers" unique_id=705888449]
@@ -549,7 +593,7 @@ position = Vector2(-8, 23.5)
 shape = SubResource("RectangleShape2D_mr4we")
 
 [node name="trap 10 trig" type="Area2D" parent="triggers" unique_id=1866192020]
-position = Vector2(203, 259)
+position = Vector2(197, 259)
 collision_layer = 8
 collision_mask = 2
 
@@ -574,6 +618,33 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="triggers/floor 11 trig" unique_id=710147426]
 position = Vector2(8.5, -23)
 shape = SubResource("RectangleShape2D_0r3is")
+
+[node name="floor 4 2" type="Area2D" parent="triggers" unique_id=1771990541]
+position = Vector2(449, 306)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="triggers/floor 4 2" unique_id=797148687]
+position = Vector2(9, -23.5)
+shape = SubResource("RectangleShape2D_xolm4")
+
+[node name="spiral 2 trig" type="Area2D" parent="triggers" unique_id=707477554]
+position = Vector2(655, 174)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="triggers/spiral 2 trig" unique_id=1858454976]
+position = Vector2(-8, 3.25)
+shape = SubResource("RectangleShape2D_bxxwn")
+
+[node name="trap 2 trig" type="Area2D" parent="triggers" unique_id=863519980]
+position = Vector2(422, 200)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="triggers/trap 2 trig" unique_id=157936121]
+position = Vector2(-4, -23.5)
+shape = SubResource("RectangleShape2D_tlf2n")
 
 [node name="wall" type="StaticBody2D" parent="." unique_id=57532184]
 
@@ -700,6 +771,28 @@ color = Color(0.5529412, 0.73333335, 0, 1)
 position = Vector2(4, -1)
 shape = SubResource("RectangleShape2D_2kw6g")
 
+[node name="J B4" type="AnimatableBody2D" parent="jump blocks" unique_id=368298097]
+position = Vector2(18, 208)
+
+[node name="1" type="ColorRect" parent="jump blocks/J B4" unique_id=1706866099]
+offset_right = 10.0
+offset_bottom = 40.0
+color = Color(0.5529412, 0.73333335, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="jump blocks/J B4" unique_id=1068245727]
+position = Vector2(5, 20)
+shape = SubResource("RectangleShape2D_iw1l3")
+
+[node name="2" type="ColorRect" parent="jump blocks/J B4" unique_id=62508139]
+offset_left = -15.0
+offset_top = -2.0
+offset_right = 23.0
+color = Color(0.5529412, 0.73333335, 0, 1)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="jump blocks/J B4" unique_id=435806479]
+position = Vector2(4, -1)
+shape = SubResource("RectangleShape2D_2kw6g")
+
 [node name="jump block trig" type="Node" parent="." unique_id=1397596248]
 
 [node name="j b trig" type="Area2D" parent="jump block trig" unique_id=121935763]
@@ -729,6 +822,15 @@ collision_mask = 2
 position = Vector2(9, 9.5)
 shape = SubResource("RectangleShape2D_6ex71")
 
+[node name="j b 4 trig" type="Area2D" parent="jump block trig" unique_id=1542277545]
+position = Vector2(14, 196)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="jump block trig/j b 4 trig" unique_id=1817488758]
+position = Vector2(8, 9.5)
+shape = SubResource("RectangleShape2D_2ibkj")
+
 [node name="spiral" type="Node" parent="." unique_id=104971859]
 
 [node name="spiral 1" type="Area2D" parent="spiral" unique_id=1561828082]
@@ -748,6 +850,23 @@ frame_progress = 0.7913675
 position = Vector2(140.5, 503)
 shape = SubResource("RectangleShape2D_64x12")
 
+[node name="spiral 2" type="Area2D" parent="spiral" unique_id=405360274]
+position = Vector2(472, -324)
+collision_layer = 8
+collision_mask = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="spiral/spiral 2" unique_id=498980706]
+modulate = Color(0.5529412, 0.73333335, 0, 1)
+position = Vector2(136, 500.99997)
+scale = Vector2(0.53515625, 0.47851574)
+sprite_frames = SubResource("SpriteFrames_1ou0g")
+autoplay = "default"
+frame_progress = 0.7913675
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spiral/spiral 2" unique_id=1680072228]
+position = Vector2(140.5, 503)
+shape = SubResource("RectangleShape2D_64x12")
+
 [node name="markers" type="Node" parent="." unique_id=2003218380]
 
 [node name="J B end" type="Marker2D" parent="markers" unique_id=980882155]
@@ -758,6 +877,9 @@ position = Vector2(18, 403)
 
 [node name="J B 3 end" type="Marker2D" parent="markers" unique_id=895661467]
 position = Vector2(809, 301)
+
+[node name="J B 4 end" type="Marker2D" parent="markers" unique_id=1069862395]
+position = Vector2(18, 196)
 
 [node name="fall 1" type="Marker2D" parent="markers" unique_id=661730860]
 position = Vector2(888, 67)
@@ -788,12 +910,33 @@ scale = Vector2(4, 4)
 collision_layer = 4
 collision_mask = 2
 
+[node name="saw2" parent="." unique_id=2130778908 instance=ExtResource("31_6ex71")]
+modulate = Color(0.5529412, 0.73333335, 0, 1)
+position = Vector2(31, 174)
+scale = Vector2(4, 4)
+collision_layer = 4
+collision_mask = 2
+
 [node name="trap" parent="." unique_id=2099913547 instance=ExtResource("4_2kw6g")]
 modulate = Color(0.5529412, 0.73333335, 0, 1)
 position = Vector2(83, 305.99997)
 scale = Vector2(0.13, 0.13)
 collision_layer = 4
 collision_mask = 2
+
+[node name="trap2" parent="." unique_id=1226928793 instance=ExtResource("4_2kw6g")]
+modulate = Color(0.5529412, 0.73333335, 0, 1)
+position = Vector2(392, 200)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=787423662]
+visible = false
+offset_top = 143.0
+offset_right = 64.0
+offset_bottom = 203.0
+color = Color(0.9372549, 0.972549, 0.5176471, 1)
 
 [connection signal="body_entered" from="floor/floor 10/10 death" to="." method="_on__death_body_entered"]
 [connection signal="body_entered" from="triggers/death" to="." method="_on_death_body_entered"]
@@ -805,9 +948,14 @@ collision_mask = 2
 [connection signal="body_entered" from="triggers/trap 10 trig" to="." method="_on_trap_10_trig_body_entered"]
 [connection signal="body_entered" from="triggers/trap 10 move trig" to="." method="_on_trap_10_move_trig_body_entered"]
 [connection signal="body_entered" from="triggers/floor 11 trig" to="." method="_on_floor_11_trig_body_entered"]
+[connection signal="body_entered" from="triggers/floor 4 2" to="." method="_on_floor_4_2_body_entered"]
+[connection signal="body_entered" from="triggers/spiral 2 trig" to="." method="_on_spiral_2_trig_body_entered"]
+[connection signal="body_entered" from="triggers/trap 2 trig" to="." method="_on_trap_2_trig_body_entered"]
 [connection signal="body_entered" from="jump block trig/j b trig" to="." method="_on_j_b_trig_body_entered"]
 [connection signal="body_entered" from="jump block trig/j b 2 trig" to="." method="_on_j_b_2_trig_body_entered"]
 [connection signal="body_entered" from="jump block trig/j b 3 trig" to="." method="_on_j_b_3_trig_body_entered"]
+[connection signal="body_entered" from="jump block trig/j b 4 trig" to="." method="_on_j_b_4_trig_body_entered"]
 [connection signal="body_entered" from="spiral/spiral 1" to="." method="_on_spiral_1_body_entered"]
+[connection signal="body_entered" from="spiral/spiral 2" to="." method="_on_spiral_2_body_entered"]
 
 [editable path="CanvasLayer"]
