@@ -1,5 +1,9 @@
 extends Node2D
 
+@onready var trap: Node2D = $"floor/floor 10/trap"
+@onready var floor_10: AnimatableBody2D = $"floor/floor 10"
+
+
 var is_bouncing: bool = false
 var jump_speed: float = -500.0
 
@@ -9,7 +13,14 @@ func _ready() -> void:
 	
 	$trap.hide()
 	$trap.set_deferred("monitoring", false)
-
+	
+	for traps in trap.get_children():
+		if traps is Area2D:
+			traps.hide()
+			traps.set_deferred("monitoring", false)
+	
+	$"floor/floor 11".hide()
+	
 func _on_death_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
@@ -123,3 +134,55 @@ func _on_trap_1_body_entered(body: Node2D) -> void:
 	
 	$trap.show()
 	$trap.set_deferred("monitoring", true)
+
+func _on_j_b_3_trig_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	if body is CharacterBody2D:
+		body.velocity.y = jump_speed
+	
+	bounce_up($"jump blocks/J B3", $"markers/J B 3 end")
+
+func _on__death_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	if body.has_method("die"):
+		body.die()
+	
+
+func _on_trap_10_trig_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$"triggers/trap 10 trig/CollisionShape2D".set_deferred("disabled", true)
+	var floor_10_y = floor_10.global_position.y
+	var tween = create_tween()
+	tween.tween_property(floor_10, "global_position:y", $"markers/floor 10 land".global_position.y, 0.2)
+	
+	await tween.finished
+	await get_tree().create_timer(1.0, false).timeout
+	
+	var return_tween = create_tween()
+	return_tween.tween_property(floor_10, "global_position:y", floor_10_y, 0.5)\
+	.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+
+
+func _on_trap_10_move_trig_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$"triggers/trap 10 move trig/CollisionShape2D".set_deferred("disabled", true)
+	
+	var tween = create_tween()
+	tween.tween_property(floor_10, "global_position:x", $"markers/floor 10 end".global_position.x, 1.0)
+	
+
+func _on_floor_11_trig_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$"triggers/floor 11 trig/CollisionShape2D".set_deferred("disabled", true)
+	
+	$"floor/floor 11".show()
