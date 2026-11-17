@@ -25,13 +25,28 @@ func _ready() -> void:
 	
 	$trap2.hide()
 	
+	$"triggers/trap 3".set_deferred("monitoring", false)
+	$trap3.hide()
+	$trap3.set_deferred("monitoring", false)
+	
+	$"triggers/floor 14".set_deferred("monitoring", false)
+	
+	$"floor/floor 14/floor 14 death".set_deferred("monitoring", false)
+	
+	$ColorRect2.hide()
+	$saw3.hide()
+	$saw3.set_deferred("monitoring", false)
+	
+	$"triggers/trap 4 trig".set_deferred("monitoring", false)
+	$trap4.hide()
+	$trap4.set_deferred("monitoring", false)
+	
 func _on_death_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
 	
 	if body.has_method("die"):
 		body.die()
-	
 	
 func bounce_up(block: AnimatableBody2D, target_marker: Marker2D) -> void:
 	if is_bouncing:
@@ -253,3 +268,148 @@ func _on_trap_2_trig_body_entered(body: Node2D) -> void:
 	$"triggers/trap 2 trig/CollisionShape2D".set_deferred("disabled", true)
 	
 	$trap2.show()
+	
+	await get_tree().create_timer(2.0, false).timeout
+	
+	$trap2.hide()
+	$trap2.set_deferred("monitoring", false)
+
+
+func _on_saw_2_trig_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$"triggers/saw 2 trig/CollisionShape2D".set_deferred("disabled", true)
+	
+	var tween = create_tween()
+	tween.tween_property($saw2, "global_position:x", $"markers/saw end2".global_position.x, 1.735)
+	
+	await tween.finished
+	$saw2.queue_free()
+	$"triggers/trap 3".set_deferred("monitoring", true)
+	$ColorRect.hide()
+
+func _on_trap_3_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$"triggers/trap 3/CollisionShape2D".set_deferred("disabled", true)
+	$"triggers/floor 14".set_deferred("monitoring", true)
+	$trap3.show()
+	$trap3.set_deferred("monitoring", true)
+	
+	await get_tree().create_timer(2.0, false).timeout
+	
+	$trap3.hide()
+	$trap3.set_deferred("monitoring", false)
+	
+
+func _on_floor_14_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$"floor/floor 14/floor 14 death".set_deferred("monitoring", true)
+	
+	$"triggers/floor 14/CollisionShape2D".set_deferred("disabled", true)
+	
+	var floor_14_y = $"floor/floor 14".global_position.y
+	var tween = create_tween()
+	tween.tween_property($"floor/floor 14", "global_position:y", $"markers/floor 14 land".global_position.y, 0.2)
+	
+	await tween.finished
+	await get_tree().create_timer(2.0, false).timeout
+	
+	var return_tween = create_tween()
+	return_tween.tween_property($"floor/floor 14", "global_position:y", floor_14_y, 1.4)
+	
+	await return_tween.finished
+	$"floor/floor 14".queue_free()
+	
+	$floor/ColorRect3.hide()
+	
+func _on_floor_14_death_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	if body.has_method("die"):
+		body.die()
+
+
+func _on_floor_4_v_3_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+		
+	$"triggers/floor 4 v 3/CollisionShape2D".set_deferred("disabled", true)
+	$"floor/floor 4/3".hide()
+	$"floor/floor 4/CollisionShape2D3".set_deferred("disabled", true)
+
+
+func _on_saw_3_trig_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$"triggers/saw 3 trig/CollisionShape2D".set_deferred("disabled", true)
+	
+	$ColorRect2.show()
+	$saw3.show()
+	$saw3.set_deferred("monitoring", true)
+	
+	var tween = create_tween()
+	tween.tween_property($saw3, "global_position:x", $"markers/saw 3 end".global_position.x, 1.7)
+	
+	await tween.finished
+	
+	$saw3.queue_free()
+
+
+func _on_saw_4_trig_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+		
+	$ColorRect2.hide()
+	$"triggers/saw 4 trig/CollisionShape2D".set_deferred("disabled", true)
+	
+	var tween = create_tween()
+	tween.tween_property($saw4, "global_position:x", $"markers/saw 4 end".global_position.x, 3.1)
+	
+	await tween.finished
+	$ColorRect3.hide()
+	
+	$"triggers/trap 4 trig".set_deferred("monitoring", true)
+
+
+func _on_trap_4_trig_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+		
+	$"triggers/trap 4 trig/CollisionShape2D".set_deferred("disabled", true)
+	
+	$trap4.show()
+	$trap4.set_deferred("monitoring", true)
+	
+	await get_tree().create_timer(2.5).timeout
+	
+	$trap4.hide()
+	$trap4.set_deferred("monitoring", false)
+	
+	
+func _on_spiral_3_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	body.hide()
+	
+	await get_tree().create_timer(2.0).timeout
+	
+	body.global_position = $"markers/spiral home".global_position
+	
+	body.show()
+
+
+func _on_floor_4_v_1_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+		
+	$"triggers/floor 4 v 1/CollisionShape2D".set_deferred("disabled", true)
+	$"floor/floor 4/1".hide()
+	$"floor/floor 4/CollisionShape2D".set_deferred("disabled", true)

@@ -1,0 +1,159 @@
+[gd_scene format=3 uid="uid://bb4gh46jow1ck"]
+
+[ext_resource type="PackedScene" uid="uid://7vsx7vur82p0" path="res://scene/player.tscn" id="1_2wjfo"]
+[ext_resource type="Script" uid="uid://cxoqwh6dskewn" path="res://scripts/level script/levil_13.gd" id="1_xc2wb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uv6xd"]
+size = Vector2(0, 650)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ou0g"]
+size = Vector2(207, 202)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dcmsc"]
+size = Vector2(387, 202)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2e784"]
+size = Vector2(62, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iiuq5"]
+size = Vector2(109, 575)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0qnxq"]
+size = Vector2(945, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_153h7"]
+size = Vector2(12, 92)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0henf"]
+size = Vector2(17, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xc2wb"]
+
+[node name="levil_13" type="Node2D" unique_id=1938666207]
+script = ExtResource("1_xc2wb")
+
+[node name="backgound" type="ColorRect" parent="." unique_id=45552318]
+visible = false
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.77254903, 0.20392157, 0.23921569, 1)
+
+[node name="player" parent="." unique_id=1144730333 instance=ExtResource("1_2wjfo")]
+position = Vector2(50, 427.00003)
+scale = Vector2(0.6, 0.6)
+collision_layer = 2
+collision_mask = 13
+
+[node name="wall" type="Node" parent="." unique_id=1249513650]
+
+[node name="wall 1" type="StaticBody2D" parent="wall" unique_id=2122430082]
+position = Vector2(0, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall/wall 1" unique_id=201977855]
+position = Vector2(0, 322.5)
+shape = SubResource("RectangleShape2D_uv6xd")
+
+[node name="wall 2" type="StaticBody2D" parent="wall" unique_id=1901504554]
+position = Vector2(1152, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall/wall 2" unique_id=78707710]
+position = Vector2(0, 323)
+shape = SubResource("RectangleShape2D_uv6xd")
+
+[node name="floor" type="Node" parent="." unique_id=751733891]
+
+[node name="floor 1" type="StaticBody2D" parent="floor" unique_id=308034411]
+position = Vector2(0, 7)
+
+[node name="ColorRect" type="ColorRect" parent="floor/floor 1" unique_id=1071912850]
+offset_top = 439.0
+offset_right = 207.0
+offset_bottom = 641.0
+color = Color(0.27143374, 0.02891825, 0.049571157, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor/floor 1" unique_id=374206780]
+position = Vector2(103.5, 540)
+shape = SubResource("RectangleShape2D_1ou0g")
+
+[node name="floor 2" type="AnimatableBody2D" parent="floor" unique_id=96263266]
+position = Vector2(498, 443)
+
+[node name="ColorRect" type="ColorRect" parent="floor/floor 2" unique_id=71984359]
+offset_right = 387.0
+offset_bottom = 202.0
+color = Color(0.27058825, 0.02745098, 0.050980393, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor/floor 2" unique_id=398922718]
+position = Vector2(193.5, 101)
+shape = SubResource("RectangleShape2D_dcmsc")
+
+[node name="floor 2 jump" type="StaticBody2D" parent="floor" unique_id=456736005]
+position = Vector2(305, 446)
+
+[node name="ColorRect" type="ColorRect" parent="floor/floor 2 jump" unique_id=1714889507]
+offset_right = 62.0
+offset_bottom = 19.0
+color = Color(0.27058825, 0.02745098, 0.050980393, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor/floor 2 jump" unique_id=1980981075]
+position = Vector2(31, 9.5)
+shape = SubResource("RectangleShape2D_2e784")
+
+[node name="floor 3" type="AnimatableBody2D" parent="floor" unique_id=130734031]
+position = Vector2(1112, 443)
+
+[node name="ColorRect" type="ColorRect" parent="floor/floor 3" unique_id=450930873]
+offset_left = -69.0
+offset_right = 40.0
+offset_bottom = 575.0
+color = Color(0.27058825, 0.02745098, 0.050980393, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor/floor 3" unique_id=1995711108]
+position = Vector2(-14.5, 287.5)
+shape = SubResource("RectangleShape2D_iiuq5")
+
+[node name="triggers" type="Node" parent="." unique_id=110455247]
+
+[node name="death" type="Area2D" parent="triggers" unique_id=2079308564]
+position = Vector2(217, 638)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="triggers/death" unique_id=28457471]
+position = Vector2(462.5, 10)
+shape = SubResource("RectangleShape2D_0qnxq")
+
+[node name="floor 2 move" type="Area2D" parent="triggers" unique_id=1753328603]
+position = Vector2(262, 399)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="triggers/floor 2 move" unique_id=2077189961]
+position = Vector2(-4, -19)
+shape = SubResource("RectangleShape2D_153h7")
+
+[node name="floor 2 jump" type="Area2D" parent="triggers" unique_id=1031573644]
+position = Vector2(104, 436)
+collision_layer = 8
+collision_mask = 2
+
+[node name="StaticBody2D" type="CollisionShape2D" parent="triggers/floor 2 jump" unique_id=1431468127]
+position = Vector2(-1.5, 6.5)
+shape = SubResource("RectangleShape2D_0henf")
+
+[node name="floor 2 back" type="Area2D" parent="triggers" unique_id=1414113013]
+position = Vector2(739, 433)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="triggers/floor 2 back" unique_id=908008978]
+shape = SubResource("RectangleShape2D_xc2wb")
+
+[node name="markers" type="Node" parent="." unique_id=21291554]
+
+[node name="floor 2 move" type="Marker2D" parent="." unique_id=1441418682]
+position = Vector2(498, 446)
+
+[connection signal="body_entered" from="triggers/death" to="." method="_on_death_body_entered"]
+[connection signal="body_entered" from="triggers/floor 2 move" to="." method="_on_floor_2_move_body_entered"]
+[connection signal="body_entered" from="triggers/floor 2 jump" to="." method="_on_floor_2_jump_body_entered"]
