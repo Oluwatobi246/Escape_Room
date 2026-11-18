@@ -29,12 +29,20 @@ func _ready() -> void:
 	$"floor/floor 5 jump".hide()
 	$"floor/floor 5 jump".get_node("CollisionShape2D").set_deferred("disabled", true)
 	
-	$"triggers/spiral 1 trig".set_deferred("monitoring", false)
+	$"triggers/spiral 1 trig".set_deferred("monitoring", true)
 	$"teleport/spiral 1".hide()
-	$"teleport/spiral 1/Area2D".set_deferred("monitoring", false)
+	$"teleport/spiral 1/spiral 1".set_deferred("monitoring", false)
 	
+	$"teleport/spiral 2".hide()
+	$"teleport/spiral 2/spiral 2".set_deferred("monitoring", false)
 	
+	$"teleport/spiral 3".hide()
+	$"teleport/spiral 3/spiral 3".set_deferred("monitoring", false)
 	
+	$"teleport/spiral 4".hide()
+	$"teleport/spiral 4/spiral 4".set_deferred("monitoring", false)
+	
+	$"triggers/spiral 4 trig".set_deferred("monitoring", false)
 	
 	
 func _on_death_body_entered(body: Node2D) -> void:
@@ -150,9 +158,84 @@ func _on_spiral_1_trig_body_entered(body: Node2D) -> void:
 	$"triggers/spiral 1 trig/CollisionShape2D".set_deferred("disabled", true)
 	
 	$"teleport/spiral 1".show()
-	$"teleport/spiral 1/Area2D".set_deferred("monitoring", true)
+	$"teleport/spiral 1/spiral 1".set_deferred("monitoring", true)
 	
 func _on_floor_3_move_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
 	
+
+
+func _on_trap_910_trig_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$"triggers/trap 910 trig/CollisionShape2D".set_deferred("disabled", true)
+	
+	$traps/trap9.hide()
+	$traps/trap9.set_deferred("monitoring", false)
+	$traps/trap10.hide()
+	$traps/trap10.set_deferred("monitoring", false)
+	
+	await get_tree().create_timer(2.0, false).timeout
+
+	$"teleport/spiral 2".show()
+	$"teleport/spiral 2/spiral 2".set_deferred("monitoring", true)
+	
+
+func _on_spiral_1_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	body.hide()
+	await get_tree().create_timer(1.0, false).timeout
+	
+	body.global_position = $"markers/spiral tel SP".global_position
+	body.show()
+
+
+func _on_spiral_2_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	body.hide()
+	await get_tree().create_timer(1.0, false).timeout
+	
+	body.global_position = $"markers/spiral tel 2  SP".global_position
+	body.show()
+
+
+func _on_spiral_3_trig_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$"triggers/spiral 3 trig/CollisionShape2D".set_deferred("disabled", true)
+	
+	$"teleport/spiral 3".show()
+	$"teleport/spiral 3/spiral 2".set_deferred("monitoring", false)
+
+
+func _on_spiral_3_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$"teleport/spiral 3/spiral 3/CollisionShape2D".set_deferred("disabled", true)
+	
+	body.hide()
+	await get_tree().create_timer(1.0, false).timeout
+	
+	body.global_position = $"markers/spiral tel 3  SP".global_position
+	body.show()
+
+
+func _on_spiral_4_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$"teleport/spiral 4/spiral 4/CollisionShape2D".set_deferred("disabled", true)
+	
+	body.hide()
+	await get_tree().create_timer(1.0, false).timeout
+	
+	body.global_position = $"markers/spiral tel 3  SP".global_position
+	body.show()
