@@ -2,6 +2,31 @@
 
 [ext_resource type="PackedScene" uid="uid://7vsx7vur82p0" path="res://scene/player.tscn" id="1_2wjfo"]
 [ext_resource type="Script" uid="uid://cxoqwh6dskewn" path="res://scripts/level script/levil_13.gd" id="1_xc2wb"]
+[ext_resource type="PackedScene" uid="uid://lm416vwudepn" path="res://scene/trap.tscn" id="3_3cj7p"]
+[ext_resource type="Texture2D" uid="uid://ndmthv14qa6w" path="res://assets/square_spiral_frames/spiral_01.png" id="4_ppaw2"]
+[ext_resource type="Texture2D" uid="uid://0c7bivib2bnw" path="res://assets/square_spiral_frames/spiral_02.png" id="5_x8dn8"]
+[ext_resource type="Texture2D" uid="uid://bemnkossv5wcv" path="res://assets/square_spiral_frames/spiral_03.png" id="6_w6ojv"]
+[ext_resource type="Texture2D" uid="uid://bdnhly3s2yx21" path="res://assets/square_spiral_frames/spiral_04.png" id="7_42fu6"]
+[ext_resource type="Texture2D" uid="uid://epcawwnh0svd" path="res://assets/square_spiral_frames/spiral_05.png" id="8_wghjc"]
+[ext_resource type="Texture2D" uid="uid://cie56872bxnkp" path="res://assets/square_spiral_frames/spiral_06.png" id="9_vydsd"]
+[ext_resource type="Texture2D" uid="uid://c3pofm5jb3nn3" path="res://assets/square_spiral_frames/spiral_07.png" id="10_tq6xe"]
+[ext_resource type="Texture2D" uid="uid://cwtsik3os15or" path="res://assets/square_spiral_frames/spiral_08.png" id="11_kme73"]
+[ext_resource type="Texture2D" uid="uid://0a8xf4xl0hed" path="res://assets/square_spiral_frames/spiral_09.png" id="12_fbg5m"]
+[ext_resource type="Texture2D" uid="uid://c6wkr1ykw7a4m" path="res://assets/square_spiral_frames/spiral_10.png" id="13_6qppp"]
+[ext_resource type="Texture2D" uid="uid://b1vkugcurk7j" path="res://assets/square_spiral_frames/spiral_11.png" id="14_q2dxv"]
+[ext_resource type="Texture2D" uid="uid://dxn5snkyshufk" path="res://assets/square_spiral_frames/spiral_12.png" id="15_ewam1"]
+[ext_resource type="Texture2D" uid="uid://bbveq3u1wcoip" path="res://assets/square_spiral_frames/spiral_13.png" id="16_psp4v"]
+[ext_resource type="Texture2D" uid="uid://ctay81r6hoykc" path="res://assets/square_spiral_frames/spiral_14.png" id="17_a5w40"]
+[ext_resource type="Texture2D" uid="uid://ddn3wunrsp2a1" path="res://assets/square_spiral_frames/spiral_15.png" id="18_5ncb8"]
+[ext_resource type="Texture2D" uid="uid://ulax2j2cvgxj" path="res://assets/square_spiral_frames/spiral_16.png" id="19_xfs2m"]
+[ext_resource type="Texture2D" uid="uid://drfhhgq56bwit" path="res://assets/square_spiral_frames/spiral_17.png" id="20_m40lg"]
+[ext_resource type="Texture2D" uid="uid://j74ckglydoq2" path="res://assets/square_spiral_frames/spiral_18.png" id="21_7v1en"]
+[ext_resource type="Texture2D" uid="uid://c3ywxe58lmu3d" path="res://assets/square_spiral_frames/spiral_19.png" id="22_l8nr4"]
+[ext_resource type="Texture2D" uid="uid://by4ylgtcf5fg1" path="res://assets/square_spiral_frames/spiral_20.png" id="23_bbhlo"]
+[ext_resource type="Texture2D" uid="uid://5qkf1o1tfuhl" path="res://assets/square_spiral_frames/spiral_21.png" id="24_jwg7u"]
+[ext_resource type="Texture2D" uid="uid://c8rnw0c3ar5mg" path="res://assets/square_spiral_frames/spiral_22.png" id="25_tw30g"]
+[ext_resource type="Texture2D" uid="uid://wi5nb47wupxm" path="res://assets/square_spiral_frames/spiral_23.png" id="26_icc03"]
+[ext_resource type="Texture2D" uid="uid://cd2r660jcq8r5" path="res://assets/square_spiral_frames/spiral_24.png" id="27_lu4wu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uv6xd"]
 size = Vector2(0, 650)
@@ -15,9 +40,6 @@ size = Vector2(387, 202)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2e784"]
 size = Vector2(62, 19)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iiuq5"]
-size = Vector2(109, 575)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ho1lq"]
 size = Vector2(154, 202)
 
@@ -25,6 +47,20 @@ size = Vector2(154, 202)
 size = Vector2(139, 202)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3cj7p"]
+size = Vector2(73, 202)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p06v0"]
+size = Vector2(81, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iw1l3"]
+size = Vector2(7, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rip1k"]
+size = Vector2(28, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hjc3f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hthss"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0qnxq"]
 size = Vector2(945, 0)
@@ -37,6 +73,103 @@ size = Vector2(17, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xc2wb"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_64x12"]
+size = Vector2(10, 79)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0n7cf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cg0tb"]
+size = Vector2(7, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fb1to"]
+size = Vector2(8, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iiuq5"]
+size = Vector2(109, 575)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1ou0g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ppaw2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_x8dn8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_w6ojv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_42fu6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_wghjc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_vydsd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_tq6xe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_kme73")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_fbg5m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_6qppp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_q2dxv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ewam1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_psp4v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_a5w40")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_5ncb8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_xfs2m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_m40lg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_7v1en")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_l8nr4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_bbhlo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_jwg7u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_tw30g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_icc03")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_lu4wu")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 120.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3wkd1"]
+size = Vector2(40, 36.66665)
+
 [node name="levil_13" type="Node2D" unique_id=1938666207]
 script = ExtResource("1_xc2wb")
 
@@ -47,7 +180,7 @@ offset_bottom = 648.0
 color = Color(0.77254903, 0.20392157, 0.23921569, 1)
 
 [node name="player" parent="." unique_id=1144730333 instance=ExtResource("1_2wjfo")]
-position = Vector2(50, 427.00003)
+position = Vector2(1112, 116.00001)
 scale = Vector2(0.6, 0.6)
 collision_layer = 2
 collision_mask = 13
@@ -68,7 +201,7 @@ position = Vector2(1152, 0)
 position = Vector2(0, 323)
 shape = SubResource("RectangleShape2D_uv6xd")
 
-[node name="floor" type="Node" parent="." unique_id=751733891]
+[node name="floor" type="Node2D" parent="." unique_id=1936826974]
 
 [node name="floor 1" type="StaticBody2D" parent="floor" unique_id=308034411]
 position = Vector2(0, 7)
@@ -84,7 +217,7 @@ position = Vector2(103.5, 540)
 shape = SubResource("RectangleShape2D_1ou0g")
 
 [node name="floor 2" type="StaticBody2D" parent="floor" unique_id=88244092]
-position = Vector2(104, 446)
+position = Vector2(305, 446)
 
 [node name="ColorRect" type="ColorRect" parent="floor/floor 2" unique_id=71984359]
 offset_right = 387.0
@@ -115,19 +248,6 @@ color = Color(0.27058825, 0.02745098, 0.050980393, 1)
 position = Vector2(31, 9.5)
 shape = SubResource("RectangleShape2D_2e784")
 
-[node name="floor 3" type="AnimatableBody2D" parent="floor" unique_id=130734031]
-position = Vector2(1112, 443)
-
-[node name="ColorRect" type="ColorRect" parent="floor/floor 3" unique_id=450930873]
-offset_left = -69.0
-offset_right = 40.0
-offset_bottom = 575.0
-color = Color(0.27058825, 0.02745098, 0.050980393, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="floor/floor 3" unique_id=1995711108]
-position = Vector2(-14.5, 287.5)
-shape = SubResource("RectangleShape2D_iiuq5")
-
 [node name="floor 2 v 2" type="StaticBody2D" parent="floor" unique_id=1263411241]
 position = Vector2(336, 446)
 
@@ -153,14 +273,86 @@ position = Vector2(69.5, 101)
 shape = SubResource("RectangleShape2D_tsv68")
 
 [node name="floor 5" type="AnimatableBody2D" parent="floor" unique_id=309670750]
+position = Vector2(823, 446)
 
 [node name="ColorRect" type="ColorRect" parent="floor/floor 5" unique_id=1148789167]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 73.0
+offset_bottom = 202.0
 color = Color(0.27058825, 0.02745098, 0.050980393, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor/floor 5" unique_id=894722521]
+position = Vector2(36.5, 101)
 shape = SubResource("RectangleShape2D_3cj7p")
+
+[node name="floor 5 jump" type="AnimatableBody2D" parent="floor" unique_id=91721159]
+position = Vector2(675, 547)
+
+[node name="ColorRect" type="ColorRect" parent="floor/floor 5 jump" unique_id=767725087]
+offset_left = -19.0
+offset_right = 62.0
+offset_bottom = 27.0
+color = Color(0.27058825, 0.02745098, 0.050980393, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor/floor 5 jump" unique_id=2021567185]
+position = Vector2(21.5, 13.5)
+shape = SubResource("RectangleShape2D_p06v0")
+
+[node name="floor 5 jump2" type="AnimatableBody2D" parent="floor" unique_id=737115921]
+position = Vector2(781, 546)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor/floor 5 jump2" unique_id=1099287467]
+position = Vector2(53.5, -2)
+shape = SubResource("RectangleShape2D_iw1l3")
+
+[node name="ColorRect" type="ColorRect" parent="floor/floor 5 jump2" unique_id=1978348495]
+offset_left = 50.0
+offset_top = -4.0
+offset_right = 57.0
+offset_bottom = 17.0
+color = Color(0.27058825, 0.02745098, 0.050980393, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="floor/floor 5 jump2" unique_id=832186918]
+offset_left = 39.0
+offset_top = -7.0
+offset_right = 67.0
+offset_bottom = -4.0
+color = Color(0.27058825, 0.02745098, 0.050980393, 1)
+
+[node name="floor 5 jump" type="Area2D" parent="floor/floor 5 jump2" unique_id=1369213947]
+position = Vector2(-8, 0)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor/floor 5 jump2/floor 5 jump" unique_id=218757944]
+position = Vector2(61, -7)
+shape = SubResource("RectangleShape2D_rip1k")
+
+[node name="floor part 2" type="Node2D" parent="." unique_id=1433687159]
+visible = false
+
+[node name="New floor 1" type="StaticBody2D" parent="floor part 2" unique_id=666279100]
+position = Vector2(1003, 443)
+
+[node name="ColorRect" type="ColorRect" parent="floor part 2/New floor 1" unique_id=1721560272]
+offset_left = -513.0
+offset_right = 40.0
+offset_bottom = 205.0
+color = Color(0.27058825, 0.02745098, 0.050980393, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor part 2/New floor 1" unique_id=1158703828]
+shape = SubResource("RectangleShape2D_hjc3f")
+
+[node name="New floor 2" type="StaticBody2D" parent="floor part 2" unique_id=337703474]
+position = Vector2(490, 7)
+
+[node name="ColorRect" type="ColorRect" parent="floor part 2/New floor 2" unique_id=278298427]
+offset_top = -7.0
+offset_right = 40.0
+offset_bottom = 436.0
+color = Color(0.27058825, 0.02745098, 0.050980393, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor part 2/New floor 2" unique_id=94165306]
+shape = SubResource("RectangleShape2D_hthss")
 
 [node name="triggers" type="Node" parent="." unique_id=110455247]
 
@@ -195,9 +387,45 @@ shape = SubResource("RectangleShape2D_0henf")
 position = Vector2(737, 433)
 collision_layer = 8
 collision_mask = 2
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="triggers/floor 2 back" unique_id=908008978]
 shape = SubResource("RectangleShape2D_xc2wb")
+
+[node name="floor 5 trig" type="Area2D" parent="triggers" unique_id=35840248]
+position = Vector2(781, 406)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="triggers/floor 5 trig" unique_id=2127724645]
+position = Vector2(0, -29.5)
+shape = SubResource("RectangleShape2D_64x12")
+
+[node name="floor 5 jumo trig" type="Area2D" parent="triggers" unique_id=467408599]
+position = Vector2(653, 436)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="triggers/floor 5 jumo trig" unique_id=1669731685]
+shape = SubResource("RectangleShape2D_0n7cf")
+
+[node name="spiral 1 trig" type="Area2D" parent="triggers" unique_id=292965667]
+position = Vector2(1070, 125)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="triggers/spiral 1 trig" unique_id=294014930]
+position = Vector2(6.5, 8)
+shape = SubResource("RectangleShape2D_cg0tb")
+
+[node name="floor 3 move" type="Area2D" parent="triggers" unique_id=1788816128]
+position = Vector2(1140, 436)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="triggers/floor 3 move" unique_id=1626523160]
+position = Vector2(-6, 7.5)
+shape = SubResource("RectangleShape2D_fb1to")
 
 [node name="markers" type="Node" parent="." unique_id=21291554]
 
@@ -207,7 +435,161 @@ position = Vector2(498, 446)
 [node name="floor 2 return" type="Marker2D" parent="." unique_id=683544681]
 position = Vector2(104, 446)
 
+[node name="floor 3 move" type="Marker2D" parent="." unique_id=2073696979]
+position = Vector2(1112, 135)
+
+[node name="floor 5 move" type="Marker2D" parent="." unique_id=2084319409]
+position = Vector2(896, 446)
+
+[node name="floor 5 jump SP" type="Marker2D" parent="." unique_id=368725183]
+position = Vector2(789, 537)
+
+[node name="floor 5 jump move" type="Marker2D" parent="." unique_id=1610877461]
+position = Vector2(789, 547)
+
+[node name="floor general move" type="Marker2D" parent="." unique_id=1746286803]
+position = Vector2(0, 203)
+
+[node name="floor 3" type="AnimatableBody2D" parent="." unique_id=130734031]
+position = Vector2(1112, 446)
+
+[node name="ColorRect" type="ColorRect" parent="floor 3" unique_id=450930873]
+offset_left = -69.0
+offset_right = 40.0
+offset_bottom = 575.0
+color = Color(0.27058825, 0.02745098, 0.050980393, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor 3" unique_id=1995711108]
+position = Vector2(-14.5, 287.5)
+shape = SubResource("RectangleShape2D_iiuq5")
+
+[node name="traps" type="Node2D" parent="." unique_id=2144092169]
+position = Vector2(-15, 235)
+
+[node name="trap" parent="traps" unique_id=598011232 instance=ExtResource("3_3cj7p")]
+modulate = Color(0.27058825, 0.02745098, 0.050980393, 1)
+position = Vector2(548.99994, 432.99997)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap2" parent="traps" unique_id=617691475 instance=ExtResource("3_3cj7p")]
+modulate = Color(0.27058825, 0.02745098, 0.050980393, 1)
+position = Vector2(586.99994, 432.99997)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap3" parent="traps" unique_id=1071799817 instance=ExtResource("3_3cj7p")]
+modulate = Color(0.27058825, 0.02745098, 0.050980393, 1)
+position = Vector2(624.99994, 432.99997)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap4" parent="traps" unique_id=1569124556 instance=ExtResource("3_3cj7p")]
+modulate = Color(0.27058825, 0.02745098, 0.050980393, 1)
+position = Vector2(662.99994, 432.99997)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap5" parent="traps" unique_id=1469191465 instance=ExtResource("3_3cj7p")]
+modulate = Color(0.27058825, 0.02745098, 0.050980393, 1)
+position = Vector2(700.99994, 432.99997)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap6" parent="traps" unique_id=493427564 instance=ExtResource("3_3cj7p")]
+modulate = Color(0.27058825, 0.02745098, 0.050980393, 1)
+position = Vector2(738.99994, 432.99997)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap7" parent="traps" unique_id=1127705900 instance=ExtResource("3_3cj7p")]
+modulate = Color(0.27058825, 0.02745098, 0.050980393, 1)
+position = Vector2(777, 432.99997)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap8" parent="traps" unique_id=274526369 instance=ExtResource("3_3cj7p")]
+modulate = Color(0.27058825, 0.02745098, 0.050980393, 1)
+position = Vector2(815, 432.99997)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap9" parent="traps" unique_id=737761765 instance=ExtResource("3_3cj7p")]
+visible = false
+modulate = Color(0.27058825, 0.02745098, 0.050980393, 1)
+position = Vector2(852.99994, 432.99997)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+monitoring = false
+
+[node name="trap10" parent="traps" unique_id=2063249573 instance=ExtResource("3_3cj7p")]
+visible = false
+modulate = Color(0.27058825, 0.02745098, 0.050980393, 1)
+position = Vector2(890.99994, 432.99997)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+monitoring = false
+
+[node name="trap11" parent="traps" unique_id=161869771 instance=ExtResource("3_3cj7p")]
+modulate = Color(0.27058825, 0.02745098, 0.050980393, 1)
+position = Vector2(929.99994, 432.99997)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap12" parent="traps" unique_id=1393582290 instance=ExtResource("3_3cj7p")]
+modulate = Color(0.27058825, 0.02745098, 0.050980393, 1)
+position = Vector2(969, 432.99997)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap13" parent="traps" unique_id=1804921815 instance=ExtResource("3_3cj7p")]
+modulate = Color(0.27058825, 0.02745098, 0.050980393, 1)
+position = Vector2(1007, 432.99997)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="trap14" parent="traps" unique_id=1371153151 instance=ExtResource("3_3cj7p")]
+modulate = Color(0.27058825, 0.02745098, 0.050980393, 1)
+position = Vector2(1044, 432.99997)
+scale = Vector2(0.13, 0.13)
+collision_layer = 4
+collision_mask = 2
+
+[node name="teleport" type="Node" parent="." unique_id=2051915765]
+
+[node name="spiral 1" type="AnimatedSprite2D" parent="teleport" unique_id=670295697]
+modulate = Color(0.27058825, 0.02745098, 0.050980393, 1)
+position = Vector2(967.00006, 135)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_1ou0g")
+
+[node name="Area2D" type="Area2D" parent="teleport/spiral 1" unique_id=1914819243]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="teleport/spiral 1/Area2D" unique_id=1436674588]
+position = Vector2(6.666748, 5)
+shape = SubResource("RectangleShape2D_3wkd1")
+
+[connection signal="body_entered" from="floor/floor 5 jump2/floor 5 jump" to="." method="_on_floor_5_jump_body_entered"]
 [connection signal="body_entered" from="triggers/death" to="." method="_on_death_body_entered"]
 [connection signal="body_entered" from="triggers/floor 2 move" to="." method="_on_floor_2_move_body_entered"]
 [connection signal="body_entered" from="triggers/floor 2 jump" to="." method="_on_floor_2_jump_body_entered"]
 [connection signal="body_entered" from="triggers/floor 2 back" to="." method="_on_floor_2_back_body_entered"]
+[connection signal="body_entered" from="triggers/floor 5 trig" to="." method="_on_floor_5_trig_body_entered"]
+[connection signal="body_entered" from="triggers/floor 5 jumo trig" to="." method="_on_floor_5_jumo_trig_body_entered"]
+[connection signal="body_entered" from="triggers/spiral 1 trig" to="." method="_on_spiral_1_trig_body_entered"]
+[connection signal="body_entered" from="triggers/floor 3 move" to="." method="_on_floor_3_move_body_entered"]
