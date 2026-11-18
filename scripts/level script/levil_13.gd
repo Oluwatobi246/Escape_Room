@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var floor_2: StaticBody2D = $"floor/floor 2"
+@onready var traps: Node2D = $traps
 
 
 func _ready() -> void:
@@ -44,6 +45,14 @@ func _ready() -> void:
 	
 	$"triggers/spiral 4 trig".set_deferred("monitoring", false)
 	
+	$"triggers/trap 910 trig".set_deferred("monitoring", false)
+	
+	for trap in traps.get_children():
+		if trap is Area2D:
+			trap.hide()
+			trap.set_deferred("monitoring", false)
+	
+	
 	
 func _on_death_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
@@ -62,7 +71,7 @@ func _on_floor_2_move_body_entered(body: Node2D) -> void:
 	
 	var tween = create_tween()
 	
-	tween.tween_property(floor_2, "global_position:x", $"floor 2 move".global_position.x, 1.0)
+	tween.tween_property(floor_2, "global_position:x", $"markers/floor 2 move".global_position.x, 1.0)
 
 
 func _on_floor_2_jump_body_entered(body: Node2D) -> void:
@@ -87,7 +96,7 @@ func _on_floor_2_back_body_entered(body: Node2D) -> void:
 	$"floor/background 2".show()
 	
 	var tween = create_tween()
-	tween.tween_property(floor_2, "global_position:x", $"floor 2 return".global_position.x, 1.0)
+	tween.tween_property(floor_2, "global_position:x", $"markers/floor 2 return".global_position.x, 1.0)
 	
 	await tween.finished
 	
@@ -120,7 +129,7 @@ func _on_floor_5_jump_body_entered(body: Node2D) -> void:
 	var block_y = $"floor/floor 5 jump2".global_position.y
 	
 	var tween = create_tween()
-	tween.tween_property($"floor/floor 5 jump2", "global_position:y", $"floor 5 jump SP".global_position.y, 0.08)
+	tween.tween_property($"floor/floor 5 jump2", "global_position:y", $"markers/floor 5 jump SP".global_position.y, 0.08)
 	tween.tween_property($"floor/floor 5 jump2", "global_position:y", block_y, 0.08)
 
 
@@ -132,7 +141,7 @@ func _on_floor_5_trig_body_entered(body: Node2D) -> void:
 	$"triggers/floor 5 trig/CollisionShape2D".set_deferred("disabled", true)
 	
 	var tween = create_tween()
-	tween.tween_property($"floor/floor 5", "global_position:x", $"floor 5 move".global_position.x, 0.5)
+	tween.tween_property($"floor/floor 5", "global_position:x", $"markers/floor 5 move".global_position.x, 0.5)
 
 
 func _on_floor_5_jumo_trig_body_entered(body: Node2D) -> void:
@@ -142,7 +151,7 @@ func _on_floor_5_jumo_trig_body_entered(body: Node2D) -> void:
 	$"triggers/floor 5 jumo trig/CollisionShape2D".set_deferred("disabled", true)
 	
 	var tween = create_tween()
-	tween.tween_property($"floor/floor 5 jump", "global_position:x", $"floor 5 jump move".global_position.x, 1.0)
+	tween.tween_property($"floor/floor 5 jump", "global_position:x", $"markers/floor 5 jump move".global_position.x, 1.0)
 	
 	await tween.finished
 	
@@ -160,9 +169,18 @@ func _on_spiral_1_trig_body_entered(body: Node2D) -> void:
 	$"teleport/spiral 1".show()
 	$"teleport/spiral 1/spiral 1".set_deferred("monitoring", true)
 	
+	$"triggers/trap 910 trig".set_deferred("monitoring", true)
+	
 func _on_floor_3_move_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
+	
+	$"triggers/floor 3 move/CollisionShape2D".set_deferred("disabled", true)
+	
+	var moving = create_tween().set_parallel(true)
+	
+	moving.tween_property($"floor 3", "global_position:y", $"markers/floor 3 move".global_position.y, 1.0)\
+	.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	
 
 
@@ -188,11 +206,10 @@ func _on_spiral_1_body_entered(body: Node2D) -> void:
 		return
 	
 	body.hide()
-	await get_tree().create_timer(1.0, false).timeout
-	
+
 	body.global_position = $"markers/spiral tel SP".global_position
 	body.show()
-
+	
 
 func _on_spiral_2_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
@@ -210,9 +227,10 @@ func _on_spiral_3_trig_body_entered(body: Node2D) -> void:
 		return
 	
 	$"triggers/spiral 3 trig/CollisionShape2D".set_deferred("disabled", true)
+	$"triggers/spiral 4 trig".set_deferred("monitoring", true)
 	
 	$"teleport/spiral 3".show()
-	$"teleport/spiral 3/spiral 2".set_deferred("monitoring", false)
+	$"teleport/spiral 3/spiral 3".set_deferred("monitoring", true)
 
 
 func _on_spiral_3_body_entered(body: Node2D) -> void:
@@ -237,5 +255,19 @@ func _on_spiral_4_body_entered(body: Node2D) -> void:
 	body.hide()
 	await get_tree().create_timer(1.0, false).timeout
 	
-	body.global_position = $"markers/spiral tel 3  SP".global_position
+	body.global_position = $"markers/spiral tel 4 SP".global_position
 	body.show()
+
+
+func _on_spiral_4_trig_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+		
+	$"floor part 2/ColorRect".hide()
+	$"triggers/spiral 4 trig/CollisionShape2D".set_deferred("disabled", true)
+	
+	$"teleport/spiral 3".hide()
+	$"teleport/spiral 3/spiral 3".set_deferred("monitoring", false)
+	
+	$"teleport/spiral 4".show()
+	$"teleport/spiral 4/spiral 4".set_deferred("monitoring", true)

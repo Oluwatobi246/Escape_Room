@@ -27,6 +27,8 @@
 [ext_resource type="Texture2D" uid="uid://c8rnw0c3ar5mg" path="res://assets/square_spiral_frames/spiral_22.png" id="25_tw30g"]
 [ext_resource type="Texture2D" uid="uid://wi5nb47wupxm" path="res://assets/square_spiral_frames/spiral_23.png" id="26_icc03"]
 [ext_resource type="Texture2D" uid="uid://cd2r660jcq8r5" path="res://assets/square_spiral_frames/spiral_24.png" id="27_lu4wu"]
+[ext_resource type="PackedScene" uid="uid://d23ux3gt3doyu" path="res://scene/door.tscn" id="28_x8dn8"]
+[ext_resource type="PackedScene" uid="uid://c1bjokt75p354" path="res://scene/canvas_layer.tscn" id="29_w6ojv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uv6xd"]
 size = Vector2(0, 650)
@@ -196,8 +198,14 @@ offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0.77254903, 0.20392157, 0.23921569, 1)
 
+[node name="door" parent="." unique_id=1223076365 instance=ExtResource("28_x8dn8")]
+position = Vector2(23.000002, 539.00006)
+scale = Vector2(0.8, 0.8)
+collision_layer = 8
+collision_mask = 2
+
 [node name="player" parent="." unique_id=1144730333 instance=ExtResource("1_2wjfo")]
-position = Vector2(1112, 116)
+position = Vector2(24, 426)
 scale = Vector2(0.6, 0.6)
 collision_layer = 2
 collision_mask = 13
@@ -219,7 +227,6 @@ position = Vector2(0, 323)
 shape = SubResource("RectangleShape2D_uv6xd")
 
 [node name="floor" type="Node2D" parent="." unique_id=1936826974]
-visible = false
 
 [node name="floor 1" type="StaticBody2D" parent="floor" unique_id=308034411]
 position = Vector2(0, 7)
@@ -346,6 +353,7 @@ position = Vector2(61, -7)
 shape = SubResource("RectangleShape2D_rip1k")
 
 [node name="floor part 2" type="Node2D" parent="." unique_id=1433687159]
+position = Vector2(0, 649)
 
 [node name="New floor 1" type="StaticBody2D" parent="floor part 2" unique_id=666279100]
 position = Vector2(1003, 443)
@@ -400,7 +408,6 @@ position = Vector2(-205, 42.5)
 shape = SubResource("RectangleShape2D_mr4we")
 
 [node name="ColorRect" type="ColorRect" parent="floor part 2" unique_id=1221573435]
-visible = false
 offset_top = 486.0
 offset_right = 490.0
 offset_bottom = 563.0
@@ -520,7 +527,7 @@ position = Vector2(3, 5)
 shape = SubResource("RectangleShape2D_3m5sa")
 
 [node name="floor 3" type="AnimatableBody2D" parent="." unique_id=130734031]
-position = Vector2(1112, 135)
+position = Vector2(1112, 446)
 
 [node name="ColorRect" type="ColorRect" parent="floor 3" unique_id=450930873]
 offset_left = -69.0
@@ -533,6 +540,7 @@ position = Vector2(-14.5, 287.5)
 shape = SubResource("RectangleShape2D_iiuq5")
 
 [node name="traps" type="Node2D" parent="." unique_id=2144092169]
+visible = false
 
 [node name="trap" parent="traps" unique_id=598011232 instance=ExtResource("3_3cj7p")]
 modulate = Color(0.27058825, 0.02745098, 0.050980393, 1)
@@ -818,7 +826,12 @@ position = Vector2(450, 46)
 position = Vector2(77, 154)
 
 [node name="spiral tel 4 SP" type="Marker2D" parent="markers" unique_id=472820307]
-position = Vector2(413, 519)
+position = Vector2(450, 539)
+
+[node name="Next floor" type="Marker2D" parent="markers" unique_id=202299841]
+
+[node name="CanvasLayer" parent="." unique_id=1030218085 instance=ExtResource("29_w6ojv")]
+visible = false
 
 [connection signal="body_entered" from="floor/floor 5 jump2/floor 5 jump" to="." method="_on_floor_5_jump_body_entered"]
 [connection signal="body_entered" from="triggers/death" to="." method="_on_death_body_entered"]
@@ -831,6 +844,7 @@ position = Vector2(413, 519)
 [connection signal="body_entered" from="triggers/floor 3 move" to="." method="_on_floor_3_move_body_entered"]
 [connection signal="body_entered" from="triggers/trap 910 trig" to="." method="_on_trap_910_trig_body_entered"]
 [connection signal="body_entered" from="triggers/spiral 3 trig" to="." method="_on_spiral_3_trig_body_entered"]
+[connection signal="body_entered" from="triggers/spiral 4 trig" to="." method="_on_spiral_4_trig_body_entered"]
 [connection signal="body_entered" from="teleport/spiral 1/spiral 1" to="." method="_on_spiral_1_body_entered"]
 [connection signal="body_entered" from="teleport/spiral 2/spiral 2" to="." method="_on_spiral_2_body_entered"]
 [connection signal="body_entered" from="teleport/spiral 3/spiral 3" to="." method="_on_spiral_3_body_entered"]
