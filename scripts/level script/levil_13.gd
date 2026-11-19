@@ -179,10 +179,23 @@ func _on_floor_3_move_body_entered(body: Node2D) -> void:
 	
 	var moving = create_tween().set_parallel(true)
 	
-	moving.tween_property($"floor 3", "global_position:y", $"markers/floor 3 move".global_position.y, 1.0)\
+	moving.tween_property($"floor 3", "global_position:y", $"markers/floor 3 move".global_position.y, 7.0)\
 	.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	
-
+	moving.tween_property($floor, "global_position:y", $"markers/floor general move".global_position.y, 7.0)\
+	.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	
+	moving.tween_property($"floor part 2", "global_position:y", $"markers/Next floor".global_position.y, 7.0)\
+	.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	
+	await moving.finished
+	
+	for trap in traps.get_children():
+		if trap is Area2D:
+			trap.show()
+			trap.set_deferred("monitoring", true)
+	
+	$door.show()
 
 func _on_trap_910_trig_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
@@ -205,9 +218,20 @@ func _on_spiral_1_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
 	
+	$"teleport/spiral 1/spiral 1/CollisionShape2D".set_deferred("disabled", true)
+	
 	body.hide()
+	
+	if body is CharacterBody2D:
+		body.velocity = Vector2.ZERO
+		body.set_physics_process(false)
+		
 
+	await get_tree().create_timer(0.5, false).timeout
+	
 	body.global_position = $"markers/spiral tel SP".global_position
+	if body is CharacterBody2D:
+		body.set_physics_process(true)
 	body.show()
 	
 

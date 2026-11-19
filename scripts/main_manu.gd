@@ -60,3 +60,7 @@ func _on_level_11_pressed() -> void:
 func _on_level_12_pressed() -> void:
 	if not $"level panel/levels/level 12".disabled:
 		GameManager.load_level(12)
+
+func _on_level_13_pressed() -> void:
+	if not $"level panel/levels/level 13".disabled:
+		GameManager.load_level(13)

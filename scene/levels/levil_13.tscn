@@ -193,12 +193,12 @@ size = Vector2(40, 36.66665)
 script = ExtResource("1_xc2wb")
 
 [node name="backgound" type="ColorRect" parent="." unique_id=45552318]
-visible = false
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0.77254903, 0.20392157, 0.23921569, 1)
 
 [node name="door" parent="." unique_id=1223076365 instance=ExtResource("28_x8dn8")]
+visible = false
 position = Vector2(23.000002, 539.00006)
 scale = Vector2(0.8, 0.8)
 collision_layer = 8
@@ -254,7 +254,6 @@ position = Vector2(193.5, 101)
 shape = SubResource("RectangleShape2D_dcmsc")
 
 [node name="background 2" type="ColorRect" parent="floor" unique_id=524864219]
-visible = false
 offset_left = 207.0
 offset_top = 446.0
 offset_right = 336.0
@@ -353,7 +352,7 @@ position = Vector2(61, -7)
 shape = SubResource("RectangleShape2D_rip1k")
 
 [node name="floor part 2" type="Node2D" parent="." unique_id=1433687159]
-position = Vector2(0, 649)
+position = Vector2(0, 660)
 
 [node name="New floor 1" type="StaticBody2D" parent="floor part 2" unique_id=666279100]
 position = Vector2(1003, 443)
@@ -540,7 +539,6 @@ position = Vector2(-14.5, 287.5)
 shape = SubResource("RectangleShape2D_iiuq5")
 
 [node name="traps" type="Node2D" parent="." unique_id=2144092169]
-visible = false
 
 [node name="trap" parent="traps" unique_id=598011232 instance=ExtResource("3_3cj7p")]
 modulate = Color(0.27058825, 0.02745098, 0.050980393, 1)
@@ -808,7 +806,7 @@ position = Vector2(1112, 135)
 position = Vector2(896, 446)
 
 [node name="floor 5 jump SP" type="Marker2D" parent="markers" unique_id=368725183]
-position = Vector2(789, 537)
+position = Vector2(789, 527)
 
 [node name="floor 5 jump move" type="Marker2D" parent="markers" unique_id=1610877461]
 position = Vector2(789, 547)
@@ -831,7 +829,17 @@ position = Vector2(450, 539)
 [node name="Next floor" type="Marker2D" parent="markers" unique_id=202299841]
 
 [node name="CanvasLayer" parent="." unique_id=1030218085 instance=ExtResource("29_w6ojv")]
-visible = false
+
+[node name="left" parent="CanvasLayer/MobileButtons" parent_id_path=PackedInt32Array(1030218085, 706401408) index="0" unique_id=1388673800]
+position = Vector2(-77, 502)
+scale = Vector2(0.70261437, 0.50980437)
+
+[node name="right" parent="CanvasLayer/MobileButtons" parent_id_path=PackedInt32Array(1030218085, 706401408) index="1" unique_id=1738402819]
+position = Vector2(635.00006, 495.00003)
+scale = Vector2(-0.723, 0.5365988)
+
+[node name="up" parent="CanvasLayer/MobileButtons" parent_id_path=PackedInt32Array(1030218085, 706401408) index="2" unique_id=584869261]
+position = Vector2(1112, 399.00003)
 
 [connection signal="body_entered" from="floor/floor 5 jump2/floor 5 jump" to="." method="_on_floor_5_jump_body_entered"]
 [connection signal="body_entered" from="triggers/death" to="." method="_on_death_body_entered"]
@@ -849,3 +857,5 @@ visible = false
 [connection signal="body_entered" from="teleport/spiral 2/spiral 2" to="." method="_on_spiral_2_body_entered"]
 [connection signal="body_entered" from="teleport/spiral 3/spiral 3" to="." method="_on_spiral_3_body_entered"]
 [connection signal="body_entered" from="teleport/spiral 4/spiral 4" to="." method="_on_spiral_4_body_entered"]
+
+[editable path="CanvasLayer"]
