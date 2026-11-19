@@ -26,6 +26,18 @@ size = Vector2(329, 260)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8kavd"]
 size = Vector2(161, 260)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x60mi"]
+size = Vector2(94, 260)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6klx0"]
+size = Vector2(100, 260)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p06v0"]
+size = Vector2(178, 260)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iw1l3"]
+size = Vector2(619, 260)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0qnxq"]
 size = Vector2(6, 64)
 
@@ -35,14 +47,23 @@ size = Vector2(2, 61)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2e784"]
 size = Vector2(4, 149)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0henf"]
-size = Vector2(1152, 0)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ho1lq"]
 size = Vector2(2, 153)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tsv68"]
 size = Vector2(5, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rip1k"]
+size = Vector2(4, 152)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0henf"]
+size = Vector2(1152, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_64x12"]
+size = Vector2(3, 129)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hthss"]
+size = Vector2(1, 259)
 
 [node name="levil_14" type="Node2D" unique_id=421256712]
 script = ExtResource("1_8kavd")
@@ -71,7 +92,6 @@ scale = Vector2(-0.729, 0.625)
 position = Vector2(1177, 395)
 
 [node name="floor" type="Node2D" parent="." unique_id=1881529825]
-visible = false
 
 [node name="wall" type="StaticBody2D" parent="floor" unique_id=94321741]
 
@@ -166,13 +186,55 @@ shape = SubResource("RectangleShape2D_8kavd")
 position = Vector2(951, 388)
 
 [node name="ColorRect" type="ColorRect" parent="Next Floor/floor 2" unique_id=465796504]
+offset_left = -54.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 260.0
 color = Color(0.4627451, 0.25490198, 0.011764706, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Next Floor/floor 2" unique_id=1800695371]
+position = Vector2(-7, 130)
+shape = SubResource("RectangleShape2D_x60mi")
 
-[node name="triggers" type="Node" parent="." unique_id=137443460]
+[node name="floor 3" type="StaticBody2D" parent="Next Floor" unique_id=294076446]
+position = Vector2(857, 388)
+
+[node name="ColorRect" type="ColorRect" parent="Next Floor/floor 3" unique_id=1885228207]
+offset_left = -60.0
+offset_right = 40.0
+offset_bottom = 260.0
+color = Color(0.4627451, 0.25490198, 0.011764706, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Next Floor/floor 3" unique_id=1768517622]
+position = Vector2(-10, 130)
+shape = SubResource("RectangleShape2D_6klx0")
+
+[node name="floor 4" type="StaticBody2D" parent="Next Floor" unique_id=527524271]
+position = Vector2(757, 388)
+
+[node name="ColorRect" type="ColorRect" parent="Next Floor/floor 4" unique_id=1689569457]
+offset_left = -138.0
+offset_right = 40.0
+offset_bottom = 260.0
+color = Color(0.4627451, 0.25490198, 0.011764706, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Next Floor/floor 4" unique_id=393127841]
+position = Vector2(-49, 130)
+shape = SubResource("RectangleShape2D_p06v0")
+
+[node name="floor 5" type="StaticBody2D" parent="Next Floor" unique_id=815367363]
+position = Vector2(579, 388)
+
+[node name="ColorRect" type="ColorRect" parent="Next Floor/floor 5" unique_id=2117840854]
+offset_left = -579.0
+offset_right = 40.0
+offset_bottom = 260.0
+color = Color(0.4627451, 0.25490198, 0.011764706, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Next Floor/floor 5" unique_id=49566354]
+position = Vector2(-269.5, 130)
+shape = SubResource("RectangleShape2D_iw1l3")
+
+[node name="triggers" type="Node2D" parent="." unique_id=541971390]
 
 [node name="trap 1 trig" type="Area2D" parent="triggers" unique_id=311233746]
 position = Vector2(334, 324)
@@ -209,15 +271,6 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="triggers/blind 2" unique_id=2007999689]
 position = Vector2(-8, -64.5)
 shape = SubResource("RectangleShape2D_2e784")
-
-[node name="death" type="Area2D" parent="triggers" unique_id=1448185111]
-position = Vector2(10, 638)
-collision_layer = 8
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="triggers/death" unique_id=316471597]
-position = Vector2(566, 10)
-shape = SubResource("RectangleShape2D_0henf")
 
 [node name="blind 3" type="Area2D" parent="triggers" unique_id=348126717]
 position = Vector2(565, 378)
@@ -264,10 +317,27 @@ collision_mask = 2
 position = Vector2(2.5, 8)
 shape = SubResource("RectangleShape2D_tsv68")
 
+[node name="new floor 3" type="Area2D" parent="triggers" unique_id=1912409926]
+position = Vector2(912, 378)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="triggers/new floor 3" unique_id=495130145]
+position = Vector2(-8, -66)
+shape = SubResource("RectangleShape2D_rip1k")
+
+[node name="death" type="Area2D" parent="triggers" unique_id=1448185111]
+position = Vector2(10, 638)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="triggers/death" unique_id=316471597]
+position = Vector2(566, 10)
+shape = SubResource("RectangleShape2D_0henf")
+
 [node name="traps" type="Node" parent="." unique_id=55662157]
 
 [node name="trap" parent="traps" unique_id=598011232 instance=ExtResource("3_obo7m")]
-visible = false
 modulate = Color(0.4627451, 0.25490198, 0.011764706, 1)
 position = Vector2(345, 378)
 scale = Vector2(0.13, 0.13)
@@ -275,7 +345,6 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="trap2" parent="traps" unique_id=832446659 instance=ExtResource("3_obo7m")]
-visible = false
 modulate = Color(0.4627451, 0.25490198, 0.011764706, 1)
 position = Vector2(557, 378)
 scale = Vector2(0.13, 0.13)
@@ -283,7 +352,6 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="trap3" parent="traps" unique_id=965893310 instance=ExtResource("3_obo7m")]
-visible = false
 modulate = Color(0.4627451, 0.25490198, 0.011764706, 1)
 position = Vector2(972, 378)
 scale = Vector2(0.13, 0.13)
@@ -298,15 +366,53 @@ position = Vector2(326, 388)
 [node name="floor 4" type="Marker2D" parent="markers" unique_id=1026485638]
 position = Vector2(662, 388)
 
+[node name="New floor 3" type="Marker2D" parent="markers" unique_id=1722704343]
+position = Vector2(757, 388)
+
+[node name="side collision" type="Node" parent="." unique_id=1936332890]
+
+[node name="col" type="StaticBody2D" parent="side collision" unique_id=343752552]
+position = Vector2(787, 378)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="side collision/col" unique_id=784412256]
+position = Vector2(8.5, -54.5)
+shape = SubResource("RectangleShape2D_64x12")
+disabled = true
+
+[node name="death" type="Area2D" parent="side collision" unique_id=2048110716]
+position = Vector2(787, 399)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="side collision/death" unique_id=2121513694]
+position = Vector2(9.5, 119.5)
+shape = SubResource("RectangleShape2D_hthss")
+
+[node name="death2" type="Area2D" parent="side collision" unique_id=265662129]
+position = Vector2(226, 399)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="side collision/death2" unique_id=1580213064]
+position = Vector2(9.5, 119.5)
+shape = SubResource("RectangleShape2D_hthss")
+
+[node name="death3" type="Area2D" parent="side collision" unique_id=485354725]
+position = Vector2(566, 399)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="side collision/death3" unique_id=1871282419]
+position = Vector2(9.5, 119.5)
+shape = SubResource("RectangleShape2D_hthss")
+
 [connection signal="body_entered" from="triggers/trap 1 trig" to="." method="_on_trap_1_trig_body_entered"]
 [connection signal="body_entered" from="triggers/floor 1" to="." method="_on_floor_1_body_entered"]
 [connection signal="body_entered" from="triggers/blind 1" to="." method="_on_blind_1_body_entered"]
 [connection signal="body_entered" from="triggers/blind 2" to="." method="_on_blind_2_body_entered"]
-[connection signal="body_entered" from="triggers/death" to="." method="_on_death_body_entered"]
 [connection signal="body_entered" from="triggers/blind 3" to="." method="_on_blind_3_body_entered"]
 [connection signal="body_entered" from="triggers/blind 4" to="." method="_on_blind_4_body_entered"]
 [connection signal="body_entered" from="triggers/blind 5" to="." method="_on_blind_5_body_entered"]
 [connection signal="body_entered" from="triggers/trap 3 trig" to="." method="_on_trap_3_trig_body_entered"]
 [connection signal="body_entered" from="triggers/Next Floor" to="." method="_on_next_floor_body_entered"]
+[connection signal="body_entered" from="triggers/new floor 3" to="." method="_on_new_floor_3_body_entered"]
+[connection signal="body_entered" from="triggers/death" to="." method="_on_death_body_entered"]
+[connection signal="body_entered" from="side collision/death" to="." method="_on_death_body_entered"]
+[connection signal="body_entered" from="side collision/death2" to="." method="_on_death_2_body_entered"]
+[connection signal="body_entered" from="side collision/death3" to="." method="_on_death_body_entered"]
 
 [editable path="CanvasLayer"]

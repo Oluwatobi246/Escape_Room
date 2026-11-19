@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var player: CharacterBody2D = $player
 @onready var traps: Node = $traps
+@onready var next_floor: Node2D = $"Next Floor"
 
 
 
@@ -18,8 +19,16 @@ func _ready() -> void:
 	$traps/trap3.hide()
 	$traps/trap3.set_deferred("monitoring", false)
 	
+	$"triggers/new floor 3".set_deferred("monitoring", false)
 	
-
+	for n_f in next_floor.get_children():
+		n_f.hide()
+		n_f.get_node("CollisionShape2D").set_deferred("disabled", true)
+	
+	$"Next Floor/floor 1".show()
+	$"Next Floor/floor 1".get_node("CollisionShape2D").set_deferred("disabled", false)
+	
+	
 func _on_blind_1_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
@@ -120,6 +129,7 @@ func _on_next_floor_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
 	
+	player.hide()
 	$"triggers/Next Floor/CollisionShape2D".set_deferred("disabled", true)
 	
 	$floor.queue_free()
@@ -127,6 +137,12 @@ func _on_next_floor_body_entered(body: Node2D) -> void:
 		trap.hide()
 		trap.set_deferred("monitoring", false)
 	
+	for n_f in next_floor.get_children():
+		n_f.show()
+		n_f.get_node("CollisionShape2D").set_deferred("disabled", false)
+	
+	for trigger in $triggers.get_children().slice(0,9):
+		trigger.hide()
 
 
 func _on_blind_5_body_entered(body: Node2D) -> void:
@@ -136,3 +152,28 @@ func _on_blind_5_body_entered(body: Node2D) -> void:
 	$"triggers/blind 5/CollisionShape2D".set_deferred("disabled", true)
 	
 	player.hide()
+
+
+func _on_new_floor_3_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$"triggers/new floor 3/CollisionShape2D".set_deferred("disabled", true)
+	
+	var new_floor_3 = $"Next Floor/floor 3".global_position.x
+	player.show()
+	
+	var tween = create_tween()
+	tween.tween_property($"Next Floor/floor 3", "global_position:x", $"markers/New floor 3", 0.2)
+	
+	await tween.finished
+	
+	await get_tree().create_timer(1.5, false).timeout
+	
+	var return_tween = create_tween()
+	return_tween.tween_property($"Next Floor/floor 3", "global_position:x", new_floor_3, 0.2)
+	
+
+
+func _on_death_2_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
