@@ -69,6 +69,7 @@
 [ext_resource type="Texture2D" uid="uid://b606npbm5dumf" path="res://hover levels/level 14 hover.png" id="66_oxhpf"]
 [ext_resource type="BitMap" uid="uid://crclpilr6k64t" path="res://bitmap/level bitmap/level 14 bitmap.png" id="67_i2g2e"]
 [ext_resource type="Texture2D" uid="uid://bh6r745uk7kav" path="res://hover levels/level 15 hover.png" id="68_mjhkg"]
+[ext_resource type="Texture2D" uid="uid://dorqc46sv7vmm" path="res://level buttons/level 15 bitmap.png" id="68_oxhpf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_avv75"]
 animations = [{
@@ -511,9 +512,9 @@ stretch_mode = 0
 
 [node name="level 14" type="TextureButton" parent="level panel/levels" unique_id=366549702]
 layout_mode = 0
-offset_left = 153.0
+offset_left = 348.0
 offset_top = 206.0
-offset_right = 282.0
+offset_right = 477.0
 offset_bottom = 294.0
 texture_normal = ExtResource("65_h27en")
 texture_pressed = ExtResource("66_oxhpf")
@@ -524,10 +525,11 @@ stretch_mode = 0
 
 [node name="level 15" type="TextureButton" parent="level panel/levels" unique_id=163830973]
 layout_mode = 0
-offset_left = 153.0
+offset_left = 445.0
 offset_top = 206.0
-offset_right = 282.0
+offset_right = 574.0
 offset_bottom = 294.0
+texture_normal = ExtResource("68_oxhpf")
 texture_pressed = ExtResource("68_mjhkg")
 texture_hover = ExtResource("68_mjhkg")
 texture_click_mask = ExtResource("61_qgn4h")
@@ -555,3 +557,5 @@ autoplay = true
 [connection signal="pressed" from="level panel/levels/level 11" to="." method="_on_level_11_pressed"]
 [connection signal="pressed" from="level panel/levels/level 12" to="." method="_on_level_12_pressed"]
 [connection signal="pressed" from="level panel/levels/level 13" to="." method="_on_level_13_pressed"]
+[connection signal="pressed" from="level panel/levels/level 14" to="." method="_on_level_14_pressed"]
+[connection signal="pressed" from="level panel/levels/level 15" to="." method="_on_level_15_pressed"]
