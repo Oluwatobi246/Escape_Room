@@ -8,6 +8,16 @@ extends Node2D
 
 
 func _ready() -> void:
+	for trigger in $triggers.get_children().slice(0,9):
+		trigger.hide()
+		trigger.set_deferred("monitoring", false)
+	
+	for trap in $traps.get_children():
+		trap.hide()
+		trap.set_deferred("monitoring", false)
+	
+	$"triggers/Next Floor".set_deferred("monitoring", true)
+	
 	$traps/trap.hide()
 	$traps/trap.set_deferred("monitoring", false)
 
@@ -27,8 +37,8 @@ func _ready() -> void:
 	
 	$"Next Floor/floor 1".show()
 	$"Next Floor/floor 1".get_node("CollisionShape2D").set_deferred("disabled", false)
-	
-	
+
+
 func _on_blind_1_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
@@ -130,6 +140,8 @@ func _on_next_floor_body_entered(body: Node2D) -> void:
 		return
 	
 	player.hide()
+	$"side collision/col/CollisionShape2D".set_deferred("disabled", false)
+	$"triggers/new floor 3".set_deferred("monitoring", true)
 	$"triggers/Next Floor/CollisionShape2D".set_deferred("disabled", true)
 	
 	$floor.queue_free()
@@ -159,12 +171,11 @@ func _on_new_floor_3_body_entered(body: Node2D) -> void:
 		return
 	
 	$"triggers/new floor 3/CollisionShape2D".set_deferred("disabled", true)
-	
-	var new_floor_3 = $"Next Floor/floor 3".global_position.x
 	player.show()
-	
+	var new_floor_3 = $"Next Floor/floor 3".global_position.x
+
 	var tween = create_tween()
-	tween.tween_property($"Next Floor/floor 3", "global_position:x", $"markers/New floor 3", 0.2)
+	tween.tween_property($"Next Floor/floor 3", "global_position:x", $"markers/New floor 3".global_position.x, 0.2)
 	
 	await tween.finished
 	
@@ -173,7 +184,79 @@ func _on_new_floor_3_body_entered(body: Node2D) -> void:
 	var return_tween = create_tween()
 	return_tween.tween_property($"Next Floor/floor 3", "global_position:x", new_floor_3, 0.2)
 	
-
-
+	await return_tween.finished
+	
+	$"side collision/col/CollisionShape2D".set_deferred("disabled", true)
+	
+	
 func _on_death_2_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	if body.has_method("die"):
+		body.die()
+
+func _on_death_3_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	if body.has_method("die"):
+		body.die()
+
+func _on_death_4_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	if body.has_method("die"):
+		body.die()
+
+
+func _on_blind_6_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$"triggers 2/blind 6".set_deferred("disabled", true)
+	
+	player.hide()
+
+
+func _on_trap_4_trig_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$"triggers 2/trap 4 trig/CollisionShape2D".set_deferred("disabled", true)
+	
+	player.show()
+	
+	$traps/trap4.show()
+
+
+func _on_trap_5_trig_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$"triggers 2/trap 5 trig/CollisionShape2D".set_deferred("disabled", true)
+	
+	player.hide()
+	$traps/trap5.show()
+
+
+func _on_trap_6_trig_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$"triggers 2/trap 6 trig/CollisionShape2D".set_deferred("disabled", true)
+	
+	player.show()
+	$traps/trap6.show()
+
+
+func _on_trap_7_trig_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$"triggers 2/trap 7 trig/CollisionShape2D".set_deferred("disabled", true)
+	
+	player.hide()
+	$traps/trap7.show()
+	
