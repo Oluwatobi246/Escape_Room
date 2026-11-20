@@ -1,21 +1,14 @@
 extends Node2D
 
 @onready var player: CharacterBody2D = $player
-@onready var traps: Node = $traps
+@onready var traps: Node2D = $traps
 @onready var next_floor: Node2D = $"Next Floor"
+@onready var triggers_2: Node2D = $"triggers 2"
 
 
 
 
 func _ready() -> void:
-	for trigger in $triggers.get_children().slice(0,9):
-		trigger.hide()
-		trigger.set_deferred("monitoring", false)
-	
-	for trap in $traps.get_children():
-		trap.hide()
-		trap.set_deferred("monitoring", false)
-	
 	$"triggers/Next Floor".set_deferred("monitoring", true)
 	
 	$traps/trap.hide()
@@ -37,7 +30,17 @@ func _ready() -> void:
 	
 	$"Next Floor/floor 1".show()
 	$"Next Floor/floor 1".get_node("CollisionShape2D").set_deferred("disabled", false)
-
+	
+	for trigger_2 in triggers_2.get_children():
+		trigger_2.hide()
+		trigger_2.set_deferred("monitoring", false)
+	
+	for trap in traps.get_children().slice(3, 7):
+		trap.hide()
+		trap.set_deferred("monitoring", false)
+		
+	$door.hide()
+	$door.set_deferred("monitoring", false)
 
 func _on_blind_1_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
@@ -156,7 +159,16 @@ func _on_next_floor_body_entered(body: Node2D) -> void:
 	for trigger in $triggers.get_children().slice(0,9):
 		trigger.hide()
 
-
+	for trap in traps.get_children().slice(3, 7):
+		trap.set_deferred("monitoring", true)
+	
+	for trigger_2 in triggers_2.get_children():
+		trigger_2.show()
+		trigger_2.set_deferred("monitoring", true)
+	
+	$door.show()
+	$door.set_deferred("monitoring", true)
+		
 func _on_blind_5_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
@@ -260,3 +272,12 @@ func _on_trap_7_trig_body_entered(body: Node2D) -> void:
 	player.hide()
 	$traps/trap7.show()
 	
+
+
+func _on_blind_7_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$"triggers 2/blind 7/CollisionShape2D".set_deferred("disabled", true)
+	
+	player.show()
