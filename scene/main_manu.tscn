@@ -212,7 +212,6 @@ data = {
 script = ExtResource("1_ftjb1")
 
 [node name="main menu" type="PanelContainer" parent="." unique_id=497396234]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -308,6 +307,7 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="level panel" type="PanelContainer" parent="." unique_id=881545838]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

@@ -1,0 +1,160 @@
+[gd_scene format=3 uid="uid://bvqnvqxev5oa6"]
+
+[ext_resource type="PackedScene" uid="uid://7vsx7vur82p0" path="res://scene/player.tscn" id="1_pamso"]
+[ext_resource type="Script" uid="uid://bq2r5wjdkwn4f" path="res://scripts/level script/levil_15.gd" id="1_tnogb"]
+[ext_resource type="PackedScene" uid="uid://c1bjokt75p354" path="res://scene/canvas_layer.tscn" id="3_kstbo"]
+[ext_resource type="PackedScene" uid="uid://d23ux3gt3doyu" path="res://scene/door.tscn" id="4_c6rum"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ou0g"]
+size = Vector2(193, 126)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2e784"]
+size = Vector2(136, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_153h7"]
+size = Vector2(4, 155)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dcmsc"]
+size = Vector2(0, 645.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uv6xd"]
+size = Vector2(1152, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0qnxq"]
+size = Vector2(1152, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0henf"]
+size = Vector2(11, 17)
+
+[node name="levil_15" type="Node2D" unique_id=750604149]
+script = ExtResource("1_tnogb")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1490696675]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.8761692, 0.38217777, 0.0665019, 1)
+
+[node name="door" parent="." unique_id=1223076365 instance=ExtResource("4_c6rum")]
+position = Vector2(54.999992, 61)
+scale = Vector2(0.7, 0.7)
+collision_layer = 4
+collision_mask = 2
+
+[node name="player" parent="." unique_id=1144730333 instance=ExtResource("1_pamso")]
+position = Vector2(77, 494)
+scale = Vector2(0.6, 0.6)
+collision_layer = 2
+collision_mask = 13
+
+[node name="FLOORS" type="Node2D" parent="." unique_id=510384199]
+
+[node name="floor 1" type="StaticBody2D" parent="FLOORS" unique_id=798197468]
+position = Vector2(0, 426)
+
+[node name="ColorRect2" type="ColorRect" parent="FLOORS/floor 1" unique_id=2103224406]
+offset_top = 97.0
+offset_right = 193.0
+offset_bottom = 223.0
+color = Color(0.2295835, 0.53139687, 0.37622008, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FLOORS/floor 1" unique_id=1089639225]
+position = Vector2(96.5, 160)
+shape = SubResource("RectangleShape2D_1ou0g")
+
+[node name="floor 2" type="StaticBody2D" parent="FLOORS" unique_id=482035030]
+position = Vector2(0, 72)
+
+[node name="ColorRect" type="ColorRect" parent="FLOORS/floor 2" unique_id=316173940]
+offset_top = 9.0
+offset_right = 136.0
+offset_bottom = 65.0
+color = Color(0.23137255, 0.53333336, 0.3764706, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FLOORS/floor 2" unique_id=107496834]
+position = Vector2(68, 37)
+shape = SubResource("RectangleShape2D_2e784")
+
+[node name="TRIGGERS" type="Node" parent="." unique_id=1652677305]
+
+[node name="floor 1 hide" type="Area2D" parent="TRIGGERS" unique_id=458237182]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TRIGGERS/floor 1 hide" unique_id=26120825]
+position = Vector2(235, 441)
+shape = SubResource("RectangleShape2D_153h7")
+
+[node name="WALLS" type="Node" parent="." unique_id=128144236]
+
+[node name="wall 1" type="Area2D" parent="WALLS" unique_id=364504804]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WALLS/wall 1" unique_id=625897047]
+position = Vector2(0, 326.375)
+shape = SubResource("RectangleShape2D_dcmsc")
+
+[node name="wall 2" type="Area2D" parent="WALLS" unique_id=1204676599]
+position = Vector2(1152, 0)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WALLS/wall 2" unique_id=1992823485]
+position = Vector2(0, 326.375)
+shape = SubResource("RectangleShape2D_dcmsc")
+
+[node name="wall 3" type="StaticBody2D" parent="WALLS" unique_id=401208815]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WALLS/wall 3" unique_id=1547428282]
+position = Vector2(576, 0)
+shape = SubResource("RectangleShape2D_uv6xd")
+
+[node name="death" type="Area2D" parent="WALLS" unique_id=1876834958]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WALLS/death" unique_id=464439025]
+position = Vector2(576, 648)
+shape = SubResource("RectangleShape2D_0qnxq")
+
+[node name="CanvasLayer" parent="." unique_id=1030218085 instance=ExtResource("3_kstbo")]
+
+[node name="left" parent="CanvasLayer/MobileButtons" parent_id_path=PackedInt32Array(1030218085, 706401408) index="0" unique_id=1388673800]
+position = Vector2(-103.99999, 468)
+
+[node name="right" parent="CanvasLayer/MobileButtons" parent_id_path=PackedInt32Array(1030218085, 706401408) index="1" unique_id=1738402819]
+position = Vector2(607, 466.00003)
+scale = Vector2(-0.729, 0.625)
+
+[node name="up" parent="CanvasLayer/MobileButtons" parent_id_path=PackedInt32Array(1030218085, 706401408) index="2" unique_id=584869261]
+position = Vector2(1177, 393.00003)
+
+[node name="BOUNCERS" type="Node2D" parent="." unique_id=648137767]
+
+[node name="Bounce 1" type="StaticBody2D" parent="BOUNCERS" unique_id=1663004095]
+position = Vector2(1112, 72)
+
+[node name="ColorRect" type="ColorRect" parent="BOUNCERS/Bounce 1" unique_id=2124050990]
+offset_right = 40.0
+offset_bottom = 65.0
+color = Color(0.23137255, 0.53333336, 0.3764706, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BOUNCERS/Bounce 1" unique_id=1825966157]
+
+[node name="Area2D" type="Area2D" parent="BOUNCERS/Bounce 1" unique_id=1808639201]
+
+[node name="ColorRect2" type="ColorRect" parent="BOUNCERS/Bounce 1/Area2D" unique_id=1961457367]
+offset_left = -11.0
+offset_top = 22.0
+offset_bottom = 39.0
+color = Color(0.23137255, 0.53333336, 0.3764706, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BOUNCERS/Bounce 1/Area2D" unique_id=1372559802]
+position = Vector2(-5.5, 30.5)
+shape = SubResource("RectangleShape2D_0henf")
+
+[connection signal="body_entered" from="WALLS/wall 1" to="." method="_on_wall_1_body_entered"]
+[connection signal="body_entered" from="WALLS/wall 2" to="." method="_on_wall_2_body_entered"]
+[connection signal="body_entered" from="WALLS/death" to="." method="_on_death_body_entered"]
+
+[editable path="CanvasLayer"]
