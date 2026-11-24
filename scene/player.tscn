@@ -92,10 +92,10 @@ func die() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	get_tree().paused = true
-	
+	\"\"\"
 	if owner and owner.has_method(\"stop_level_trap\"):
 		owner.stop_level_trap()
-	
+	\"\"\"
 	await get_tree().create_timer(1.0, true, false, true).timeout
 	
 	
@@ -368,7 +368,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8ie14")
 }],
-"loop": true,
+"loop": 1,
 "name": &"die",
 "speed": 30.0
 }, {
@@ -376,7 +376,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("2_2hs0m")
 }],
-"loop": true,
+"loop": 1,
 "name": &"fall",
 "speed": 5.0
 }, {
@@ -414,7 +414,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2hxjc")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle",
 "speed": 20.0
 }, {
@@ -422,7 +422,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("4_dw050")
 }],
-"loop": true,
+"loop": 1,
 "name": &"jump",
 "speed": 14.0
 }, {
@@ -463,7 +463,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7plk7")
 }],
-"loop": true,
+"loop": 1,
 "name": &"run",
 "speed": 20.0
 }]

@@ -23,6 +23,9 @@ size = Vector2(1152, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0qnxq"]
 size = Vector2(1152, 0)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xaep3"]
+size = Vector2(40, 65)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0henf"]
 size = Vector2(11, 17)
 
@@ -77,6 +80,8 @@ shape = SubResource("RectangleShape2D_2e784")
 [node name="TRIGGERS" type="Node" parent="." unique_id=1652677305]
 
 [node name="floor 1 hide" type="Area2D" parent="TRIGGERS" unique_id=458237182]
+collision_layer = 8
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TRIGGERS/floor 1 hide" unique_id=26120825]
 position = Vector2(235, 441)
@@ -140,19 +145,22 @@ offset_bottom = 65.0
 color = Color(0.23137255, 0.53333336, 0.3764706, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BOUNCERS/Bounce 1" unique_id=1825966157]
+position = Vector2(20, 32.5)
+shape = SubResource("RectangleShape2D_xaep3")
 
-[node name="Area2D" type="Area2D" parent="BOUNCERS/Bounce 1" unique_id=1808639201]
-
-[node name="ColorRect2" type="ColorRect" parent="BOUNCERS/Bounce 1/Area2D" unique_id=1961457367]
+[node name="ColorRect2" type="ColorRect" parent="BOUNCERS/Bounce 1" unique_id=1961457367]
 offset_left = -11.0
 offset_top = 22.0
 offset_bottom = 39.0
 color = Color(0.23137255, 0.53333336, 0.3764706, 1)
 
+[node name="Area2D" type="Area2D" parent="BOUNCERS/Bounce 1" unique_id=1808639201]
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BOUNCERS/Bounce 1/Area2D" unique_id=1372559802]
 position = Vector2(-5.5, 30.5)
 shape = SubResource("RectangleShape2D_0henf")
 
+[connection signal="body_entered" from="TRIGGERS/floor 1 hide" to="." method="_on_floor_1_hide_body_entered"]
 [connection signal="body_entered" from="WALLS/wall 1" to="." method="_on_wall_1_body_entered"]
 [connection signal="body_entered" from="WALLS/wall 2" to="." method="_on_wall_2_body_entered"]
 [connection signal="body_entered" from="WALLS/death" to="." method="_on_death_body_entered"]
