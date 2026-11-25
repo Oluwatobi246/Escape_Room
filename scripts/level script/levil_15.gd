@@ -9,6 +9,9 @@ var hop_direction: float = 1.0
 var hop_forward_speed: float = 300.0 # How far forward each jump tap pushes the player
 var hop_drag: float = 450.0          # How quickly forward speed stops so the player falls straight down
 
+var can_bounce: bool = true
+var wall_bounce_speed: float = 220.0 # Horizontal push away from the wall on bounce
+
 func _physics_process(delta: float) -> void:
 	if not tap_hop_active:
 		return
@@ -49,18 +52,12 @@ func _ready() -> void:
 		bounce.hide()
 		bounce.get_node("CollisionShape2D").set_deferred("disabled", true)
 		bounce.get_node("ColorRect2").hide()
-		if bounce is Area2D:
-			bounce.get_node("Area2D").set_deferred("monitoring", false)
+		for child in bounce.get_children():
+			if child is Area2D:
+				child.set_deferred("monitoring", false)
 		
 
-func reverse_position(Area_block: Area2D) -> void:
-	if player.sprite.flip_h:
-		hop_direction = -1.0
 	
-	else:
-		hop_direction = 1.0
-
-
 func _on_death_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
@@ -107,10 +104,35 @@ func _on_floor_1_hide_body_entered(body: Node2D) -> void:
 	for bounce in bouncers.get_children():
 		bounce.show()
 		bounce.get_node("CollisionShape2D").set_deferred("disabled", false)
-		bounce.get_node("ColorRect2").hide()
-		if bounce is Area2D:
-			bounce.get_node("Area2D").set_deferred("monitoring", false)
+		if bounce.name == "Bounce 1":
+			$"BOUNCERS/Bounce 1/ColorRect2".show()
+			for child in bounce.get_children():
+				if child is Area2D:
+					child.set_deferred("monitoring", true)
+		
+		else:
+			bounce.get_node("ColorRect2").hide()
+		
+
+func bounce_player() -> void:
+	if not tap_hop_active or not can_bounce:
+		return
 	
+	can_bounce = true
+	
+	hop_direction = -hop_direction
+	
+	player.sprite.flip_h = (hop_direction < 0)
+	
+	player.velocity.y = player.JUMP_VELOCITY
+	player.velocity.x = hop_direction * wall_bounce_speed
+	
+	# 5. Wait 0.2 seconds so the player clears the wall, then unlock for future bounces
+	await get_tree().create_timer(0.2, false).timeout
+	can_bounce = true
 
 func _on_bounce_1_body_entered(body: Node2D) -> void:
-	pass
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+
+	bounce_player()
