@@ -1,11 +1,12 @@
 extends Node2D
 
 @onready var player: CharacterBody2D = $player
+@onready var bouncers: Node2D = $BOUNCERS
 
 
 var tap_hop_active: bool = false
 var hop_direction: float = 1.0
-var hop_forward_speed: float = 180.0 # How far forward each jump tap pushes the player
+var hop_forward_speed: float = 300.0 # How far forward each jump tap pushes the player
 var hop_drag: float = 450.0          # How quickly forward speed stops so the player falls straight down
 
 func _physics_process(delta: float) -> void:
@@ -43,6 +44,22 @@ func _physics_process(delta: float) -> void:
 func _ready() -> void:
 	$door.set_deferred("monitoring", false)
 	$door.hide()
+	
+	for bounce in bouncers.get_children():
+		bounce.hide()
+		bounce.get_node("CollisionShape2D").set_deferred("disabled", true)
+		bounce.get_node("ColorRect2").hide()
+		if bounce is Area2D:
+			bounce.get_node("Area2D").set_deferred("monitoring", false)
+		
+
+func reverse_position(Area_block: Area2D) -> void:
+	if player.sprite.flip_h:
+		hop_direction = -1.0
+	
+	else:
+		hop_direction = 1.0
+
 
 func _on_death_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
@@ -83,3 +100,17 @@ func _on_floor_1_hide_body_entered(body: Node2D) -> void:
 	
 	player.run_sfx.stop()
 	player.set_physics_process(false)
+	
+	$"FLOORS/floor 1".get_node("CollisionShape2D").set_deferred("disabled", true)
+	$"FLOORS/floor 1".hide()
+	
+	for bounce in bouncers.get_children():
+		bounce.show()
+		bounce.get_node("CollisionShape2D").set_deferred("disabled", false)
+		bounce.get_node("ColorRect2").hide()
+		if bounce is Area2D:
+			bounce.get_node("Area2D").set_deferred("monitoring", false)
+	
+
+func _on_bounce_1_body_entered(body: Node2D) -> void:
+	pass

@@ -154,9 +154,115 @@ offset_top = 22.0
 offset_bottom = 39.0
 color = Color(0.23137255, 0.53333336, 0.3764706, 1)
 
-[node name="Area2D" type="Area2D" parent="BOUNCERS/Bounce 1" unique_id=1808639201]
+[node name="bounce 1" type="Area2D" parent="BOUNCERS/Bounce 1" unique_id=1808639201]
+collision_layer = 8
+collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BOUNCERS/Bounce 1/Area2D" unique_id=1372559802]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BOUNCERS/Bounce 1/bounce 1" unique_id=1372559802]
+position = Vector2(-5.5, 30.5)
+shape = SubResource("RectangleShape2D_0henf")
+
+[node name="Bounce 2" type="StaticBody2D" parent="BOUNCERS" unique_id=435676897]
+position = Vector2(1112, 238)
+
+[node name="ColorRect" type="ColorRect" parent="BOUNCERS/Bounce 2" unique_id=156442606]
+offset_right = 40.0
+offset_bottom = 65.0
+color = Color(0.23137255, 0.53333336, 0.3764706, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BOUNCERS/Bounce 2" unique_id=646112331]
+position = Vector2(20, 32.5)
+shape = SubResource("RectangleShape2D_xaep3")
+
+[node name="ColorRect2" type="ColorRect" parent="BOUNCERS/Bounce 2" unique_id=203711196]
+offset_left = -11.0
+offset_top = 22.0
+offset_bottom = 39.0
+color = Color(0.23137255, 0.53333336, 0.3764706, 1)
+
+[node name="bounce 2" type="Area2D" parent="BOUNCERS/Bounce 2" unique_id=1464812949]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BOUNCERS/Bounce 2/bounce 2" unique_id=1548380675]
+position = Vector2(-5.5, 30.5)
+shape = SubResource("RectangleShape2D_0henf")
+
+[node name="Bounce 3" type="StaticBody2D" parent="BOUNCERS" unique_id=1166805294]
+position = Vector2(1112, 426)
+
+[node name="ColorRect" type="ColorRect" parent="BOUNCERS/Bounce 3" unique_id=1773424833]
+offset_right = 40.0
+offset_bottom = 65.0
+color = Color(0.23137255, 0.53333336, 0.3764706, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BOUNCERS/Bounce 3" unique_id=1883108064]
+position = Vector2(20, 32.5)
+shape = SubResource("RectangleShape2D_xaep3")
+
+[node name="ColorRect2" type="ColorRect" parent="BOUNCERS/Bounce 3" unique_id=104855314]
+offset_left = -11.0
+offset_top = 22.0
+offset_bottom = 39.0
+color = Color(0.23137255, 0.53333336, 0.3764706, 1)
+
+[node name="bounce 3" type="Area2D" parent="BOUNCERS/Bounce 3" unique_id=1509691898]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BOUNCERS/Bounce 3/bounce 3" unique_id=921428793]
+position = Vector2(-5.5, 30.5)
+shape = SubResource("RectangleShape2D_0henf")
+
+[node name="Bounce 4" type="StaticBody2D" parent="BOUNCERS" unique_id=434710676]
+position = Vector2(40, 426)
+scale = Vector2(-1, 1)
+
+[node name="ColorRect" type="ColorRect" parent="BOUNCERS/Bounce 4" unique_id=118134786]
+offset_right = 40.0
+offset_bottom = 65.0
+color = Color(0.23137255, 0.53333336, 0.3764706, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BOUNCERS/Bounce 4" unique_id=2021915937]
+position = Vector2(20, 32.5)
+shape = SubResource("RectangleShape2D_xaep3")
+
+[node name="ColorRect2" type="ColorRect" parent="BOUNCERS/Bounce 4" unique_id=1779770260]
+offset_left = -11.0
+offset_top = 22.0
+offset_bottom = 39.0
+color = Color(0.23137255, 0.53333336, 0.3764706, 1)
+
+[node name="bounce 4" type="Area2D" parent="BOUNCERS/Bounce 4" unique_id=155142370]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BOUNCERS/Bounce 4/bounce 4" unique_id=1726017436]
+position = Vector2(-5.5, 30.5)
+shape = SubResource("RectangleShape2D_0henf")
+
+[node name="Bounce 5" type="StaticBody2D" parent="BOUNCERS" unique_id=443928625]
+position = Vector2(40, 238)
+scale = Vector2(-1, 1)
+
+[node name="ColorRect" type="ColorRect" parent="BOUNCERS/Bounce 5" unique_id=1774219847]
+offset_right = 40.0
+offset_bottom = 65.0
+color = Color(0.23137255, 0.53333336, 0.3764706, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BOUNCERS/Bounce 5" unique_id=1504288647]
+position = Vector2(20, 32.5)
+shape = SubResource("RectangleShape2D_xaep3")
+
+[node name="ColorRect2" type="ColorRect" parent="BOUNCERS/Bounce 5" unique_id=1381363245]
+offset_left = -11.0
+offset_top = 22.0
+offset_bottom = 39.0
+color = Color(0.23137255, 0.53333336, 0.3764706, 1)
+
+[node name="bounce 5" type="Area2D" parent="BOUNCERS/Bounce 5" unique_id=1060424880]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BOUNCERS/Bounce 5/bounce 5" unique_id=193302069]
 position = Vector2(-5.5, 30.5)
 shape = SubResource("RectangleShape2D_0henf")
 
@@ -164,5 +270,6 @@ shape = SubResource("RectangleShape2D_0henf")
 [connection signal="body_entered" from="WALLS/wall 1" to="." method="_on_wall_1_body_entered"]
 [connection signal="body_entered" from="WALLS/wall 2" to="." method="_on_wall_2_body_entered"]
 [connection signal="body_entered" from="WALLS/death" to="." method="_on_death_body_entered"]
+[connection signal="body_entered" from="BOUNCERS/Bounce 1/bounce 1" to="." method="_on_bounce_1_body_entered"]
 
 [editable path="CanvasLayer"]
