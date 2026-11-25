@@ -18,7 +18,10 @@ var bounce_3_hit: int = 0
 var bounce_4_hit: int = 0 
 var bounce_5_hit: int = 0 
 
-
+func die() -> void:
+	if player.has_method("die"):
+		player.die()
+		
 func _physics_process(delta: float) -> void:
 	if not tap_hop_active:
 		return
@@ -134,10 +137,11 @@ func bounce_player(current_bounce: StaticBody2D,next_bounce: StaticBody2D) -> vo
 	player.velocity.x = hop_direction * wall_bounce_speed
 	player.velocity.y = player.JUMP_VELOCITY
 	
-	current_bounce.get_node("ColorRect2").hide()
-	for child in current_bounce.get_children():
-		if child is Area2D:
-			child.set_deferred("monitoring", false)
+	if current_bounce != null:
+		current_bounce.get_node("ColorRect2").hide()
+		for child in current_bounce.get_children():
+			if child is Area2D:
+				child.set_deferred("monitoring", false)
 	
 	if next_bounce != null:
 		next_bounce.get_node("ColorRect2").show()
@@ -163,8 +167,26 @@ func _on_bounce_5_body_entered(body: Node2D) -> void:
 		return
 	
 	bounce_5_hit += 1
+	
 	if bounce_5_hit == 1:
 		bounce_player($"BOUNCERS/Bounce 5", $"BOUNCERS/Bounce 3")
+		$"TRIGGERS/bounce 2_1 open/CollisionShape2D".set_deferred("disabled", false)
+
+func _on_bounce_3_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
 	
+	bounce_3_hit += 1
+	if bounce_3_hit == 1:
+		bounce_player($"BOUNCERS/Bounce 3", null)
+		die()
+
+func _on_bounce_2_1_open_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
 	
-	
+	for bounce_2 in $"BOUNCERS/Bounce 2".get_children():
+ 		for child in bounce_2:
+			child.get_node("ColorRect2").show()
+			if child is Area2D:
+				child.set_deferred("monitoring", true)

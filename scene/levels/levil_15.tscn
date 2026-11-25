@@ -14,6 +14,9 @@ size = Vector2(136, 56)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_153h7"]
 size = Vector2(4, 155)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iiuq5"]
+size = Vector2(16, 267)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dcmsc"]
 size = Vector2(0, 645.25)
 
@@ -86,6 +89,15 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TRIGGERS/floor 1 hide" unique_id=26120825]
 position = Vector2(235, 441)
 shape = SubResource("RectangleShape2D_153h7")
+
+[node name="bounce 2_1 open" type="Area2D" parent="TRIGGERS" unique_id=1532563001]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TRIGGERS/bounce 2_1 open" unique_id=1218810614]
+position = Vector2(987, 368.5)
+shape = SubResource("RectangleShape2D_iiuq5")
+disabled = true
 
 [node name="WALLS" type="Node" parent="." unique_id=128144236]
 
@@ -261,16 +273,20 @@ offset_bottom = 39.0
 color = Color(0.23137255, 0.53333336, 0.3764706, 1)
 
 [node name="bounce 5" type="Area2D" parent="BOUNCERS/Bounce 5" unique_id=1060424880]
+collision_layer = 8
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BOUNCERS/Bounce 5/bounce 5" unique_id=193302069]
 position = Vector2(-5.5, 30.5)
 shape = SubResource("RectangleShape2D_0henf")
 
 [connection signal="body_entered" from="TRIGGERS/floor 1 hide" to="." method="_on_floor_1_hide_body_entered"]
+[connection signal="body_entered" from="TRIGGERS/bounce 2_1 open" to="." method="_on_bounce_2_1_open_body_entered"]
 [connection signal="body_entered" from="WALLS/wall 1" to="." method="_on_wall_1_body_entered"]
 [connection signal="body_entered" from="WALLS/wall 2" to="." method="_on_wall_2_body_entered"]
 [connection signal="body_entered" from="WALLS/death" to="." method="_on_death_body_entered"]
 [connection signal="body_entered" from="BOUNCERS/Bounce 1/bounce 1" to="." method="_on_bounce_1_body_entered"]
+[connection signal="body_entered" from="BOUNCERS/Bounce 3/bounce 3" to="." method="_on_bounce_3_body_entered"]
 [connection signal="body_entered" from="BOUNCERS/Bounce 5/bounce 5" to="." method="_on_bounce_5_body_entered"]
 
 [editable path="CanvasLayer"]
