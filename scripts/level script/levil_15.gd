@@ -124,7 +124,7 @@ func _on_floor_1_hide_body_entered(body: Node2D) -> void:
 			bounce.get_node("ColorRect2").hide()
 		
 
-func bounce_player(current_bounce: StaticBody2D,next_bounce: StaticBody2D) -> void:
+func bounce_player(current_bounce: StaticBody2D,next_bounce: StaticBody2D, extra_off_bounce: StaticBody2D) -> void:
 	if not tap_hop_active or not can_bounce:
 		return
 	
@@ -143,6 +143,12 @@ func bounce_player(current_bounce: StaticBody2D,next_bounce: StaticBody2D) -> vo
 			if child is Area2D:
 				child.set_deferred("monitoring", false)
 	
+	if extra_off_bounce != null:
+		extra_off_bounce.get_node("ColorRect2").hide()
+		for child in extra_off_bounce.get_children():
+			if child is Area2D:
+				child.set_deferred("monitoring", false)
+				
 	if next_bounce != null:
 		next_bounce.get_node("ColorRect2").show()
 		for child in next_bounce.get_children():
@@ -160,7 +166,7 @@ func _on_bounce_1_body_entered(body: Node2D) -> void:
 	
 	bounce_1_hit += 1
 	if bounce_1_hit == 1:
-		bounce_player($"BOUNCERS/Bounce 1",$"BOUNCERS/Bounce 5")
+		bounce_player($"BOUNCERS/Bounce 1",$"BOUNCERS/Bounce 5", null)
 	
 func _on_bounce_5_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
@@ -169,24 +175,62 @@ func _on_bounce_5_body_entered(body: Node2D) -> void:
 	bounce_5_hit += 1
 	
 	if bounce_5_hit == 1:
-		bounce_player($"BOUNCERS/Bounce 5", $"BOUNCERS/Bounce 3")
+		bounce_player($"BOUNCERS/Bounce 5", $"BOUNCERS/Bounce 3", null)
 		$"TRIGGERS/bounce 2_1 open/CollisionShape2D".set_deferred("disabled", false)
-
+	
+	if bounce_5_hit == 2:
+		pass
+	
 func _on_bounce_3_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
 	
 	bounce_3_hit += 1
+	
 	if bounce_3_hit == 1:
-		bounce_player($"BOUNCERS/Bounce 3", null)
+		bounce_player($"BOUNCERS/Bounce 3", null, null)
 		die()
 
 func _on_bounce_2_1_open_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
+		
+	$"TRIGGERS/bounce 2_1 open/CollisionShape2D".set_deferred("disabled", true)
+	for bounce_2 in bouncers.get_node("Bounce 2").get_children():
+		if bounce_2.name == "ColorRect2":
+			bounce_2.show()
+		
+		if bounce_2 is Area2D:
+			bounce_2.set_deferred("monitoring", true)
+
+
+func _on_bounce_2_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
 	
-	for bounce_2 in $"BOUNCERS/Bounce 2".get_children():
- 		for child in bounce_2:
-			child.get_node("ColorRect2").show()
-			if child is Area2D:
-				child.set_deferred("monitoring", true)
+	bounce_2_hit += 1
+	
+	if bounce_2_hit == 1:
+		bounce_player($"BOUNCERS/Bounce 2", $"BOUNCERS/Bounce 4", $"BOUNCERS/Bounce 3")
+		$"TRIGGERS/BS 5_1 open/CollisionShape2D".set_deferred("disabled", false)
+
+func _on_bs_5_1_open_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$"TRIGGERS/B5 5.1 open/CollisionShape2D".set_deferred("disabled", true)
+	$"BOUNCERS/Bounce 5/ColorRect2".show()
+	for child in $"BOUNCERS/Bounce 5".get_children():
+		if child is Area2D:
+			child.set_deferred("monitoring", true)
+
+
+func _on_bounce_4_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	bounce_4_hit += 1
+	
+	if bounce_4_hit == 1:
+		bounce_player($"BOUNCERS/Bounce 4", null, null)
+		die()

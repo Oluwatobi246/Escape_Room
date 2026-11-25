@@ -17,6 +17,9 @@ size = Vector2(4, 155)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iiuq5"]
 size = Vector2(16, 267)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hjc3f"]
+size = Vector2(10, 256)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dcmsc"]
 size = Vector2(0, 645.25)
 
@@ -98,6 +101,16 @@ collision_mask = 2
 position = Vector2(987, 368.5)
 shape = SubResource("RectangleShape2D_iiuq5")
 disabled = true
+
+[node name="BS 5_1 open" type="Area2D" parent="TRIGGERS" unique_id=1889518112]
+position = Vector2(97, 355)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TRIGGERS/BS 5_1 open" unique_id=1304466031]
+position = Vector2(-5, 12)
+shape = SubResource("RectangleShape2D_hjc3f")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="TRIGGERS" unique_id=416277378]
 
 [node name="WALLS" type="Node" parent="." unique_id=128144236]
 
@@ -280,13 +293,21 @@ collision_mask = 2
 position = Vector2(-5.5, 30.5)
 shape = SubResource("RectangleShape2D_0henf")
 
+[node name="MARKERS" type="Node" parent="." unique_id=590162540]
+
+[node name="bounce 1 SP" type="Marker2D" parent="MARKERS" unique_id=125811316]
+position = Vector2(1164, 72)
+
 [connection signal="body_entered" from="TRIGGERS/floor 1 hide" to="." method="_on_floor_1_hide_body_entered"]
 [connection signal="body_entered" from="TRIGGERS/bounce 2_1 open" to="." method="_on_bounce_2_1_open_body_entered"]
+[connection signal="body_entered" from="TRIGGERS/BS 5_1 open" to="." method="_on_bs_5_1_open_body_entered"]
 [connection signal="body_entered" from="WALLS/wall 1" to="." method="_on_wall_1_body_entered"]
 [connection signal="body_entered" from="WALLS/wall 2" to="." method="_on_wall_2_body_entered"]
 [connection signal="body_entered" from="WALLS/death" to="." method="_on_death_body_entered"]
 [connection signal="body_entered" from="BOUNCERS/Bounce 1/bounce 1" to="." method="_on_bounce_1_body_entered"]
+[connection signal="body_entered" from="BOUNCERS/Bounce 2/bounce 2" to="." method="_on_bounce_2_body_entered"]
 [connection signal="body_entered" from="BOUNCERS/Bounce 3/bounce 3" to="." method="_on_bounce_3_body_entered"]
+[connection signal="body_entered" from="BOUNCERS/Bounce 4/bounce 4" to="." method="_on_bounce_4_body_entered"]
 [connection signal="body_entered" from="BOUNCERS/Bounce 5/bounce 5" to="." method="_on_bounce_5_body_entered"]
 
 [editable path="CanvasLayer"]
