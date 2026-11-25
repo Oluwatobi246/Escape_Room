@@ -271,5 +271,6 @@ shape = SubResource("RectangleShape2D_0henf")
 [connection signal="body_entered" from="WALLS/wall 2" to="." method="_on_wall_2_body_entered"]
 [connection signal="body_entered" from="WALLS/death" to="." method="_on_death_body_entered"]
 [connection signal="body_entered" from="BOUNCERS/Bounce 1/bounce 1" to="." method="_on_bounce_1_body_entered"]
+[connection signal="body_entered" from="BOUNCERS/Bounce 5/bounce 5" to="." method="_on_bounce_5_body_entered"]
 
 [editable path="CanvasLayer"]

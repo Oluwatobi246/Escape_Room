@@ -12,6 +12,13 @@ var hop_drag: float = 450.0          # How quickly forward speed stops so the pl
 var can_bounce: bool = true
 var wall_bounce_speed: float = 220.0 # Horizontal push away from the wall on bounce
 
+var bounce_1_hit: int = 0 
+var bounce_2_hit: int = 0 
+var bounce_3_hit: int = 0 
+var bounce_4_hit: int = 0 
+var bounce_5_hit: int = 0 
+
+
 func _physics_process(delta: float) -> void:
 	if not tap_hop_active:
 		return
@@ -114,25 +121,50 @@ func _on_floor_1_hide_body_entered(body: Node2D) -> void:
 			bounce.get_node("ColorRect2").hide()
 		
 
-func bounce_player() -> void:
+func bounce_player(current_bounce: StaticBody2D,next_bounce: StaticBody2D) -> void:
 	if not tap_hop_active or not can_bounce:
 		return
 	
-	can_bounce = true
+	can_bounce = false
 	
 	hop_direction = -hop_direction
 	
 	player.sprite.flip_h = (hop_direction < 0)
 	
-	player.velocity.y = player.JUMP_VELOCITY
 	player.velocity.x = hop_direction * wall_bounce_speed
+	player.velocity.y = player.JUMP_VELOCITY
 	
+	current_bounce.get_node("ColorRect2").hide()
+	for child in current_bounce.get_children():
+		if child is Area2D:
+			child.set_deferred("monitoring", false)
+	
+	if next_bounce != null:
+		next_bounce.get_node("ColorRect2").show()
+		for child in next_bounce.get_children():
+			if child is Area2D:
+				child.set_deferred("monitoring", true)
+						
 	# 5. Wait 0.2 seconds so the player clears the wall, then unlock for future bounces
 	await get_tree().create_timer(0.2, false).timeout
 	can_bounce = true
-
+	
+	
 func _on_bounce_1_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
-
-	bounce_player()
+	
+	bounce_1_hit += 1
+	if bounce_1_hit == 1:
+		bounce_player($"BOUNCERS/Bounce 1",$"BOUNCERS/Bounce 5")
+	
+func _on_bounce_5_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	bounce_5_hit += 1
+	if bounce_5_hit == 1:
+		bounce_player($"BOUNCERS/Bounce 5", $"BOUNCERS/Bounce 3")
+	
+	
+	
