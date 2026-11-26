@@ -26,6 +26,9 @@ size = Vector2(40, 26)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tsv68"]
 size = Vector2(7, 285)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p06v0"]
+size = Vector2(9, 260)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dcmsc"]
 size = Vector2(0, 645.25)
 
@@ -119,6 +122,7 @@ shape = SubResource("RectangleShape2D_hjc3f")
 disabled = true
 
 [node name="BS 1 right" type="Area2D" parent="TRIGGERS" unique_id=416277378]
+visible = false
 position = Vector2(524, 0)
 collision_layer = 8
 collision_mask = 2
@@ -141,6 +145,16 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TRIGGERS/BS 1 right open" unique_id=1715462181]
 position = Vector2(-6.5, 56.5)
 shape = SubResource("RectangleShape2D_tsv68")
+disabled = true
+
+[node name="BS 3 move" type="Area2D" parent="TRIGGERS" unique_id=210377965]
+position = Vector2(1034, 246)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TRIGGERS/BS 3 move" unique_id=492731989]
+position = Vector2(5.5, 120)
+shape = SubResource("RectangleShape2D_p06v0")
 disabled = true
 
 [node name="WALLS" type="Node" parent="." unique_id=128144236]
@@ -327,14 +341,15 @@ shape = SubResource("RectangleShape2D_0henf")
 
 [node name="MARKERS" type="Node" parent="." unique_id=590162540]
 
-[node name="bounce 1 SP" type="Marker2D" parent="MARKERS" unique_id=125811316]
-position = Vector2(1164, 72)
+[node name="bounce 2 SP" type="Marker2D" parent="MARKERS" unique_id=125811316]
+position = Vector2(1164, 238)
 
 [connection signal="body_entered" from="TRIGGERS/floor 1 hide" to="." method="_on_floor_1_hide_body_entered"]
 [connection signal="body_entered" from="TRIGGERS/bounce 2_1 open" to="." method="_on_bounce_2_1_open_body_entered"]
 [connection signal="body_entered" from="TRIGGERS/BS 5_1 open" to="." method="_on_bs_5_1_open_body_entered"]
 [connection signal="body_entered" from="TRIGGERS/BS 1 right" to="." method="_on_bs_1_right_body_entered"]
 [connection signal="body_entered" from="TRIGGERS/BS 1 right open" to="." method="_on_bs_1_right_open_body_entered"]
+[connection signal="body_entered" from="TRIGGERS/BS 3 move" to="." method="_on_bs_3_move_body_entered"]
 [connection signal="body_entered" from="WALLS/wall 1" to="." method="_on_wall_1_body_entered"]
 [connection signal="body_entered" from="WALLS/wall 2" to="." method="_on_wall_2_body_entered"]
 [connection signal="body_entered" from="WALLS/death" to="." method="_on_death_body_entered"]

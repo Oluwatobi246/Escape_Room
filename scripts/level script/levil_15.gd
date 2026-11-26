@@ -12,6 +12,8 @@ var hop_drag: float = 450.0          # How quickly forward speed stops so the pl
 var can_bounce: bool = true
 var wall_bounce_speed: float = 220.0 # Horizontal push away from the wall on bounce
 
+
+
 var bounce_1_hit: int = 0 
 var bounce_2_hit: int = 0 
 var bounce_3_hit: int = 0 
@@ -159,11 +161,14 @@ func bounce_player(current_bounce: StaticBody2D,next_bounce: StaticBody2D, extra
 	can_bounce = true
 	
 	
+var bounce_1_safe: bool = false
 func _on_bounce_1_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
 	
+	
 	bounce_1_hit += 1
+	
 	if bounce_1_hit == 1:
 		bounce_player($"BOUNCERS/Bounce 1",$"BOUNCERS/Bounce 5", null)
 	
@@ -173,7 +178,10 @@ func _on_bounce_1_body_entered(body: Node2D) -> void:
 		else:
 			bounce_player($"BOUNCERS/Bounce 1", null, null)
 			die()
-		
+			return
+
+
+var bounce_5_safe: bool = false		
 func _on_bounce_5_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
@@ -185,19 +193,28 @@ func _on_bounce_5_body_entered(body: Node2D) -> void:
 		$"TRIGGERS/bounce 2_1 open/CollisionShape2D".set_deferred("disabled", false)
 	
 	if bounce_5_hit == 2:
-		bounce_player($"BOUNCERS/Bounce 5", $"BOUNCERS/Bounce 1", null)
+		bounce_player($"BOUNCERS/Bounce 5", $"BOUNCERS/Bounce 1", $"BOUNCERS/Bounce 4")
 		$"TRIGGERS/BS 1 right open/CollisionShape2D".set_deferred("disabled", false)
-		
+
+
+var bounce_3_safe: bool = false	
 func _on_bounce_3_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
 	
+		
 	bounce_3_hit += 1
 	
 	if bounce_3_hit == 1:
 		bounce_player($"BOUNCERS/Bounce 3", null, null)
 		die()
+		return
+	
+	elif bounce_3_hit == 2:
+		bounce_player($"BOUNCERS/Bounce 3", $"BOUNCERS/Bounce 5", $"BOUNCERS/Bounce 2")
 
+
+var bounce_2_safe: bool = false
 func _on_bounce_2_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
@@ -209,6 +226,7 @@ func _on_bounce_2_body_entered(body: Node2D) -> void:
 		$"TRIGGERS/BS 5_1 open/CollisionShape2D".set_deferred("disabled", false)
 
 
+var bounce_4_safe: bool = false
 func _on_bounce_4_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
@@ -216,9 +234,18 @@ func _on_bounce_4_body_entered(body: Node2D) -> void:
 	bounce_4_hit += 1
 	
 	if bounce_4_hit == 1:
-		bounce_player($"BOUNCERS/Bounce 4", null, null)
-		die()
-		
+		if bounce_4_safe:
+			return
+			
+		else:
+			bounce_player($"BOUNCERS/Bounce 4", null, null)
+			die()
+			bounce_4_safe = true
+	
+	elif bounce_4_hit == 2:
+		$"TRIGGERS/BS 3 move/CollisionShape2D".set_deferred("disabled", false)
+		bounce_player($"BOUNCERS/Bounce 4", $"BOUNCERS/Bounce 2", null)
+	
 func _on_bounce_2_1_open_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
@@ -265,6 +292,34 @@ func _on_bs_1_right_body_entered(body: Node2D) -> void:
 	$"TRIGGERS/BS 1 right".set_deferred("monitoring", false)
 	
 	BS_1_open_check = true
+	
+
+func _on_bs_3_move_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	$"TRIGGERS/BS 3 move/CollisionShape2D".set_deferred("disabled", true)
+	for bounce_3 in bouncers.get_node("Bounce 3").get_children():
+		if bounce_3.name == "ColorRect2":
+			bounce_3.show()
+		
+		if bounce_3 is Area2D:
+			bounce_3.set_deferred("monitoring", true)
+	
+	var get_block_x = $"BOUNCERS/Bounce 2".global_position.x
+	
+	var tween = create_tween()
+	tween.tween_property($"BOUNCERS/Bounce 2", "global_position:x", $"MARKERS/bounce 2 SP", 1.0)
+	await tween.finished
+	
+	var return_tween = create_tween()
+	return_tween.tween_property($"BOUNCERS/Bounce 2", "global_position:x", get_block_x, 1.0)
+	
+	
+	
+	
+	
+	
 	
 	
 	
