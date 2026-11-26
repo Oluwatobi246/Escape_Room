@@ -20,6 +20,12 @@ size = Vector2(16, 267)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hjc3f"]
 size = Vector2(10, 256)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ho1lq"]
+size = Vector2(40, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tsv68"]
+size = Vector2(7, 285)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dcmsc"]
 size = Vector2(0, 645.25)
 
@@ -104,13 +110,38 @@ disabled = true
 
 [node name="BS 5_1 open" type="Area2D" parent="TRIGGERS" unique_id=1889518112]
 position = Vector2(97, 355)
+collision_layer = 8
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TRIGGERS/BS 5_1 open" unique_id=1304466031]
 position = Vector2(-5, 12)
 shape = SubResource("RectangleShape2D_hjc3f")
 disabled = true
 
-[node name="Area2D" type="Area2D" parent="TRIGGERS" unique_id=416277378]
+[node name="BS 1 right" type="Area2D" parent="TRIGGERS" unique_id=416277378]
+position = Vector2(524, 0)
+collision_layer = 8
+collision_mask = 2
+monitoring = false
+
+[node name="ColorRect" type="ColorRect" parent="TRIGGERS/BS 1 right" unique_id=365696303]
+offset_right = 40.0
+offset_bottom = 26.0
+color = Color(0.23137255, 0.53333336, 0.3764706, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TRIGGERS/BS 1 right" unique_id=2084562774]
+position = Vector2(20, 13)
+shape = SubResource("RectangleShape2D_ho1lq")
+
+[node name="BS 1 right open" type="Area2D" parent="TRIGGERS" unique_id=160620925]
+position = Vector2(499, 94)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TRIGGERS/BS 1 right open" unique_id=1715462181]
+position = Vector2(-6.5, 56.5)
+shape = SubResource("RectangleShape2D_tsv68")
+disabled = true
 
 [node name="WALLS" type="Node" parent="." unique_id=128144236]
 
@@ -290,6 +321,7 @@ collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BOUNCERS/Bounce 5/bounce 5" unique_id=193302069]
+visible = false
 position = Vector2(-5.5, 30.5)
 shape = SubResource("RectangleShape2D_0henf")
 
@@ -301,6 +333,8 @@ position = Vector2(1164, 72)
 [connection signal="body_entered" from="TRIGGERS/floor 1 hide" to="." method="_on_floor_1_hide_body_entered"]
 [connection signal="body_entered" from="TRIGGERS/bounce 2_1 open" to="." method="_on_bounce_2_1_open_body_entered"]
 [connection signal="body_entered" from="TRIGGERS/BS 5_1 open" to="." method="_on_bs_5_1_open_body_entered"]
+[connection signal="body_entered" from="TRIGGERS/BS 1 right" to="." method="_on_bs_1_right_body_entered"]
+[connection signal="body_entered" from="TRIGGERS/BS 1 right open" to="." method="_on_bs_1_right_open_body_entered"]
 [connection signal="body_entered" from="WALLS/wall 1" to="." method="_on_wall_1_body_entered"]
 [connection signal="body_entered" from="WALLS/wall 2" to="." method="_on_wall_2_body_entered"]
 [connection signal="body_entered" from="WALLS/death" to="." method="_on_death_body_entered"]

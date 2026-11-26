@@ -137,11 +137,10 @@ func bounce_player(current_bounce: StaticBody2D,next_bounce: StaticBody2D, extra
 	player.velocity.x = hop_direction * wall_bounce_speed
 	player.velocity.y = player.JUMP_VELOCITY
 	
-	if current_bounce != null:
-		current_bounce.get_node("ColorRect2").hide()
-		for child in current_bounce.get_children():
-			if child is Area2D:
-				child.set_deferred("monitoring", false)
+	current_bounce.get_node("ColorRect2").hide()
+	for child in current_bounce.get_children():
+		if child is Area2D:
+			child.set_deferred("monitoring", false)
 	
 	if extra_off_bounce != null:
 		extra_off_bounce.get_node("ColorRect2").hide()
@@ -168,6 +167,13 @@ func _on_bounce_1_body_entered(body: Node2D) -> void:
 	if bounce_1_hit == 1:
 		bounce_player($"BOUNCERS/Bounce 1",$"BOUNCERS/Bounce 5", null)
 	
+	elif bounce_1_hit == 2:
+		if BS_1_open_check == true:
+			bounce_player($"BOUNCERS/Bounce 1", $"BOUNCERS/Bounce 4", null)
+		else:
+			bounce_player($"BOUNCERS/Bounce 1", null, null)
+			die()
+		
 func _on_bounce_5_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
@@ -179,8 +185,9 @@ func _on_bounce_5_body_entered(body: Node2D) -> void:
 		$"TRIGGERS/bounce 2_1 open/CollisionShape2D".set_deferred("disabled", false)
 	
 	if bounce_5_hit == 2:
-		pass
-	
+		bounce_player($"BOUNCERS/Bounce 5", $"BOUNCERS/Bounce 1", null)
+		$"TRIGGERS/BS 1 right open/CollisionShape2D".set_deferred("disabled", false)
+		
 func _on_bounce_3_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
@@ -191,6 +198,27 @@ func _on_bounce_3_body_entered(body: Node2D) -> void:
 		bounce_player($"BOUNCERS/Bounce 3", null, null)
 		die()
 
+func _on_bounce_2_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	bounce_2_hit += 1
+	
+	if bounce_2_hit == 1:
+		bounce_player($"BOUNCERS/Bounce 2", $"BOUNCERS/Bounce 4", $"BOUNCERS/Bounce 3")
+		$"TRIGGERS/BS 5_1 open/CollisionShape2D".set_deferred("disabled", false)
+
+
+func _on_bounce_4_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+	
+	bounce_4_hit += 1
+	
+	if bounce_4_hit == 1:
+		bounce_player($"BOUNCERS/Bounce 4", null, null)
+		die()
+		
 func _on_bounce_2_1_open_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
@@ -204,33 +232,42 @@ func _on_bounce_2_1_open_body_entered(body: Node2D) -> void:
 			bounce_2.set_deferred("monitoring", true)
 
 
-func _on_bounce_2_body_entered(body: Node2D) -> void:
-	if not (body.name == "player" or body.is_in_group("player")):
-		return
-	
-	bounce_2_hit += 1
-	
-	if bounce_2_hit == 1:
-		bounce_player($"BOUNCERS/Bounce 2", $"BOUNCERS/Bounce 4", $"BOUNCERS/Bounce 3")
-		$"TRIGGERS/BS 5_1 open/CollisionShape2D".set_deferred("disabled", false)
-
 func _on_bs_5_1_open_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
 	
-	$"TRIGGERS/B5 5.1 open/CollisionShape2D".set_deferred("disabled", true)
-	$"BOUNCERS/Bounce 5/ColorRect2".show()
-	for child in $"BOUNCERS/Bounce 5".get_children():
-		if child is Area2D:
-			child.set_deferred("monitoring", true)
+	$"TRIGGERS/BS 5_1 open/CollisionShape2D".set_deferred("disabled", true)
+	for bounce_5 in bouncers.get_node("Bounce 5").get_children():
+		if bounce_5.name == "ColorRect2":
+			bounce_5.show()
+		
+		if bounce_5 is Area2D:
+			bounce_5.set_deferred("monitoring", true)
+
+func _on_bs_1_right_open_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
+		
+	$"TRIGGERS/BS 1 right open/CollisionShape2D".set_deferred("disabled", true)
+	$"TRIGGERS/BS 1 right".show()
+	$"TRIGGERS/BS 1 right".set_deferred("monitoring", true)
 
 
-func _on_bounce_4_body_entered(body: Node2D) -> void:
+var BS_1_open_check: bool = false
+func _on_bs_1_right_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
 	
-	bounce_4_hit += 1
+	if BS_1_open_check:
+		return
+		
+	$"TRIGGERS/BS 1 right".hide()
+	$"TRIGGERS/BS 1 right".set_deferred("monitoring", false)
 	
-	if bounce_4_hit == 1:
-		bounce_player($"BOUNCERS/Bounce 4", null, null)
-		die()
+	BS_1_open_check = true
+	
+	
+	
+	
+	
+	
