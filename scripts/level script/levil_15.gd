@@ -161,7 +161,6 @@ func bounce_player(current_bounce: StaticBody2D,next_bounce: StaticBody2D, extra
 	can_bounce = true
 	
 	
-var bounce_1_safe: bool = false
 func _on_bounce_1_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
@@ -173,7 +172,7 @@ func _on_bounce_1_body_entered(body: Node2D) -> void:
 		bounce_player($"BOUNCERS/Bounce 1",$"BOUNCERS/Bounce 5", null)
 	
 	elif bounce_1_hit == 2:
-		if BS_1_open_check == true:
+		if BS_1_open_count == 1:
 			bounce_player($"BOUNCERS/Bounce 1", $"BOUNCERS/Bounce 4", null)
 		else:
 			bounce_player($"BOUNCERS/Bounce 1", null, null)
@@ -181,7 +180,6 @@ func _on_bounce_1_body_entered(body: Node2D) -> void:
 			return
 
 
-var bounce_5_safe: bool = false		
 func _on_bounce_5_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
@@ -194,10 +192,10 @@ func _on_bounce_5_body_entered(body: Node2D) -> void:
 	
 	if bounce_5_hit == 2:
 		bounce_player($"BOUNCERS/Bounce 5", $"BOUNCERS/Bounce 1", $"BOUNCERS/Bounce 4")
+		bounce_4_hit += 1
 		$"TRIGGERS/BS 1 right open/CollisionShape2D".set_deferred("disabled", false)
 
 
-var bounce_3_safe: bool = false	
 func _on_bounce_3_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
@@ -211,10 +209,9 @@ func _on_bounce_3_body_entered(body: Node2D) -> void:
 		return
 	
 	elif bounce_3_hit == 2:
-		bounce_player($"BOUNCERS/Bounce 3", $"BOUNCERS/Bounce 5", $"BOUNCERS/Bounce 2")
+		bounce_player($"BOUNCERS/Bounce 3", $"BOUNCERS/Bounce 4", $"BOUNCERS/Bounce 2")
+		$"TRIGGERS/BS 4 right/CollisionShape2D".set_deferred("disabled", false)
 
-
-var bounce_2_safe: bool = false
 func _on_bounce_2_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
@@ -223,8 +220,12 @@ func _on_bounce_2_body_entered(body: Node2D) -> void:
 	
 	if bounce_2_hit == 1:
 		bounce_player($"BOUNCERS/Bounce 2", $"BOUNCERS/Bounce 4", $"BOUNCERS/Bounce 3")
+		bounce_3_hit += 1
 		$"TRIGGERS/BS 5_1 open/CollisionShape2D".set_deferred("disabled", false)
-
+	
+	if bounce_2_hit == 2:
+		$"TRIGGERS/BS 4 right/CollisionShape2D".set_deferred("disabled", false)
+		bounce_player($"BOUNCERS/Bounce 2", $"BOUNCERS/Bounce 5", null)
 
 var bounce_4_safe: bool = false
 func _on_bounce_4_body_entered(body: Node2D) -> void:
@@ -234,17 +235,21 @@ func _on_bounce_4_body_entered(body: Node2D) -> void:
 	bounce_4_hit += 1
 	
 	if bounce_4_hit == 1:
-		if bounce_4_safe:
-			return
-			
-		else:
+		if bounce_4_safe == false:
 			bounce_player($"BOUNCERS/Bounce 4", null, null)
 			die()
-			bounce_4_safe = true
-	
+			
 	elif bounce_4_hit == 2:
 		$"TRIGGERS/BS 3 move/CollisionShape2D".set_deferred("disabled", false)
 		bounce_player($"BOUNCERS/Bounce 4", $"BOUNCERS/Bounce 2", null)
+	
+	elif bounce_4_hit == 3:
+		if BS_1_open_count == 2:
+			bounce_player($"BOUNCERS/Bounce 4", $"BOUNCERS/Bounce 2", null)
+			$"TRIGGERS/BS 4 right/CollisionShape2D".set_deferred("disabled", true)
+		else:
+			bounce_player($"BOUNCERS/Bounce 4", null, null)
+			die()
 	
 func _on_bounce_2_1_open_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
@@ -281,19 +286,28 @@ func _on_bs_1_right_open_body_entered(body: Node2D) -> void:
 
 
 var BS_1_open_check: bool = false
+var BS_1_open_count: int = 0
 func _on_bs_1_right_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
 	
 	if BS_1_open_check:
 		return
-		
-	$"TRIGGERS/BS 1 right".hide()
-	$"TRIGGERS/BS 1 right".set_deferred("monitoring", false)
 	
-	BS_1_open_check = true
+	BS_1_open_count += 1
+	
+	if BS_1_open_count == 1:
+		$"TRIGGERS/BS 1 right".hide()
+		$"TRIGGERS/BS 1 right".set_deferred("monitoring", false)
 	
 
+	if BS_1_open_count == 2:
+		$"TRIGGERS/BS 1 right".hide()
+		$"TRIGGERS/BS 1 right".set_deferred("monitoring", false)
+
+	
+	
+	
 func _on_bs_3_move_body_entered(body: Node2D) -> void:
 	if not (body.name == "player" or body.is_in_group("player")):
 		return
@@ -309,20 +323,24 @@ func _on_bs_3_move_body_entered(body: Node2D) -> void:
 	var get_block_x = $"BOUNCERS/Bounce 2".global_position.x
 	
 	var tween = create_tween()
-	tween.tween_property($"BOUNCERS/Bounce 2", "global_position:x", $"MARKERS/bounce 2 SP", 1.0)
+	tween.tween_property($"BOUNCERS/Bounce 2", "global_position:x", $"MARKERS/bounce 2 SP".global_position.x, 0.56)
 	await tween.finished
+	
+	await get_tree().create_timer(1.0).timeout
 	
 	var return_tween = create_tween()
 	return_tween.tween_property($"BOUNCERS/Bounce 2", "global_position:x", get_block_x, 1.0)
 	
 	
+var BS_4_open_check: bool = false
+func _on_bs_4_right_body_entered(body: Node2D) -> void:
+	if not (body.name == "player" or body.is_in_group("player")):
+		return
 	
+	if BS_4_open_check:
+		return
+		
+	$"TRIGGERS/BS 1 right".show()
+	$"TRIGGERS/BS 1 right".set_deferred("monitoring", true)
 	
-	
-	
-	
-	
-	
-	
-	
-	
+	BS_4_open_check = true

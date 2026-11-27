@@ -29,6 +29,9 @@ size = Vector2(7, 285)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p06v0"]
 size = Vector2(9, 260)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rip1k"]
+size = Vector2(8, 407)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dcmsc"]
 size = Vector2(0, 645.25)
 
@@ -157,6 +160,16 @@ position = Vector2(5.5, 120)
 shape = SubResource("RectangleShape2D_p06v0")
 disabled = true
 
+[node name="BS 4 right" type="Area2D" parent="TRIGGERS" unique_id=2115171978]
+position = Vector2(594, 10)
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TRIGGERS/BS 4 right" unique_id=1052543490]
+position = Vector2(-6, 193.5)
+shape = SubResource("RectangleShape2D_rip1k")
+disabled = true
+
 [node name="WALLS" type="Node" parent="." unique_id=128144236]
 
 [node name="wall 1" type="Area2D" parent="WALLS" unique_id=364504804]
@@ -229,6 +242,7 @@ collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BOUNCERS/Bounce 1/bounce 1" unique_id=1372559802]
+visible = false
 position = Vector2(-5.5, 30.5)
 shape = SubResource("RectangleShape2D_0henf")
 
@@ -255,6 +269,7 @@ collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BOUNCERS/Bounce 2/bounce 2" unique_id=1548380675]
+visible = false
 position = Vector2(-5.5, 30.5)
 shape = SubResource("RectangleShape2D_0henf")
 
@@ -281,6 +296,7 @@ collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BOUNCERS/Bounce 3/bounce 3" unique_id=921428793]
+visible = false
 position = Vector2(-5.5, 30.5)
 shape = SubResource("RectangleShape2D_0henf")
 
@@ -308,6 +324,7 @@ collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BOUNCERS/Bounce 4/bounce 4" unique_id=1726017436]
+visible = false
 position = Vector2(-5.5, 30.5)
 shape = SubResource("RectangleShape2D_0henf")
 
@@ -350,6 +367,7 @@ position = Vector2(1164, 238)
 [connection signal="body_entered" from="TRIGGERS/BS 1 right" to="." method="_on_bs_1_right_body_entered"]
 [connection signal="body_entered" from="TRIGGERS/BS 1 right open" to="." method="_on_bs_1_right_open_body_entered"]
 [connection signal="body_entered" from="TRIGGERS/BS 3 move" to="." method="_on_bs_3_move_body_entered"]
+[connection signal="body_entered" from="TRIGGERS/BS 4 right" to="." method="_on_bs_4_right_body_entered"]
 [connection signal="body_entered" from="WALLS/wall 1" to="." method="_on_wall_1_body_entered"]
 [connection signal="body_entered" from="WALLS/wall 2" to="." method="_on_wall_2_body_entered"]
 [connection signal="body_entered" from="WALLS/death" to="." method="_on_death_body_entered"]
