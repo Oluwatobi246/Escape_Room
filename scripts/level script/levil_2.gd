@@ -65,7 +65,7 @@ func _on_floor_1_trap_trig_body_entered(body: Node2D) -> void:
 	floor_1_trap_trig_coll.set_deferred("disabled", true)
 	
 	$"floor sound".play()
-	var tween = create_tween()
+	var tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	tween.tween_property(floor_1_trap, "position:x", floor_1_start_x + 250.0, 0.7)\
 	.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	tween.tween_callback(floor_1_trap.queue_free)
@@ -84,7 +84,7 @@ func _on_wall_move_trig_body_entered(body: Node2D) -> void:
 	await get_tree().create_timer(0.3).timeout
 	
 	# Slide the wall across both triggers
-	var tween = create_tween()
+	var tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	tween.tween_property(wall_move, "global_position:x", marker_2d.global_position.x, 0.2)\
 	.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	$"spike sound".play()
@@ -124,7 +124,7 @@ func _on_trap_4_trig_body_entered(body: Node2D) -> void:
 	$"trap 4 trig/CollisionShape2D".set_deferred("disabled", true)
 	
 	$"spike sound".play()
-	var tween = create_tween()
+	var tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	tween.tween_property(trap_4, "position:x", trap_4_start_x + 50.0, 0.3)\
 	.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	
@@ -143,14 +143,14 @@ func _on_trap_5_trig_body_entered(body: Node2D) -> void:
 	$"trap 5 trig/CollisionShape2D".set_deferred("disabled", true)
 	
 	$"spike sound".play()
-	var tween = create_tween()
+	var tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	tween.tween_property(trap_5, "position:x", trap_5_start_x + 50.0, 0.3)\
 	.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	
 	await get_tree().create_timer(0.9).timeout
 	
 	$"spike sound".play()
-	var return_tween = create_tween()
+	var return_tween = create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	return_tween.tween_property(trap_5, "position:x", trap_5_start_x, 0.3)\
 	.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
